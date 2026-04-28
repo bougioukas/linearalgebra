@@ -7,3 +7,6 @@ This is a Quarto book.
 
 1 + 1 + 2 + 3
 ```
+
+
+{{< qrcode https://rlinearalgebra.netlify.app/ width=100 height=100 colorDark='#0011bb' >}}
