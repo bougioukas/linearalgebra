@@ -2,6 +2,7 @@
 
 This is a Quarto book.
 
+
 ```{r}
-1 + 1
+1 + 1 + 2
 ```
