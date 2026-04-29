@@ -1,0 +1,34 @@
+# Algebra of Matrices {#sec-matrices}
+
+## Basic Definitions
+
+### Matrix notation
+
+Let $\mathbb{K}$ be a field and $m, n \in \mathbb{N}$. An $m \times n$ matrix $A$ over the field $\mathbb{K}$ is a rectangular array of elements $a_{ij} \in \mathbb{K}$ arranged in rows and columns, usually presented in the following form:
+
+$$
+A = (a_{ij}) = \begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix}
+$$
+
+where $a_{ij}$ denotes the $(ij)$-th element (or entry) of the matrix,
+corresponding to row $i$ and column $j$.
+
+ 
+
+::: content-box-white
+**INFO**
+
+While $\mathbb{K}$ usually represents the real numbers ($\mathbb{R}$) or complex numbers ($\mathbb{C}$), it can also represent other fields.
+:::
+
+
+<br>
+
+
+
+

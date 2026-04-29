@@ -13,6 +13,7 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - matrices.qmd
     #- history.qmd
     #- summary.qmd
     #- presentations.qmd

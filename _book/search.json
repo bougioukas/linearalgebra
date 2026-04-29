@@ -20,6 +20,26 @@
     ]
   },
   {
+    "objectID": "matrices.html",
+    "href": "matrices.html",
+    "title": "2  Algebra of Matrices",
+    "section": "",
+    "text": "2.1 Basic Definitions",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Algebra of Matrices</span>"
+    ]
+  },
+  {
+    "objectID": "matrices.html#basic-definitions",
+    "href": "matrices.html#basic-definitions",
+    "title": "2  Algebra of Matrices",
+    "section": "",
+    "text": "2.1.1 Matrix notation\nLet \\(\\mathbb{K}\\) be a field and \\(m, n \\in \\mathbb{N}\\). An \\(m \\times n\\) matrix \\(A\\) over the field \\(\\mathbb{K}\\) is a rectangular array of elements \\(a_{ij} \\in \\mathbb{K}\\) arranged in rows and columns, usually presented in the following form:\n\\[\nA = (a_{ij}) = \\begin{bmatrix}\na_{11} & a_{12} & \\cdots & a_{1n} \\\\\na_{21} & a_{22} & \\cdots & a_{2n} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\na_{m1} & a_{m2} & \\cdots & a_{mn}\n\\end{bmatrix}\n\\]\nwhere \\(a_{ij}\\) denotes the \\((ij)\\)-th element (or entry) of the matrix, corresponding to row \\(i\\) and column \\(j\\).\n \n\nINFO\nWhile \\(\\mathbb{K}\\) usually represents the real numbers (\\(\\mathbb{R}\\)) or complex numbers (\\(\\mathbb{C}\\)), it can also represent other fields.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Algebra of Matrices</span>"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "References",
