@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "Linear Algebra with R"
+  title: "LINEAR ALGEBRA WITH R"
   subtitle: "1st Edition"
   author: 
     - name: "Konstantinos I. Bougioukas, PhD"
@@ -12,7 +12,7 @@ book:
   favicon: images/cover.png
   chapters:
     - index.qmd
-    - intro.qmd
+    #- intro.qmd
     - matrices.qmd
     #- history.qmd
     #- summary.qmd
@@ -39,6 +39,7 @@ format:
     linestretch: 1.5
     toc-title: "On this page"
     link-external-newwindow: true
+    code-link: true
     number-depth: 3
     html-math-method: mathjax
   pdf:

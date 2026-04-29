@@ -1,33 +1,108 @@
 # Algebra of Matrices {#sec-matrices}
 
-## Basic Definitions
+## Basic definitions
 
 ### Matrix notation
 
-Let $\mathbb{K}$ be a field and $m, n \in \mathbb{N}$. An $m \times n$ matrix $A$ over the field $\mathbb{K}$ is a rectangular array of elements $a_{ij} \in \mathbb{K}$ arranged in rows and columns, usually presented in the following form:
+Let $\mathbb{K}$ be a field and $m, n \in \mathbb{N}$. An $m \times n$ matrix $A$ over the field $\mathbb{K}$ is a rectangular array of elements $a_{ij} \in \mathbb{K}$ arranged in $m$ rows and $n$ columns, usually presented in the following form:
 
-$$
-A = (a_{ij}) = \begin{bmatrix}
+$$A = [a_{ij}] = \begin{bmatrix}
 a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
 a_{m1} & a_{m2} & \cdots & a_{mn}
-\end{bmatrix}
-$$
+\end{bmatrix}$$
 
-where $a_{ij}$ denotes the $(ij)$-th element (or entry) of the matrix,
-corresponding to row $i$ and column $j$.
+where $a_{ij}$ denotes the $(ij)$-th element (or entry) of the matrix, corresponding to row $i$ and column $j$.
 
- 
+**Matrix dimensions (or size)** refer to the number of rows and columns of a matrix, denoted as $m \times n$. The matrix $A$ is often written as $A_{m \times n}$ to make its dimensions explicit.
+
 
 ::: content-box-white
-**INFO**
-
-While $\mathbb{K}$ usually represents the real numbers ($\mathbb{R}$) or complex numbers ($\mathbb{C}$), it can also represent other fields.
+**NOTE:** While $\mathbb{K}$ usually represents the real numbers ($\mathbb{R}$) or complex numbers ($\mathbb{C}$), it can also represent other fields.
 :::
 
 
-<br>
+The $m$ rows of matrix $A$ are $1 \times n$ matrices, also called **row vectors**:
+
+$r_1 = \begin{bmatrix} a_{11} & a_{12} & ... & a_{1n} \end{bmatrix}$
+
+$r_2 = \begin{bmatrix} a_{21} & a_{22} & ... & a_{2n} \end{bmatrix}$
+
+$\vdots$
+
+$r_m = \begin{bmatrix} a_{m1} & a_{m2} & ... & a_{mn} \end{bmatrix}$
+
+ 
+
+The $n$ columns of $A$ are $m \times 1$ matrices, are called **column vectors**:
+
+$c_1 = \begin{bmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{m1} \end{bmatrix}$, $c_2 = \begin{bmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{m2} \end{bmatrix}$, ..., $c_n = \begin{bmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn} \end{bmatrix}$
+
+ 
+
+#### Example 1
+
+The matrix 
+
+$$A= \begin{bmatrix}
+    4 & 0 & 2 & 1\\
+    3 & 1 & 4 & 2\\
+    2 & 0 & 1 & 3
+  \end{bmatrix}$$
+
+is a $3 \times 4$ matrix over the field of real numbers ($\mathbb{R}$). Its first row vector and first column vector are, respectively:
+
+$$
+r_1 = \begin{bmatrix} 4 & 0 & 2 & 1 \end{bmatrix}, \qquad c_1 = \begin{bmatrix} 4 \\ 3 \\ 2 \end{bmatrix}
+$$
+
+
+##### *Implementation in R*
+
+We construct $A$ in R using the `matrix()` function. The entries of the matrix are first stored in a numeric vector named `entries` and then reshaped into a $3 \times 4$ matrix. Since the values in the vector are listed in row-wise order, we set the parameter `byrow = TRUE` which fills the matrix one row at a time before moving to the next. This ensures that the computational representation of A in R matches its mathematical form exactly.
+
+
+```{r}
+entries <- c(4, 0, 2, 1,
+             3, 1, 4, 2,
+             2, 0, 1, 3)
+
+A <- matrix(entries, nrow = 3, ncol = 4, byrow = TRUE)
+A
+```
+
+
+To verify the structure of the resulting object, we inspect its class and dimensions:
+
+```{r}
+class(A)
+dim(A)
+```
+
+The function `class(A)` confirms that A is a matrix object, while `dim(A)` returns its dimensions, $3 \times 4$, consistent with the mathematical definition.
+
+Matrix indexing in R follows the standard form `[row, column]`, allowing individual rows and columns to be extracted directly. By default, R drops the two-dimensional structure of the result. To prevent this and preserve the matrix form, the argument `drop = FALSE` should be used.
+
+To extract the first row vector $r_1$, we use:
+
+```{r}
+r1 <- A[1, , drop = FALSE]
+r1
+class(r1)
+dim(r1)
+```
+
+
+
+Similarly, the first column vector $c_1$ is obtained by:
+
+```{r}
+c1 <- A[, 1, drop = FALSE]
+c1
+class(c1)
+dim(c1)
+```
 
 
 

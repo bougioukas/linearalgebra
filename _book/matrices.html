@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>2&nbsp; Algebra of Matrices – Linear Algebra with R</title>
+<title>1&nbsp; Algebra of Matrices – LINEAR ALGEBRA WITH R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,8 +17,42 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -31,7 +62,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./references.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./index.html" rel="prev">
 <link href="./images/cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -43,8 +74,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3c66c984f6d927a520416f38c6794b39.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-512545d75ca26aff19c358003074583b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -70,12 +100,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -101,34 +126,26 @@ window.Quarto = {
   typesetMath
 };
 </script>
-
 </head>
-
 <body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./matrices.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Algebra of Matrices</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./matrices.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Algebra of Matrices</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Linear Algebra with R</a> 
+      <a href="./">LINEAR ALGEBRA WITH R</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -138,22 +155,16 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Welcome!</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./matrices.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Algebra of Matrices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Algebra of Matrices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -163,28 +174,24 @@ window.Quarto = {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#basic-definitions" id="toc-basic-definitions" class="nav-link active" data-scroll-target="#basic-definitions"><span class="header-section-number">2.1</span> Basic Definitions</a>
+<li>
+<a href="#basic-definitions" id="toc-basic-definitions" class="nav-link active" data-scroll-target="#basic-definitions"><span class="header-section-number">1.1</span> Basic definitions</a>
   <ul class="collapse">
-  <li><a href="#matrix-notation" id="toc-matrix-notation" class="nav-link" data-scroll-target="#matrix-notation"><span class="header-section-number">2.1.1</span> Matrix notation</a></li>
-  </ul></li>
+<li><a href="#matrix-notation" id="toc-matrix-notation" class="nav-link" data-scroll-target="#matrix-notation"><span class="header-section-number">1.1.1</span> Matrix notation</a></li>
   </ul>
-</nav>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span id="sec-matrices" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Algebra of Matrices</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-matrices" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Algebra of Matrices</span></span></h1>
 </div>
 
 
@@ -198,36 +205,110 @@ window.Quarto = {
   
 
 
-</header>
-
-
-<section id="basic-definitions" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="basic-definitions"><span class="header-section-number">2.1</span> Basic Definitions</h2>
-<section id="matrix-notation" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="matrix-notation"><span class="header-section-number">2.1.1</span> Matrix notation</h3>
-<p>Let <span class="math inline">\(\mathbb{K}\)</span> be a field and <span class="math inline">\(m, n \in \mathbb{N}\)</span>. An <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> over the field <span class="math inline">\(\mathbb{K}\)</span> is a rectangular array of elements <span class="math inline">\(a_{ij} \in \mathbb{K}\)</span> arranged in rows and columns, usually presented in the following form:</p>
-<p><span class="math display">\[
-A = (a_{ij}) = \begin{bmatrix}
+</header><section id="basic-definitions" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="basic-definitions">
+<span class="header-section-number">1.1</span> Basic definitions</h2>
+<section id="matrix-notation" class="level3" data-number="1.1.1"><h3 data-number="1.1.1" class="anchored" data-anchor-id="matrix-notation">
+<span class="header-section-number">1.1.1</span> Matrix notation</h3>
+<p>Let <span class="math inline">\(\mathbb{K}\)</span> be a field and <span class="math inline">\(m, n \in \mathbb{N}\)</span>. An <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> over the field <span class="math inline">\(\mathbb{K}\)</span> is a rectangular array of elements <span class="math inline">\(a_{ij} \in \mathbb{K}\)</span> arranged in <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns, usually presented in the following form:</p>
+<p><span class="math display">\[A = [a_{ij}] = \begin{bmatrix}
 a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
 a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
 a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
-\end{bmatrix}
-\]</span></p>
+\end{bmatrix}\]</span></p>
 <p>where <span class="math inline">\(a_{ij}\)</span> denotes the <span class="math inline">\((ij)\)</span>-th element (or entry) of the matrix, corresponding to row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span>.</p>
-<p>&nbsp;</p>
+<p><strong>Matrix dimensions (or size)</strong> refer to the number of rows and columns of a matrix, denoted as <span class="math inline">\(m \times n\)</span>. The matrix <span class="math inline">\(A\)</span> is often written as <span class="math inline">\(A_{m \times n}\)</span> to make its dimensions explicit.</p>
 <div class="content-box-white">
-<p><strong>INFO</strong></p>
-<p>While <span class="math inline">\(\mathbb{K}\)</span> usually represents the real numbers (<span class="math inline">\(\mathbb{R}\)</span>) or complex numbers (<span class="math inline">\(\mathbb{C}\)</span>), it can also represent other fields.</p>
+<p><strong>NOTE:</strong> While <span class="math inline">\(\mathbb{K}\)</span> usually represents the real numbers (<span class="math inline">\(\mathbb{R}\)</span>) or complex numbers (<span class="math inline">\(\mathbb{C}\)</span>), it can also represent other fields.</p>
 </div>
-<p><br></p>
+<p>The <span class="math inline">\(m\)</span> rows of matrix <span class="math inline">\(A\)</span> are <span class="math inline">\(1 \times n\)</span> matrices, also called <strong>row vectors</strong>:</p>
+<p><span class="math inline">\(r_1 = \begin{bmatrix} a_{11} &amp; a_{12} &amp; ... &amp; a_{1n} \end{bmatrix}\)</span></p>
+<p><span class="math inline">\(r_2 = \begin{bmatrix} a_{21} &amp; a_{22} &amp; ... &amp; a_{2n} \end{bmatrix}\)</span></p>
+<p><span class="math inline">\(\vdots\)</span></p>
+<p><span class="math inline">\(r_m = \begin{bmatrix} a_{m1} &amp; a_{m2} &amp; ... &amp; a_{mn} \end{bmatrix}\)</span></p>
+<p>&nbsp;</p>
+<p>The <span class="math inline">\(n\)</span> columns of <span class="math inline">\(A\)</span> are <span class="math inline">\(m \times 1\)</span> matrices, are called <strong>column vectors</strong>:</p>
+<p><span class="math inline">\(c_1 = \begin{bmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{m1} \end{bmatrix}\)</span>, <span class="math inline">\(c_2 = \begin{bmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{m2} \end{bmatrix}\)</span>, …, <span class="math inline">\(c_n = \begin{bmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn} \end{bmatrix}\)</span></p>
+<p>&nbsp;</p>
+<section id="example-1" class="level4"><h4 class="anchored" data-anchor-id="example-1">Example 1</h4>
+<p>The matrix</p>
+<p><span class="math display">\[A= \begin{bmatrix}
+    4 &amp; 0 &amp; 2 &amp; 1\\
+    3 &amp; 1 &amp; 4 &amp; 2\\
+    2 &amp; 0 &amp; 1 &amp; 3
+  \end{bmatrix}\]</span></p>
+<p>is a <span class="math inline">\(3 \times 4\)</span> matrix over the field of real numbers (<span class="math inline">\(\mathbb{R}\)</span>). Its first row vector and first column vector are, respectively:</p>
+<p><span class="math display">\[
+r_1 = \begin{bmatrix} 4 &amp; 0 &amp; 2 &amp; 1 \end{bmatrix}, \qquad c_1 = \begin{bmatrix} 4 \\ 3 \\ 2 \end{bmatrix}
+\]</span></p>
+<section id="implementation-in-r" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r"><em>Implementation in R</em></h5>
+<p>We construct <span class="math inline">\(A\)</span> in R using the <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> function. The entries of the matrix are first stored in a numeric vector named <code>entries</code> and then reshaped into a <span class="math inline">\(3 \times 4\)</span> matrix. Since the values in the vector are listed in row-wise order, we set the parameter <code>byrow = TRUE</code> which fills the matrix one row at a time before moving to the next. This ensures that the computational representation of A in R matches its mathematical form exactly.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">1</span>,</span>
+<span>             <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">2</span>,</span>
+<span>             <span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">entries</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">4</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">A</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    4    0    2    1
+[2,]    3    1    4    2
+[3,]    2    0    1    3</code></pre>
+</div>
+</div>
+<p>To verify the structure of the resulting object, we inspect its class and dimensions:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "matrix" "array" </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 4</code></pre>
+</div>
+</div>
+<p>The function <code>class(A)</code> confirms that A is a matrix object, while <code>dim(A)</code> returns its dimensions, <span class="math inline">\(3 \times 4\)</span>, consistent with the mathematical definition.</p>
+<p>Matrix indexing in R follows the standard form <code>[row, column]</code>, allowing individual rows and columns to be extracted directly. By default, R drops the two-dimensional structure of the result. To prevent this and preserve the matrix form, the argument <code>drop = FALSE</code> should be used.</p>
+<p>To extract the first row vector <span class="math inline">\(r_1\)</span>, we use:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">r1</span> <span class="op">&lt;-</span> <span class="va">A</span><span class="op">[</span><span class="fl">1</span>, , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span></span>
+<span><span class="va">r1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    4    0    2    1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">r1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "matrix" "array" </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">r1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 4</code></pre>
+</div>
+</div>
+<p>Similarly, the first column vector <span class="math inline">\(c_1\)</span> is obtained by:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">c1</span> <span class="op">&lt;-</span> <span class="va">A</span><span class="op">[</span>, <span class="fl">1</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span></span>
+<span><span class="va">c1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]    4
+[2,]    3
+[3,]    2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">c1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "matrix" "array" </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">c1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 1</code></pre>
+</div>
+</div>
 
 
-</section>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -631,11 +712,9 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Welcome!">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome!</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -645,8 +724,7 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2025-26, Konstantinos I. Bougioukas. License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivs 4.0</a>.</p>
 </div>   
@@ -658,8 +736,6 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

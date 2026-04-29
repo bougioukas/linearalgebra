@@ -24,47 +24,116 @@ $callout-color-note: #540375;
 
 /*-- scss:rules --*/
 
+/* --- 1. Navigation & Sidebar --- */
 
+/* Sidebar Brand Title */
 .sidebar-title {
   color: #288BAB;
+  font-weight: 700;
 }
 
+/* Left Sidebar: Active Chapter Link */
 div.sidebar-item-container .active {
+  color: #003366 !important;
   font-weight: bold;
 }
 
-.sidebar nav[role=doc-toc] ul>li>a.active, .sidebar nav[role=doc-toc] ul>li>ul>li>a.active{
-  font-weight: bold;
+/* Right Sidebar (TOC): "On this page" Title & Active Link */
+.sidebar nav[role=doc-toc] .toc-title {
+  color: #D35400; /* Matching the orange theme */
+  font-weight: 600;
 }
 
+.sidebar nav[role=doc-toc] ul>li>a.active, 
+.sidebar nav[role=doc-toc] ul>li>ul>li>a.active {
+  color: #288BAB !important; /* Teal accent for active section */
+  font-weight: bold;
+  border-left: 2px solid #288BAB;
+}
+
+/* Cover Image Styling */
 img.quarto-cover-image {
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+  border-radius: 4px;
 }
 
+/* --- 2. Main Headings --- */
 
-
-
-/* Headings ------------------------------------------------------ */
-
+/* H1: Main Document/Book Title (Metadata Title) */
 #title-block-header.quarto-title-block.default .quarto-title h1.title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #003366; 
+}
+
+/* H1: Chapter Titles in Body (e.g., "1 Algebra of Matrices") */
+.quarto-container main h1:not(.title), 
+section.level1 > h1,
+.quarto-section-identifier,
+h1 .header-section-number {
+  color: #003366 !important;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-top: 2.0rem;
   margin-bottom: 0.5rem;
 }
 
 
-h2 {
-  margin-top: 2rem;
-  margin-bottom: 1.0rem;
-  font-size: 1.4rem;
+h2, .level2 h2 {
+  color: #003366 !important; /* Deep Orange */
+  font-size: 1.6rem;
   font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 0.2rem;
+  border-bottom: 1px solid #ebebeb;
+  padding-bottom: 0.2rem;
 }
-h3 { margin-top: 1.7em; margin-bottom: 0.6rem; font-size: 1.2rem; font-weight: 500; }
-h4 { margin-top: 1.6em; font-size: 1.1rem; font-weight: 500; }
-h5 { margin-top: 1.5em; font-size: 1rem; }
+
+/* Targets the auto-generated number (e.g., 1.1) */
+h2 .header-section-number, 
+.level2 h2 .header-section-number {
+  color: #335C8A !important;
+  padding-right: 0.6rem; /* Space between number and title */
+  font-weight: 700;       /* Slightly bolder for emphasis */
+}
 
 
-.quarto-section-identifier {
+/* H3-H5: Sub-headings (e.g., "1.1.1 Matrix notation") */
+h3, .level3 h3 { 
+  color: #555555; /* Neutral dark grey for sub-steps */
+  font-size: 1.25rem; 
+  font-weight: 600;
+  margin-top: 1.8rem; 
+  margin-bottom: 1.0rem; 
+}
+
+h4 { margin-top: 1.6em; font-size: 1.1rem; font-weight: 600; color: #D35400; }
+h5 {
+  margin-top: 1.2em;
+  margin-bottom: 0.3em;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4a90d9;
+  border-left: 3px solid #1a6fa8;
+  padding-left: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.9;
+}
+
+
+/* --- 3. Links & Global Accents --- */
+
+a {
   color: #288BAB;
-  font-weight: normal;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #003366;
+  text-decoration: underline;
 }
 
 
@@ -107,7 +176,7 @@ h5 { margin-top: 1.5em; font-size: 1rem; }
     background-color: #e2e2f9;
     border: 1px solid #bebde9;
     margin: 0 0 20px;
-    padding: 5px
+    padding: 5px;
 }
  
 .content-box-red {
@@ -118,8 +187,9 @@ h5 { margin-top: 1.5em; font-size: 1rem; }
 .content-box-white {
     background-color: #ffffff;
     border: 1px solid #000000;
-    margin: 0 0 20px;
-    padding: 5px
+    margin: 0 0 30px;
+    padding: 0.2rem 1.2rem;
+    border-radius: 4px;
 }
 
 

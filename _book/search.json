@@ -2,51 +2,31 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Linear Algebra with R",
+    "title": "LINEAR ALGEBRA WITH R",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\n\n1 + 1 + 2 + 3\n\n[1] 7",
+    "text": "Welcome!\nWelcome to the online edition of “Linear Algebra with R”. This introductory book provides a first course in vectors, matrices, and linear systems, the core topics in applied linear algebra. The aim is to give students with little or no prior exposure to the subject a solid grounding in these fundamental ideas, together with an appreciation of their wide range of applications.\nTo support this objective, the R programming language is used throughout the book to implement and explore key concepts, helping to build both understanding and confidence in working with the central ideas of linear algebra.\nThis is a work-in-progress draft.",
     "crumbs": [
-      "Preface"
-    ]
-  },
-  {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "1  Introduction",
-    "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "Welcome!"
     ]
   },
   {
     "objectID": "matrices.html",
     "href": "matrices.html",
-    "title": "2  Algebra of Matrices",
+    "title": "1  Algebra of Matrices",
     "section": "",
-    "text": "2.1 Basic Definitions",
+    "text": "1.1 Basic definitions",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Algebra of Matrices</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Algebra of Matrices</span>"
     ]
   },
   {
     "objectID": "matrices.html#basic-definitions",
     "href": "matrices.html#basic-definitions",
-    "title": "2  Algebra of Matrices",
+    "title": "1  Algebra of Matrices",
     "section": "",
-    "text": "2.1.1 Matrix notation\nLet \\(\\mathbb{K}\\) be a field and \\(m, n \\in \\mathbb{N}\\). An \\(m \\times n\\) matrix \\(A\\) over the field \\(\\mathbb{K}\\) is a rectangular array of elements \\(a_{ij} \\in \\mathbb{K}\\) arranged in rows and columns, usually presented in the following form:\n\\[\nA = (a_{ij}) = \\begin{bmatrix}\na_{11} & a_{12} & \\cdots & a_{1n} \\\\\na_{21} & a_{22} & \\cdots & a_{2n} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\na_{m1} & a_{m2} & \\cdots & a_{mn}\n\\end{bmatrix}\n\\]\nwhere \\(a_{ij}\\) denotes the \\((ij)\\)-th element (or entry) of the matrix, corresponding to row \\(i\\) and column \\(j\\).\n \n\nINFO\nWhile \\(\\mathbb{K}\\) usually represents the real numbers (\\(\\mathbb{R}\\)) or complex numbers (\\(\\mathbb{C}\\)), it can also represent other fields.",
+    "text": "1.1.1 Matrix notation\nLet \\(\\mathbb{K}\\) be a field and \\(m, n \\in \\mathbb{N}\\). An \\(m \\times n\\) matrix \\(A\\) over the field \\(\\mathbb{K}\\) is a rectangular array of elements \\(a_{ij} \\in \\mathbb{K}\\) arranged in \\(m\\) rows and \\(n\\) columns, usually presented in the following form:\n\\[A = [a_{ij}] = \\begin{bmatrix}\na_{11} & a_{12} & \\cdots & a_{1n} \\\\\na_{21} & a_{22} & \\cdots & a_{2n} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\na_{m1} & a_{m2} & \\cdots & a_{mn}\n\\end{bmatrix}\\]\nwhere \\(a_{ij}\\) denotes the \\((ij)\\)-th element (or entry) of the matrix, corresponding to row \\(i\\) and column \\(j\\).\nMatrix dimensions (or size) refer to the number of rows and columns of a matrix, denoted as \\(m \\times n\\). The matrix \\(A\\) is often written as \\(A_{m \\times n}\\) to make its dimensions explicit.\n\nNOTE: While \\(\\mathbb{K}\\) usually represents the real numbers (\\(\\mathbb{R}\\)) or complex numbers (\\(\\mathbb{C}\\)), it can also represent other fields.\n\nThe \\(m\\) rows of matrix \\(A\\) are \\(1 \\times n\\) matrices, also called row vectors:\n\\(r_1 = \\begin{bmatrix} a_{11} & a_{12} & ... & a_{1n} \\end{bmatrix}\\)\n\\(r_2 = \\begin{bmatrix} a_{21} & a_{22} & ... & a_{2n} \\end{bmatrix}\\)\n\\(\\vdots\\)\n\\(r_m = \\begin{bmatrix} a_{m1} & a_{m2} & ... & a_{mn} \\end{bmatrix}\\)\n \nThe \\(n\\) columns of \\(A\\) are \\(m \\times 1\\) matrices, are called column vectors:\n\\(c_1 = \\begin{bmatrix} a_{11} \\\\ a_{21} \\\\ \\vdots \\\\ a_{m1} \\end{bmatrix}\\), \\(c_2 = \\begin{bmatrix} a_{12} \\\\ a_{22} \\\\ \\vdots \\\\ a_{m2} \\end{bmatrix}\\), …, \\(c_n = \\begin{bmatrix} a_{1n} \\\\ a_{2n} \\\\ \\vdots \\\\ a_{mn} \\end{bmatrix}\\)\n \nExample 1\nThe matrix\n\\[A= \\begin{bmatrix}\n    4 & 0 & 2 & 1\\\\\n    3 & 1 & 4 & 2\\\\\n    2 & 0 & 1 & 3\n  \\end{bmatrix}\\]\nis a \\(3 \\times 4\\) matrix over the field of real numbers (\\(\\mathbb{R}\\)). Its first row vector and first column vector are, respectively:\n\\[\nr_1 = \\begin{bmatrix} 4 & 0 & 2 & 1 \\end{bmatrix}, \\qquad c_1 = \\begin{bmatrix} 4 \\\\ 3 \\\\ 2 \\end{bmatrix}\n\\]\nImplementation in R\nWe construct \\(A\\) in R using the matrix() function. The entries of the matrix are first stored in a numeric vector named entries and then reshaped into a \\(3 \\times 4\\) matrix. Since the values in the vector are listed in row-wise order, we set the parameter byrow = TRUE which fills the matrix one row at a time before moving to the next. This ensures that the computational representation of A in R matches its mathematical form exactly.\n\nentries &lt;- c(4, 0, 2, 1,\n             3, 1, 4, 2,\n             2, 0, 1, 3)\n\nA &lt;- matrix(entries, nrow = 3, ncol = 4, byrow = TRUE)\nA\n\n     [,1] [,2] [,3] [,4]\n[1,]    4    0    2    1\n[2,]    3    1    4    2\n[3,]    2    0    1    3\n\n\nTo verify the structure of the resulting object, we inspect its class and dimensions:\n\nclass(A)\n\n[1] \"matrix\" \"array\" \n\ndim(A)\n\n[1] 3 4\n\n\nThe function class(A) confirms that A is a matrix object, while dim(A) returns its dimensions, \\(3 \\times 4\\), consistent with the mathematical definition.\nMatrix indexing in R follows the standard form [row, column], allowing individual rows and columns to be extracted directly. By default, R drops the two-dimensional structure of the result. To prevent this and preserve the matrix form, the argument drop = FALSE should be used.\nTo extract the first row vector \\(r_1\\), we use:\n\nr1 &lt;- A[1, , drop = FALSE]\nr1\n\n     [,1] [,2] [,3] [,4]\n[1,]    4    0    2    1\n\nclass(r1)\n\n[1] \"matrix\" \"array\" \n\ndim(r1)\n\n[1] 1 4\n\n\nSimilarly, the first column vector \\(c_1\\) is obtained by:\n\nc1 &lt;- A[, 1, drop = FALSE]\nc1\n\n     [,1]\n[1,]    4\n[2,]    3\n[3,]    2\n\nclass(c1)\n\n[1] \"matrix\" \"array\" \n\ndim(c1)\n\n[1] 3 1",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Algebra of Matrices</span>"
-    ]
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "References"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Algebra of Matrices</span>"
     ]
   }
 ]
