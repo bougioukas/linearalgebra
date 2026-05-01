@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>1&nbsp; Algebra of Matrices – LINEAR ALGEBRA WITH R</title>
+<title>1&nbsp; The Basics of Matrices – LINEAR ALGEBRA WITH R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -134,7 +134,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./matrices.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Algebra of Matrices</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./matrices.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Basics of Matrices</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -164,7 +164,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./matrices.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Algebra of Matrices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Basics of Matrices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -181,17 +181,18 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#basic-definitions" id="toc-basic-definitions" class="nav-link active" data-scroll-target="#basic-definitions"><span class="header-section-number">1.1</span> Basic definitions</a>
+<li><a href="#matrix-notation" id="toc-matrix-notation" class="nav-link active" data-scroll-target="#matrix-notation"><span class="header-section-number">1.1</span> Matrix Notation</a></li>
+  <li>
+<a href="#special-types-of-matrices" id="toc-special-types-of-matrices" class="nav-link" data-scroll-target="#special-types-of-matrices"><span class="header-section-number">1.2</span> Special Types of Matrices</a>
   <ul class="collapse">
-<li><a href="#matrix-notation" id="toc-matrix-notation" class="nav-link" data-scroll-target="#matrix-notation"><span class="header-section-number">1.1.1</span> Matrix notation</a></li>
+<li><a href="#the-square-matrix" id="toc-the-square-matrix" class="nav-link" data-scroll-target="#the-square-matrix"><span class="header-section-number">1.2.1</span> The Square Matrix</a></li>
   </ul>
 </li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sec-matrices" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Algebra of Matrices</span></span></h1>
+<h1 class="title"><span id="sec-matrices" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Basics of Matrices</span></span></h1>
 </div>
 
 
@@ -205,10 +206,8 @@ window.Quarto = {
   
 
 
-</header><section id="basic-definitions" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="basic-definitions">
-<span class="header-section-number">1.1</span> Basic definitions</h2>
-<section id="matrix-notation" class="level3" data-number="1.1.1"><h3 data-number="1.1.1" class="anchored" data-anchor-id="matrix-notation">
-<span class="header-section-number">1.1.1</span> Matrix notation</h3>
+</header><section id="matrix-notation" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="matrix-notation">
+<span class="header-section-number">1.1</span> Matrix Notation</h2>
 <p>Let <span class="math inline">\(\mathbb{K}\)</span> be a field and <span class="math inline">\(m, n \in \mathbb{N}\)</span>. An <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> over the field <span class="math inline">\(\mathbb{K}\)</span> is a rectangular array of elements <span class="math inline">\(a_{ij} \in \mathbb{K}\)</span> arranged in <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns, usually presented in the following form:</p>
 <p><span class="math display">\[A = [a_{ij}] = \begin{bmatrix}
 a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
@@ -244,10 +243,12 @@ r_1 = \begin{bmatrix} 4 &amp; 0 &amp; 2 &amp; 1 \end{bmatrix}, \qquad c_1 = \beg
 <section id="implementation-in-r" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r"><em>Implementation in R</em></h5>
 <p>We construct <span class="math inline">\(A\)</span> in R using the <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> function. The entries of the matrix are first stored in a numeric vector named <code>entries</code> and then reshaped into a <span class="math inline">\(3 \times 4\)</span> matrix. Since the values in the vector are listed in row-wise order, we set the parameter <code>byrow = TRUE</code> which fills the matrix one row at a time before moving to the next. This ensures that the computational representation of A in R matches its mathematical form exactly.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">1</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define entries of sigma_1 in row-wise order</span></span>
+<span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">1</span>,</span>
 <span>             <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">2</span>,</span>
 <span>             <span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># Construct 3x4 matrix using row-wise filling</span></span>
 <span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">entries</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">4</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">A</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -306,9 +307,113 @@ r_1 = \begin{bmatrix} 4 &amp; 0 &amp; 2 &amp; 1 \end{bmatrix}, \qquad c_1 = \beg
 <pre><code>[1] 3 1</code></pre>
 </div>
 </div>
+<p>&nbsp;</p>
+</section></section><section id="example-2-the-pauli-matrices" class="level4"><h4 class="anchored" data-anchor-id="example-2-the-pauli-matrices">Example 2: The Pauli Matrices</h4>
+<p>The Pauli matrices are three <span class="math inline">\(2 \times 2\)</span> complex matrices with fundamental applications in physics, particularly in quantum mechanics.</p>
+<p>Let <span class="math inline">\(\mathbb{K} = \mathbb{C}\)</span> (the field of complex numbers). The Pauli matrices are defined as:</p>
+<p><span class="math display">\[\sigma_1 = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}, \quad
+\sigma_2 = \begin{bmatrix} 0 &amp; -i \\ i &amp; 0 \end{bmatrix}, \quad
+\sigma_3 = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}\]</span></p>
+<p>&nbsp;</p>
+<section id="implementation-in-r-1" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-1"><em>Implementation in R</em></h5>
+<p>To represent these in R, we must account for the imaginary unit <span class="math inline">\(i\)</span>, which is denoted as <span class="math inline">\(i\)</span> in R (e.g., <span class="math inline">\(0+1i\)</span>). Because these matrices are <span class="math inline">\(2 \times 2\)</span>, we set the dimensions accordingly.</p>
+<ul>
+<li>Matrix <span class="math inline">\(\sigma_1\)</span>
+</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define entries of sigma_1 in row-wise order</span></span>
+<span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>,</span>
+<span>             <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Construct 2x2 matrix using row-wise filling</span></span>
+<span><span class="va">sigma_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">entries</span>, nrow <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">sigma_1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    0    1
+[2,]    1    0</code></pre>
+</div>
+</div>
+<ul>
+<li>Matrix <span class="math inline">\(\sigma_2\)</span>
+</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Use R's complex notation '1i' for the imaginary unit</span></span>
+<span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">-</span><span class="fl">1i</span>,</span>
+<span>             <span class="fl">0</span><span class="op">+</span><span class="fl">1i</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Construct 2x2 matrix using row-wise filling</span></span>
+<span><span class="va">sigma_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">entries</span>, nrow <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">sigma_2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,] 0+0i 0-1i
+[2,] 0+1i 0+0i</code></pre>
+</div>
+</div>
+<ul>
+<li>Matrix <span class="math inline">\(\sigma_3\)</span>
+</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define entries of sigma_2 in row-wise order</span></span>
+<span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, </span>
+<span>             <span class="fl">0</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">sigma_3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">entries</span>, nrow <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">sigma_3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    0
+[2,]    0   -1</code></pre>
+</div>
+</div>
+<p>&nbsp;</p>
+</section></section><section id="example-3-the-planar-rotation-matrix" class="level4"><h4 class="anchored" data-anchor-id="example-3-the-planar-rotation-matrix">Example 3: The Planar Rotation Matrix</h4>
+<p>When matrix entries are functions, the matrix is called a matrix-valued function. A fundamental example in linear algebra and geometry is the planar rotation matrix <span class="math inline">\(M(\theta)\)</span>, which represents a counter-clockwise rotation by an angle <span class="math inline">\(\theta\)</span> in <span class="math inline">\(\mathbb{R}^2\)</span>. Mathematically, it is defined as:</p>
+<p><span class="math display">\[M(\theta) = \begin{bmatrix} \cos(\theta) &amp; -\sin(\theta) \\ \sin(\theta) &amp; \cos(\theta) \end{bmatrix}\]</span> For <span class="math inline">\(\theta = \frac{\pi}{4}\)</span> (a rotation of <span class="math inline">\(45^\circ\)</span>):</p>
+<p><span class="math display">\[M\left(\frac{\pi}{4}\right) =
+\begin{bmatrix}
+\cos\left(\frac{\pi}{4}\right) &amp; -\sin\left(\frac{\pi}{4}\right) \\
+\sin\left(\frac{\pi}{4}\right) &amp; \cos\left(\frac{\pi}{4}\right)
+\end{bmatrix} =
+\begin{bmatrix}
+\frac{\sqrt{2}}{2} &amp; -\frac{\sqrt{2}}{2} \\
+\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}
+\end{bmatrix}\]</span></p>
+<p>&nbsp;</p>
+<section id="implementation-in-r-2" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-2"><em>Implementation in R</em></h5>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define the matrix-valued function</span></span>
+<span><span class="va">M</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">theta</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">cos</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>, <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,</span>
+<span>               <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,  <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">cos</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">entries</span>, nrow <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define the angle of 45 degrees (pi/4 in radians)</span></span>
+<span><span class="va">theta</span> <span class="op">&lt;-</span> <span class="va">pi</span> <span class="op">/</span> <span class="fl">4</span>   </span>
+<span></span>
+<span><span class="co"># Use the function to construct the matrix</span></span>
+<span><span class="fu">M</span><span class="op">(</span><span class="va">theta</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]       [,2]
+[1,] 0.7071068 -0.7071068
+[2,] 0.7071068  0.7071068</code></pre>
+</div>
+</div>
+</section></section></section><section id="special-types-of-matrices" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="special-types-of-matrices">
+<span class="header-section-number">1.2</span> Special Types of Matrices</h2>
+<section id="the-square-matrix" class="level3" data-number="1.2.1"><h3 data-number="1.2.1" class="anchored" data-anchor-id="the-square-matrix">
+<span class="header-section-number">1.2.1</span> The Square Matrix</h3>
+<p>If a matrix <span class="math inline">\(A\)</span> has <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns, it is called a square matrix if <span class="math inline">\(m = n\)</span>, that is, if it has an equal number of rows and columns. In this case, <span class="math inline">\(A\)</span> is said to be of order <span class="math inline">\(n\)</span>, denoted <span class="math inline">\(A_{n \times n}\)</span> or simply <span class="math inline">\(A_n\)</span>.</p>
 
 
-</section></section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();

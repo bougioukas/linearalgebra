@@ -1,8 +1,6 @@
-# Algebra of Matrices {#sec-matrices}
+# The Basics of Matrices {#sec-matrices}
 
-## Basic definitions
-
-### Matrix notation
+## Matrix Notation
 
 Let $\mathbb{K}$ be a field and $m, n \in \mathbb{N}$. An $m \times n$ matrix $A$ over the field $\mathbb{K}$ is a rectangular array of elements $a_{ij} \in \mathbb{K}$ arranged in $m$ rows and $n$ columns, usually presented in the following form:
 
@@ -64,10 +62,12 @@ We construct $A$ in R using the `matrix()` function. The entries of the matrix a
 
 
 ```{r}
+# Define entries of sigma_1 in row-wise order
 entries <- c(4, 0, 2, 1,
              3, 1, 4, 2,
              2, 0, 1, 3)
 
+# Construct 3x4 matrix using row-wise filling
 A <- matrix(entries, nrow = 3, ncol = 4, byrow = TRUE)
 A
 ```
@@ -104,6 +104,110 @@ class(c1)
 dim(c1)
 ```
 
+ 
+
+#### Example 2: The Pauli Matrices
+
+The Pauli matrices are three $2 \times 2$ complex matrices with fundamental applications in physics, particularly in quantum mechanics.
+
+Let $\mathbb{K} = \mathbb{C}$ (the field of complex numbers). The Pauli matrices are defined as:
+
+$$\sigma_1 = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}, \quad 
+\sigma_2 = \begin{bmatrix} 0 & -i \\ i & 0 \end{bmatrix}, \quad 
+\sigma_3 = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}$$
+
+ 
+
+##### *Implementation in R*
+
+To represent these in R, we must account for the imaginary unit $i$, which is denoted as $i$ in R (e.g., $0+1i$). Because these matrices are $2 \times 2$, we set the dimensions accordingly.
+
+- Matrix $\sigma_1$
+
+```{r}
+# Define entries of sigma_1 in row-wise order
+entries <- c(0, 1,
+             1, 0)
+
+# Construct 2x2 matrix using row-wise filling
+sigma_1 <- matrix(entries, nrow = 2, byrow = TRUE)
+sigma_1
+```
+
+- Matrix $\sigma_2$
+
+```{r}
+# Use R's complex notation '1i' for the imaginary unit
+entries <- c(0, 0-1i,
+             0+1i, 0)
+
+# Construct 2x2 matrix using row-wise filling
+sigma_2 <- matrix(entries, nrow = 2, byrow = TRUE)
+sigma_2
+```
+
+- Matrix $\sigma_3$
+
+```{r}
+# Define entries of sigma_2 in row-wise order
+entries <- c(1, 0, 
+             0, -1)
+
+sigma_3 <- matrix(entries, nrow = 2, byrow = TRUE)
+sigma_3
+```
+
+ 
+
+#### Example 3: The Planar Rotation Matrix
+
+When matrix entries are functions, the matrix is called a matrix-valued function. A fundamental example in linear algebra and geometry is the planar rotation matrix $M(\theta)$, which represents a counter-clockwise rotation by an angle $\theta$ in $\mathbb{R}^2$. Mathematically, it is defined as:
+
+
+$$M(\theta) = \begin{bmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{bmatrix}$$
+For $\theta = \frac{\pi}{4}$ (a rotation of $45^\circ$):
+
+$$M\left(\frac{\pi}{4}\right) = 
+\begin{bmatrix} 
+\cos\left(\frac{\pi}{4}\right) & -\sin\left(\frac{\pi}{4}\right) \\ 
+\sin\left(\frac{\pi}{4}\right) & \cos\left(\frac{\pi}{4}\right) 
+\end{bmatrix} = 
+\begin{bmatrix} 
+\frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\ 
+\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} 
+\end{bmatrix}$$
+
+ 
+
+##### *Implementation in R*
+
+```{r}
+# Define the matrix-valued function
+M <- function(theta) {
+  entries <- c(cos(theta), -sin(theta),
+               sin(theta),  cos(theta))
+  
+  matrix(entries, nrow = 2, byrow = TRUE)
+}
+
+```
+
+
+```{r}
+# Define the angle of 45 degrees (pi/4 in radians)
+theta <- pi / 4   
+
+# Use the function to construct the matrix
+M(theta)
+```
+
+
+
+## Special Types of Matrices
+
+### The Square Matrix
+
+If a matrix $A$ has $m$ rows and $n$ columns, it is called a square matrix if $m = n$, that is, if it has an equal number of rows and columns. In this case, $A$ is said to be of order $n$, denoted $A_{n \times n}$ or simply $A_n$.
 
 
 
