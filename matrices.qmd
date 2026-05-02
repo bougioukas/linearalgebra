@@ -203,6 +203,85 @@ M(theta)
 
 
 
+```{r}
+#| echo: false
+#| warning: false
+#| fig-align: center
+#| label: fig-rotation
+#| fig-cap: "Planar rotation of a unit square by $\\pi/4$."
+
+library(ggplot2)
+library(dplyr)
+
+
+rot_matrix <- M(theta)
+
+# Define the unit square vertices
+square_coords <- matrix(c(0,0, 1,0, 1,1, 0,1, 0,0), ncol = 2, byrow = TRUE)
+
+# Apply rotation 
+rotated_coords <- square_coords %*% t(rot_matrix)
+
+# Data for polygons
+plot_data <- data.frame(
+  x = c(square_coords[,1], rotated_coords[,1]),
+  y = c(square_coords[,2], rotated_coords[,2]),
+  Shape = rep(c("Original", "Rotated"), each = 5)
+)
+
+# Data for the rotation arc
+arc_data <- data.frame(
+  x = 0.4 * cos(seq(0, theta, length.out = 50)),
+  y = 0.4 * sin(seq(0, theta, length.out = 50))
+)
+
+# 7. ggplot Implementation
+ggplot() +
+  # Draw the polygons
+  geom_polygon(data = plot_data, aes(x = x, y = y, fill = Shape, color = Shape), alpha = 0.3, size = 1) +
+  
+  # Coordinate label for the origin (0,0)
+  annotate("point", x = 0, y = 0, color = "black", size = 3) +
+  annotate("text", x = -0.15, y = -0.1, label = "group('(', list(0, 0), ')')", parse = TRUE, size = 4, color = "black", fontface = "bold") +
+  
+  # Sigma 1: (1, 0)
+  annotate("point", x = 1, y = 0, color = "gray40", size = 3) +
+  annotate("text", x = 1, y = -0.15, label = "Sigma[1] ~ group('(', list(1, 0), ')')", parse = TRUE, size = 4, color = "gray40") +
+  
+  # Sigma' 1: (sqrt(2)/2, sqrt(2)/2)
+  annotate("point", x = cos(theta), y = sin(theta), color = "darkred", size = 3) +
+  annotate("text", x = cos(theta) + 0.1, y = sin(theta) + 0.1, 
+           label = "Sigma[1]*minute ~ group('(', list(sqrt(2)/2, sqrt(2)/2), ')')", 
+           parse = TRUE, size = 4, color = "darkred", fontface = "bold", hjust = 0) +
+  
+  # Sigma 2: (0, 1)
+  annotate("point", x = 0, y = 1, color = "gray40", size = 3) +
+  annotate("text", x = -0.1, y = 1.1, label = "Sigma[2] ~ group('(', list(0, 1), ')')", parse = TRUE, size = 4, color = "gray40") +
+  
+  # Sigma' 2: (-sqrt(2)/2, sqrt(2)/2)
+  annotate("point", x = -sin(theta), y = cos(theta), color = "darkred", size = 3) +
+  annotate("text", x = -sin(theta) - 0.1, y = cos(theta) + 0.1, 
+           label = "Sigma[2]*minute ~ group('(', list(-sqrt(2)/2, sqrt(2)/2), ')')", 
+           parse = TRUE, size = 4, color = "darkred", fontface = "bold", hjust = 1) +
+  
+  # Add the CCW rotation arc and angle label
+  geom_path(data = arc_data, aes(x = x, y = y), 
+            arrow = arrow(length = unit(0.2, "cm"), type = "closed"), color = "black") +
+  annotate("text", x = 0.55, y = 0.2, label = "theta == pi/4", parse = TRUE, size = 5) +
+  
+  # Clean aesthetics
+  coord_fixed(xlim = c(-1.4, 1.4), ylim = c(-0.3, 1.5)) +
+  scale_fill_manual(values = c("gray75", "firebrick")) +
+  scale_color_manual(values = c("gray40", "firebrick")) +
+  theme_minimal() +
+  theme(axis.title = element_blank(),
+        legend.position = "none")
+```
+
+
+The @fig-rotation illustrates how the planar rotation matrix $M(\theta)$ rotates the unit square counter-clockwise around the origin $(0,0)$. At $\theta = \pi/4$, the square maps to a diamond configuration, with the point $\Sigma_1$ $(1,0)$ moving to $\Sigma'_1$ $(\sqrt{2}/2, \sqrt{2}/2)$ and the point $\Sigma_2$ $(0,1)$ moving to $\Sigma'_2$ $(-\sqrt{2}/2, \sqrt{2}/2)$.
+
+
 ## Special Types of Matrices
 
 ### The Square Matrix
