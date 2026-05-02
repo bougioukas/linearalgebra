@@ -187,6 +187,7 @@ window.Quarto = {
   <ul class="collapse">
 <li><a href="#the-null-matrix" id="toc-the-null-matrix" class="nav-link" data-scroll-target="#the-null-matrix"><span class="header-section-number">1.2.1</span> The Null Matrix</a></li>
   <li><a href="#the-square-matrix" id="toc-the-square-matrix" class="nav-link" data-scroll-target="#the-square-matrix"><span class="header-section-number">1.2.2</span> The Square Matrix</a></li>
+  <li><a href="#the-diagonal-matrix" id="toc-the-diagonal-matrix" class="nav-link" data-scroll-target="#the-diagonal-matrix"><span class="header-section-number">1.2.3</span> The Diagonal Matrix</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -480,6 +481,7 @@ a_{n1}              &amp; a_{n2}              &amp; \cdots &amp; \boldsymbol{a_{
 <p>The main diagonal entries (shown in bold) are <span class="math inline">\(a_{11} = 5\)</span>, <span class="math inline">\(a_{22} = -1\)</span>, and <span class="math inline">\(a_{33} = -1\)</span>, giving:</p>
 <p><span class="math display">\[\text{diag}(A) = \{5, -1, -1\}\]</span></p>
 <p><span class="math display">\[\text{tr}(A) = 5 + (-1) + (-1) = 3\]</span></p>
+<p>&nbsp;</p>
 <section id="implementation-in-r-4" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-4"><em>Implementation in R</em></h5>
 <p>We construct <span class="math inline">\(A\)</span> in R and use the built-in <code><a href="https://rdrr.io/r/base/diag.html">diag()</a></code> function to extract its main diagonal entries.</p>
 <div class="cell">
@@ -503,12 +505,56 @@ a_{n1}              &amp; a_{n2}              &amp; \cdots &amp; \boldsymbol{a_{
 <pre><code>[1]  5 -1 -1</code></pre>
 </div>
 </div>
-<p>The trace is not available as a standalone function in base R, but is straightforwardly computed as sum:</p>
+<p>The trace is not available as a standalone function in base R, but is straightforwardly computed as a sum.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Trace</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>&nbsp;</p>
+</section></section></section><section id="the-diagonal-matrix" class="level3" data-number="1.2.3"><h3 data-number="1.2.3" class="anchored" data-anchor-id="the-diagonal-matrix">
+<span class="header-section-number">1.2.3</span> The Diagonal Matrix</h3>
+<p>A <strong>diagonal matrix</strong> is a square matrix in which all off-diagonal entries are zero, that is, <span class="math inline">\(a_{ij} = 0\)</span> for all <span class="math inline">\(i \neq j\)</span>:</p>
+<p><span class="math display">\[D = \begin{bmatrix} a_{11} &amp; 0 &amp; \dots &amp; 0 \\
+0 &amp; a_{22} &amp; \dots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \dots &amp; a_{nn}
+\end{bmatrix}\]</span></p>
+<p>&nbsp;</p>
+<section id="example-a-3-times-3-diagonal-matrix" class="level4"><h4 class="anchored" data-anchor-id="example-a-3-times-3-diagonal-matrix">Example: A <span class="math inline">\(3 \times 3\)</span> Diagonal Matrix</h4>
+<p><span class="math display">\[D_{3\times 3} =
+  \begin{bmatrix}
+    4 &amp; 0 &amp; 0\\
+    0 &amp; -1 &amp; 0\\
+    0 &amp; 0 &amp; -5
+  \end{bmatrix}\]</span></p>
+<p>with <span class="math inline">\(\text{diag}(D) = \{4, -1, -5\}\)</span> and <span class="math inline">\(\text{tr}(D) = 4 + (-1) + (-5) = -2\)</span>.</p>
+<p>&nbsp;</p>
+<section id="implementation-in-r-5" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-5"><em>Implementation in R</em></h5>
+<p>In R, a diagonal matrix can be constructed using the <code><a href="https://rdrr.io/r/base/diag.html">diag()</a></code> function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">entries</span><span class="op">)</span></span>
+<span><span class="va">D</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    4    0    0
+[2,]    0   -1    0
+[3,]    0    0   -5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Main diagonal and trace</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">D</span><span class="op">)</span>      </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  4 -1 -5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">D</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2</code></pre>
 </div>
 </div>
 
