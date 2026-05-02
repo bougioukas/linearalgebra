@@ -39,7 +39,7 @@ $c_1 = \begin{bmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{m1} \end{bmatrix}$, $c_2
 
  
 
-#### Example 1
+#### Example: A $3 \times 4$ Matrix
 
 The matrix 
 
@@ -106,7 +106,7 @@ dim(c1)
 
  
 
-#### Example 2: The Pauli Matrices
+#### Example: The Pauli Matrices
 
 The Pauli matrices are three $2 \times 2$ complex matrices with fundamental applications in physics, particularly in quantum mechanics.
 
@@ -159,7 +159,7 @@ sigma_3
 
  
 
-#### Example 3: The Planar Rotation Matrix
+#### Example: The Planar Rotation Matrix
 
 When matrix entries are functions, the matrix is called a matrix-valued function. A fundamental example in linear algebra and geometry is the planar rotation matrix $M(\theta)$, which represents a counter-clockwise rotation by an angle $\theta$ in $\mathbb{R}^2$. Mathematically, it is defined as:
 
@@ -201,7 +201,9 @@ theta <- pi / 4
 M(theta)
 ```
 
+ 
 
+The geometric effect of the planar rotation matrix $M(\frac{\pi}{4})$ on a unit square is shown below.
 
 ```{r}
 #| echo: false
@@ -237,56 +239,155 @@ arc_data <- data.frame(
 
 # 7. ggplot Implementation
 ggplot() +
+  # --- AXIS ARROWS ---
+  # X-axis arrow
+  geom_segment(aes(x = -1.2, y = 0, xend = 1.6, yend = 0), 
+               arrow = arrow(length = unit(0.2, "cm")), color = "black", size = 0.5) +
+  # Y-axis arrow
+  geom_segment(aes(x = 0, y = -0.2, xend = 0, yend = 1.7), 
+               arrow = arrow(length = unit(0.2, "cm")), color = "black", size = 0.5) +
+  # Axis labels
+  annotate("text", x = 1.65, y = 0, label = "x", size = 5, fontface = "italic", hjust = 0) +
+  annotate("text", x = 0, y = 1.75, label = "y", size = 5, fontface = "italic", vjust = 0) +
+
   # Draw the polygons
   geom_polygon(data = plot_data, aes(x = x, y = y, fill = Shape, color = Shape), alpha = 0.3, size = 1) +
   
-  # Coordinate label for the origin (0,0)
-  annotate("point", x = 0, y = 0, color = "black", size = 3) +
-  annotate("text", x = -0.15, y = -0.1, label = "group('(', list(0, 0), ')')", parse = TRUE, size = 4, color = "black", fontface = "bold") +
+  # --- THE STATIONARY ORIGIN ---
+  # Sigma 1 = Sigma' 1: (0, 0)
+  annotate("point", x = 0, y = 0, color = "gray40", size = 3) +
+  annotate("text", x = -0.1, y = -0.15, 
+           label = "Sigma[1] == Sigma[1]*minute ~ group('(', list(0, 0), ')')", 
+           parse = TRUE, size = 4, color = "gray40", fontface = "bold", hjust = 1) +
   
-  # Sigma 1: (1, 0)
+  # --- ORIGINAL SQUARE CORNERS (Gray) ---
+  # Sigma 2: (1, 0)
   annotate("point", x = 1, y = 0, color = "gray40", size = 3) +
-  annotate("text", x = 1, y = -0.15, label = "Sigma[1] ~ group('(', list(1, 0), ')')", parse = TRUE, size = 4, color = "gray40") +
+  annotate("text", x = 1.05, y = -0.1, label = "Sigma[2] ~ group('(', list(1, 0), ')')", parse = TRUE, size = 4, color = "gray40", hjust = 0) +
   
-  # Sigma' 1: (sqrt(2)/2, sqrt(2)/2)
+  # Sigma 3: (1, 1)
+  annotate("point", x = 1, y = 1, color = "gray40", size = 3) +
+  annotate("text", x = 1.05, y = 1.05, label = "Sigma[3] ~ group('(', list(1, 1), ')')", parse = TRUE, size = 4, color = "gray40", hjust = 0) +
+  
+  # Sigma 4: (0, 1)
+  annotate("point", x = 0, y = 1, color = "gray40", size = 3) +
+  annotate("text", x = 0.02, y = 1.07, label = "Sigma[4] ~ group('(', list(0, 1), ')')", parse = TRUE, size = 4, color = "gray40", hjust = 1) +
+  
+  # --- ROTATED SQUARE CORNERS (Red) ---
+  # Sigma' 2: (sqrt(2)/2, sqrt(2)/2)
   annotate("point", x = cos(theta), y = sin(theta), color = "darkred", size = 3) +
-  annotate("text", x = cos(theta) + 0.1, y = sin(theta) + 0.1, 
-           label = "Sigma[1]*minute ~ group('(', list(sqrt(2)/2, sqrt(2)/2), ')')", 
+  annotate("text", x = cos(theta) + 0.05, y = sin(theta) - 0.05, 
+           label = "Sigma[2]*minute ~ group('(', list(sqrt(2)/2, sqrt(2)/2), ')')", 
            parse = TRUE, size = 4, color = "darkred", fontface = "bold", hjust = 0) +
   
-  # Sigma 2: (0, 1)
-  annotate("point", x = 0, y = 1, color = "gray40", size = 3) +
-  annotate("text", x = -0.1, y = 1.1, label = "Sigma[2] ~ group('(', list(0, 1), ')')", parse = TRUE, size = 4, color = "gray40") +
-  
-  # Sigma' 2: (-sqrt(2)/2, sqrt(2)/2)
+  # Sigma' 3: (0, sqrt(2))
+  annotate("point", x = 0, y = sqrt(2), color = "darkred", size = 3) +
+  annotate("text", x = 0, y = sqrt(2) + 0.1, 
+           label = "Sigma[3]*minute ~ group('(', list(0, sqrt(2)), ')')", 
+           parse = TRUE, size = 4, color = "darkred", fontface = "bold") +
+
+  # Sigma' 4: (-sqrt(2)/2, sqrt(2)/2)
   annotate("point", x = -sin(theta), y = cos(theta), color = "darkred", size = 3) +
-  annotate("text", x = -sin(theta) - 0.1, y = cos(theta) + 0.1, 
-           label = "Sigma[2]*minute ~ group('(', list(-sqrt(2)/2, sqrt(2)/2), ')')", 
+  annotate("text", x = -sin(theta) - 0.05, y = cos(theta) - 0.05, 
+           label = "Sigma[4]*minute ~ group('(', list(-sqrt(2)/2, sqrt(2)/2), ')')", 
            parse = TRUE, size = 4, color = "darkred", fontface = "bold", hjust = 1) +
   
-  # Add the CCW rotation arc and angle label
+  # --- ANCILLARY ELEMENTS ---
+  # CCW rotation arc and angle label
   geom_path(data = arc_data, aes(x = x, y = y), 
             arrow = arrow(length = unit(0.2, "cm"), type = "closed"), color = "black") +
   annotate("text", x = 0.55, y = 0.2, label = "theta == pi/4", parse = TRUE, size = 5) +
   
-  # Clean aesthetics
-  coord_fixed(xlim = c(-1.4, 1.4), ylim = c(-0.3, 1.5)) +
-  scale_fill_manual(values = c("gray75", "firebrick")) +
+  # Plot setup
+  coord_fixed(xlim = c(-1.4, 1.9), ylim = c(-0.4, 1.9)) +
+  scale_fill_manual(values = c("gray30", "firebrick")) +
   scale_color_manual(values = c("gray40", "firebrick")) +
   theme_minimal() +
   theme(axis.title = element_blank(),
+        axis.text = element_blank(), # Optional: hides the grid numbers if you only want arrows
+        panel.grid.minor = element_blank(),
         legend.position = "none")
+
 ```
 
 
-The @fig-rotation illustrates how the planar rotation matrix $M(\theta)$ rotates the unit square counter-clockwise around the origin $(0,0)$. At $\theta = \pi/4$, the square maps to a diamond configuration, with the point $\Sigma_1$ $(1,0)$ moving to $\Sigma'_1$ $(\sqrt{2}/2, \sqrt{2}/2)$ and the point $\Sigma_2$ $(0,1)$ moving to $\Sigma'_2$ $(-\sqrt{2}/2, \sqrt{2}/2)$.
+In @fig-rotation the planar rotation matrix $M(\theta)$ rotates the unit square counter-clockwise around the origin $(0,0)$. At $\theta = \pi/4$, the square maps to a diamond configuration, where the vertices are transformed as follows:
+$\Sigma_1(0,0)$ remains fixed at $\Sigma'_1(0,0)$; $\Sigma_2(1,0)$ maps to $\Sigma'_2(\sqrt{2}/2, \sqrt{2}/2)$; $\Sigma_3(1,1)$ rotates to the apex $\Sigma'_3(0, \sqrt{2})$; and $\Sigma_4(0,1)$ maps to $\Sigma'_4(-\sqrt{2}/2, \sqrt{2}/2)$. 
 
 
 ## Special Types of Matrices
+
+### The Null Matrix
+
+An $m \times n$ matrix is called a null matrix (or zero matrix) if all its entries are zero, and is typically denoted by $O_{m \times n}$ or simply $O$:
+
+
+$$A = \begin{bmatrix}
+0 & 0 & \cdots & 0 \\
+0 & 0 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & 0
+\end{bmatrix} = [a_{ij}] \equiv O$$
+
+
+#### Example: A $3 \times 4$ Null Matrix
+
+$$O_{3 \times 4} = \begin{bmatrix}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{bmatrix}$$
+
+
+##### *Implementation in R*
+
+A null matrix is easily generated by specifying its dimensions and filling all entries with zero.
+
+```{r}
+O <- matrix(0, nrow = 3, ncol = 4)
+O
+```
+
+ 
 
 ### The Square Matrix
 
 If a matrix $A$ has $m$ rows and $n$ columns, it is called a square matrix if $m = n$, that is, if it has an equal number of rows and columns. In this case, $A$ is said to be of order $n$, denoted $A_{n \times n}$ or simply $A_n$.
 
 
+$$A_{n \times n} = \begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{bmatrix}$$
+
+
+The most significant structural feature of a square matrix is the main diagonal (or principal diagonal). This diagonal consists of the set of entries $a_{ij}$ where the row index $i$ is equal to the column index $j$:$$\text{diag}(A) = \{a_{11}, a_{22}, \dots, a_{nn}\}$$Entries not located on this line are referred to as off-diagonal elements.
+
+
+
+#### Example: A $3 \times 3$ Square Matrix
+
+
+$$A_{3 \times 3} =
+  \begin{bmatrix}
+    5 & 1 & 0\\
+    3 & -1 & 2\\
+    4 & 0 & -1
+    \end{bmatrix}$$
+
+
+
+
+##### *Implementation in R*
+
+```{r}
+A <- matrix(c(5, 1, 0,
+              3, -1, 2,
+              4, 0, -1),
+            nrow = 3, ncol = 3, byrow = TRUE)
+
+A
+```
 

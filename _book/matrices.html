@@ -185,7 +185,8 @@ window.Quarto = {
   <li>
 <a href="#special-types-of-matrices" id="toc-special-types-of-matrices" class="nav-link" data-scroll-target="#special-types-of-matrices"><span class="header-section-number">1.2</span> Special Types of Matrices</a>
   <ul class="collapse">
-<li><a href="#the-square-matrix" id="toc-the-square-matrix" class="nav-link" data-scroll-target="#the-square-matrix"><span class="header-section-number">1.2.1</span> The Square Matrix</a></li>
+<li><a href="#the-null-matrix" id="toc-the-null-matrix" class="nav-link" data-scroll-target="#the-null-matrix"><span class="header-section-number">1.2.1</span> The Null Matrix</a></li>
+  <li><a href="#the-square-matrix" id="toc-the-square-matrix" class="nav-link" data-scroll-target="#the-square-matrix"><span class="header-section-number">1.2.2</span> The Square Matrix</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -229,7 +230,7 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 <p>The <span class="math inline">\(n\)</span> columns of <span class="math inline">\(A\)</span> are <span class="math inline">\(m \times 1\)</span> matrices, are called <strong>column vectors</strong>:</p>
 <p><span class="math inline">\(c_1 = \begin{bmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{m1} \end{bmatrix}\)</span>, <span class="math inline">\(c_2 = \begin{bmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{m2} \end{bmatrix}\)</span>, …, <span class="math inline">\(c_n = \begin{bmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn} \end{bmatrix}\)</span></p>
 <p>&nbsp;</p>
-<section id="example-1" class="level4"><h4 class="anchored" data-anchor-id="example-1">Example 1</h4>
+<section id="example-a-3-times-4-matrix" class="level4"><h4 class="anchored" data-anchor-id="example-a-3-times-4-matrix">Example: A <span class="math inline">\(3 \times 4\)</span> Matrix</h4>
 <p>The matrix</p>
 <p><span class="math display">\[A= \begin{bmatrix}
     4 &amp; 0 &amp; 2 &amp; 1\\
@@ -308,7 +309,7 @@ r_1 = \begin{bmatrix} 4 &amp; 0 &amp; 2 &amp; 1 \end{bmatrix}, \qquad c_1 = \beg
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section><section id="example-2-the-pauli-matrices" class="level4"><h4 class="anchored" data-anchor-id="example-2-the-pauli-matrices">Example 2: The Pauli Matrices</h4>
+</section></section><section id="example-the-pauli-matrices" class="level4"><h4 class="anchored" data-anchor-id="example-the-pauli-matrices">Example: The Pauli Matrices</h4>
 <p>The Pauli matrices are three <span class="math inline">\(2 \times 2\)</span> complex matrices with fundamental applications in physics, particularly in quantum mechanics.</p>
 <p>Let <span class="math inline">\(\mathbb{K} = \mathbb{C}\)</span> (the field of complex numbers). The Pauli matrices are defined as:</p>
 <p><span class="math display">\[\sigma_1 = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}, \quad
@@ -371,7 +372,7 @@ r_1 = \begin{bmatrix} 4 &amp; 0 &amp; 2 &amp; 1 \end{bmatrix}, \qquad c_1 = \beg
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section><section id="example-3-the-planar-rotation-matrix" class="level4"><h4 class="anchored" data-anchor-id="example-3-the-planar-rotation-matrix">Example 3: The Planar Rotation Matrix</h4>
+</section></section><section id="example-the-planar-rotation-matrix" class="level4"><h4 class="anchored" data-anchor-id="example-the-planar-rotation-matrix">Example: The Planar Rotation Matrix</h4>
 <p>When matrix entries are functions, the matrix is called a matrix-valued function. A fundamental example in linear algebra and geometry is the planar rotation matrix <span class="math inline">\(M(\theta)\)</span>, which represents a counter-clockwise rotation by an angle <span class="math inline">\(\theta\)</span> in <span class="math inline">\(\mathbb{R}^2\)</span>. Mathematically, it is defined as:</p>
 <p><span class="math display">\[M(\theta) = \begin{bmatrix} \cos(\theta) &amp; -\sin(\theta) \\ \sin(\theta) &amp; \cos(\theta) \end{bmatrix}\]</span> For <span class="math inline">\(\theta = \frac{\pi}{4}\)</span> (a rotation of <span class="math inline">\(45^\circ\)</span>):</p>
 <p><span class="math display">\[M\left(\frac{\pi}{4}\right) =
@@ -406,6 +407,8 @@ r_1 = \begin{bmatrix} 4 &amp; 0 &amp; 2 &amp; 1 \end{bmatrix}, \qquad c_1 = \beg
 [2,] 0.7071068  0.7071068</code></pre>
 </div>
 </div>
+<p>&nbsp;</p>
+<p>The geometric effect of the planar rotation matrix <span class="math inline">\(M(\frac{\pi}{4})\)</span> on a unit square is shown below.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-rotation" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -418,15 +421,72 @@ Figure&nbsp;1.1: Planar rotation of a unit square by <span class="math inline">\
 </div>
 </div>
 </div>
-<p>The <a href="#fig-rotation" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> illustrates how the planar rotation matrix <span class="math inline">\(M(\theta)\)</span> rotates the unit square counter-clockwise around the origin <span class="math inline">\((0,0)\)</span>. At <span class="math inline">\(\theta = \pi/4\)</span>, the square maps to a diamond configuration, with the point <span class="math inline">\(\Sigma_1\)</span> <span class="math inline">\((1,0)\)</span> moving to <span class="math inline">\(\Sigma'_1\)</span> <span class="math inline">\((\sqrt{2}/2, \sqrt{2}/2)\)</span> and the point <span class="math inline">\(\Sigma_2\)</span> <span class="math inline">\((0,1)\)</span> moving to <span class="math inline">\(\Sigma'_2\)</span> <span class="math inline">\((-\sqrt{2}/2, \sqrt{2}/2)\)</span>.</p>
+<p>In <a href="#fig-rotation" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> the planar rotation matrix <span class="math inline">\(M(\theta)\)</span> rotates the unit square counter-clockwise around the origin <span class="math inline">\((0,0)\)</span>. At <span class="math inline">\(\theta = \pi/4\)</span>, the square maps to a diamond configuration, where the vertices are transformed as follows: <span class="math inline">\(\Sigma_1(0,0)\)</span> remains fixed at <span class="math inline">\(\Sigma'_1(0,0)\)</span>; <span class="math inline">\(\Sigma_2(1,0)\)</span> maps to <span class="math inline">\(\Sigma'_2(\sqrt{2}/2, \sqrt{2}/2)\)</span>; <span class="math inline">\(\Sigma_3(1,1)\)</span> rotates to the apex <span class="math inline">\(\Sigma'_3(0, \sqrt{2})\)</span>; and <span class="math inline">\(\Sigma_4(0,1)\)</span> maps to <span class="math inline">\(\Sigma'_4(-\sqrt{2}/2, \sqrt{2}/2)\)</span>.</p>
 </section></section></section><section id="special-types-of-matrices" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="special-types-of-matrices">
 <span class="header-section-number">1.2</span> Special Types of Matrices</h2>
-<section id="the-square-matrix" class="level3" data-number="1.2.1"><h3 data-number="1.2.1" class="anchored" data-anchor-id="the-square-matrix">
-<span class="header-section-number">1.2.1</span> The Square Matrix</h3>
+<section id="the-null-matrix" class="level3" data-number="1.2.1"><h3 data-number="1.2.1" class="anchored" data-anchor-id="the-null-matrix">
+<span class="header-section-number">1.2.1</span> The Null Matrix</h3>
+<p>An <span class="math inline">\(m \times n\)</span> matrix is called a null matrix (or zero matrix) if all its entries are zero, and is typically denoted by <span class="math inline">\(O_{m \times n}\)</span> or simply <span class="math inline">\(O\)</span>:</p>
+<p><span class="math display">\[A = \begin{bmatrix}
+0 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 0 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 0
+\end{bmatrix} = [a_{ij}] \equiv O\]</span></p>
+<section id="example-a-3-times-4-null-matrix" class="level4"><h4 class="anchored" data-anchor-id="example-a-3-times-4-null-matrix">Example: A <span class="math inline">\(3 \times 4\)</span> Null Matrix</h4>
+<p><span class="math display">\[O_{3 \times 4} = \begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{bmatrix}\]</span></p>
+<section id="implementation-in-r-3" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-3"><em>Implementation in R</em></h5>
+<p>A null matrix is easily generated by specifying its dimensions and filling all entries with zero.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">O</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">O</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    0    0    0    0
+[2,]    0    0    0    0
+[3,]    0    0    0    0</code></pre>
+</div>
+</div>
+<p>&nbsp;</p>
+</section></section></section><section id="the-square-matrix" class="level3" data-number="1.2.2"><h3 data-number="1.2.2" class="anchored" data-anchor-id="the-square-matrix">
+<span class="header-section-number">1.2.2</span> The Square Matrix</h3>
 <p>If a matrix <span class="math inline">\(A\)</span> has <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns, it is called a square matrix if <span class="math inline">\(m = n\)</span>, that is, if it has an equal number of rows and columns. In this case, <span class="math inline">\(A\)</span> is said to be of order <span class="math inline">\(n\)</span>, denoted <span class="math inline">\(A_{n \times n}\)</span> or simply <span class="math inline">\(A_n\)</span>.</p>
+<p><span class="math display">\[A_{n \times n} = \begin{bmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}
+\end{bmatrix}\]</span></p>
+<p>The most significant structural feature of a square matrix is the main diagonal (or principal diagonal). This diagonal consists of the set of entries <span class="math inline">\(a_{ij}\)</span> where the row index <span class="math inline">\(i\)</span> is equal to the column index <span class="math inline">\(j\)</span>:<span class="math display">\[\text{diag}(A) = \{a_{11}, a_{22}, \dots, a_{nn}\}\]</span>Entries not located on this line are referred to as off-diagonal elements.</p>
+<section id="example-a-3-times-3-square-matrix" class="level4"><h4 class="anchored" data-anchor-id="example-a-3-times-3-square-matrix">Example: A <span class="math inline">\(3 \times 3\)</span> Square Matrix</h4>
+<p><span class="math display">\[A_{3 \times 3} =
+  \begin{bmatrix}
+    5 &amp; 1 &amp; 0\\
+    3 &amp; -1 &amp; 2\\
+    4 &amp; 0 &amp; -1
+    \end{bmatrix}\]</span></p>
+<section id="implementation-in-r-4" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-4"><em>Implementation in R</em></h5>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">0</span>,</span>
+<span>              <span class="fl">3</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">2</span>,</span>
+<span>              <span class="fl">4</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span>,</span>
+<span>            nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">3</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">A</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    5    1    0
+[2,]    3   -1    2
+[3,]    4    0   -1</code></pre>
+</div>
+</div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
