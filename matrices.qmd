@@ -43,7 +43,7 @@ $c_1 = \begin{bmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{m1} \end{bmatrix}$, $c_2
 
 The matrix 
 
-$$A= \begin{bmatrix}
+$$A_{3 \times 4}= \begin{bmatrix}
     4 & 0 & 2 & 1\\
     3 & 1 & 4 & 2\\
     2 & 0 & 1 & 3
@@ -318,12 +318,12 @@ ggplot() +
 An $m \times n$ matrix is called a **null matrix** (or zero matrix) if all its entries are zero, and is typically denoted by $O_{m \times n}$ or simply $O$:
 
 
-$$A = \begin{bmatrix}
+$$O_{m \times n} = \begin{bmatrix}
 0 & 0 & \cdots & 0 \\
 0 & 0 & \cdots & 0 \\
 \vdots & \vdots & \ddots & \vdots \\
 0 & 0 & \cdots & 0
-\end{bmatrix} = [a_{ij}] \equiv O$$
+\end{bmatrix}$$
 
 
 #### Example: A $3 \times 4$ Null Matrix
@@ -358,6 +358,8 @@ a_{21}              & \boldsymbol{a_{22}} & \cdots & a_{2n} \\
 a_{n1}              & a_{n2}              & \cdots & \boldsymbol{a_{nn}}
 \end{bmatrix}$$
 
+ 
+
 The **main diagonal** (or principal diagonal) of this matrix consists of the entries $a_{ij}$ for which the row index equals the column index, that is, $i = j$ (shown in bold in the matrix), denoted:
 
 $$\text{diag}(A) = \{a_{11}, a_{22}, \dots, a_{nn}\}$$
@@ -366,8 +368,26 @@ All remaining entries, where $i \neq j$, are referred to as off-diagonal element
 
 ::: content-box-white
 **REMARK:** Although the main diagonal is most naturally associated with square matrices, it is defined for any $m \times n$ rectangular matrix, consisting of the entries $a_{ii}$ for $i = 1, 2, \ldots, \min(m, n)$.
+
+- **Case 1: Horizontal Rectangular Matrix ($m < n$)**
+
+For a $3 \times 4$ matrix, where $\min(3, 4) = 3$, the main diagonal contains exactly three entries. The diagonal terminates before reaching the final column.
+
+$$A_{3 \times 4} = \begin{bmatrix} \mathbf{4} & 0 & 2 & 1 \\ 3 & \mathbf{1} & 4 & 2 \\ 2 & 0 & \mathbf{1} & 3 \end{bmatrix}$$
+
+In this instance, $\text{diag}(A) = \{4, 1, 1\}$.
+
+
+- **Case 2: Vertical Rectangular Matrix ($m > n$)**
+
+For a $4 \times 3$ matrix, where $\min(4, 3) = 3$, the diagonal also contains three entries. Here, the diagonal is exhausted before reaching the final row.
+
+$$B_{4 \times 3} = \begin{bmatrix} \mathbf{2} & 1 & 0 \\ 3 & \mathbf{-1} & 4 \\ 1 & 2 & \mathbf{5} \\ 0 & 3 & 1 \end{bmatrix}$$
+
+Here, $\text{diag}(B) = \{2, -1, 5\}$. Note that the fourth row contains no diagonal entry because the index $i=4$ has no corresponding column index $j=4$.
 :::
 
+ 
 
 The **trace** of a square matrix $A_{n \times n}$ is the sum of its main diagonal entries, denoted by $\text{tr}(A)$:
 
@@ -432,9 +452,9 @@ sum(diag(A))
 
 ### The Diagonal Matrix
 
-A **diagonal matrix** is a square matrix in which all off-diagonal entries are zero, that is, $a_{ij} = 0$ for all $i \neq j$:
+A **diagonal matrix**, typically denoted as $D$, is a square matrix in which all off-diagonal entries are zero, that is, $a_{ij} = 0$ for all $i \neq j$:
 
-$$D = \begin{bmatrix} a_{11} & 0 & \dots & 0 \\ 
+$$D_{n \times n} = \begin{bmatrix} a_{11} & 0 & \dots & 0 \\ 
 0 & a_{22} & \dots & 0 \\ 
 \vdots & \vdots & \ddots & \vdots \\ 
 0 & 0 & \dots & a_{nn} 
@@ -478,5 +498,48 @@ sum(diag(D))
 ```
 
 
+ 
+
+### The Identity Matrix
+
+An **identity matrix**, typically denoted as $I$, is a square matrix whose entries satisfy the condition:
+
+$$a_{ij} = \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}$$ 
+
+That is, it has ones on the main diagonal and zeros everywhere else. In explicit form, it is written as:
+
+$$I_{n \times n} = \begin{bmatrix} 1 & 0 & \dots & 0 \\ 
+0 & 1 & \dots & 0 \\ 
+\vdots & \vdots & \ddots & \vdots \\ 
+0 & 0 & \dots & 1 
+\end{bmatrix}$$
+
+Thus, $I_{n \times n}$ is a special case of a diagonal matrix where all diagonal entries equal to 1.
+
+ 
+
+#### Example: A $3 \times 3$ Identity Matrix
+
+The identity matrix of order 3 is written as:
+
+$$I_{3 \times 3} =
+  \begin{bmatrix}
+    1 & 0 & 0\\
+    0 & 1 & 0\\
+    0 & 0 & 1
+  \end{bmatrix}$$
+  
+
+
+ 
+
+##### *Implementation in R*
+
+In R, the `diag()` function is used to generate identity matrices. When passed a single integer $n$, it returns an $n \times n$ identity matrix.
+
+```{r}
+I <- diag(3)
+I
+```
 
 

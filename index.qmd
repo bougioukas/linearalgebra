@@ -1,12 +1,9 @@
 # Welcome! {.unnumbered}
 
-Welcome to the online edition of "*Linear Algebra with R*". This introductory book provides a first course in vectors, matrices, and linear systems, the core topics in applied linear algebra. The aim is to give students with little or no prior exposure to the subject a solid grounding in these fundamental ideas, together with an appreciation of their wide range of applications.
+Welcome to the online edition of "*Linear Algebra with R*". This introductory book provides a first course in algebra of matrices and linear systems, the core topics in applied linear algebra. The aim is to give students with little or no prior exposure to the subject a solid grounding in these fundamental ideas, together with an appreciation of their wide range of applications.
 
 To support this objective, the R programming language is used throughout the book to implement and explore key concepts, helping to build both understanding and confidence in working with the central ideas of linear algebra.
 
-
 **This is a work-in-progress draft.**
-
-
 
 {{< qrcode https://rlinearalgebra.netlify.app/ width=100 height=100 colorDark='#0011bb' >}}
