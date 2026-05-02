@@ -2,7 +2,7 @@
 
 ## Matrix Notation
 
-Let $\mathbb{K}$ be a field and $m, n \in \mathbb{N}$. An $m \times n$ matrix $A$ over the field $\mathbb{K}$ is a rectangular array of elements $a_{ij} \in \mathbb{K}$ arranged in $m$ rows and $n$ columns, usually presented in the following form:
+Let $\mathbb{K}$ be a field and $m, n \in \mathbb{N}$. An **$\mathbf{m} \times \mathbf{n}$ matrix** $A$ over the field $\mathbb{K}$ is a rectangular array of elements $a_{ij} \in \mathbb{K}$ arranged in $m$ rows and $n$ columns, usually presented in the following form:
 
 $$A = [a_{ij}] = \begin{bmatrix}
 a_{11} & a_{12} & \cdots & a_{1n} \\
@@ -11,7 +11,7 @@ a_{21} & a_{22} & \cdots & a_{2n} \\
 a_{m1} & a_{m2} & \cdots & a_{mn}
 \end{bmatrix}$$
 
-where $a_{ij}$ denotes the $(ij)$-th element (or entry) of the matrix, corresponding to row $i$ and column $j$.
+where $a_{ij}$ denotes the $(ij)$-th entry (or element) of the matrix, corresponding to row $i$ and column $j$.
 
 **Matrix dimensions (or size)** refer to the number of rows and columns of a matrix, denoted as $m \times n$. The matrix $A$ is often written as $A_{m \times n}$ to make its dimensions explicit.
 
@@ -161,13 +161,13 @@ sigma_3
 
 #### Example: The Planar Rotation Matrix
 
-When matrix entries are functions, the matrix is called a matrix-valued function. A fundamental example in linear algebra and geometry is the planar rotation matrix $M(\theta)$, which represents a counter-clockwise rotation by an angle $\theta$ in $\mathbb{R}^2$. Mathematically, it is defined as:
+When matrix entries are functions, the matrix is called a matrix-valued function. A fundamental example in linear algebra and geometry is the planar rotation matrix $R(\theta)$, which represents a counter-clockwise rotation by an angle $\theta$ in $\mathbb{R}^2$. Mathematically, it is defined as:
 
 
-$$M(\theta) = \begin{bmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{bmatrix}$$
+$$R(\theta) = \begin{bmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{bmatrix}$$
 For $\theta = \frac{\pi}{4}$ (a rotation of $45^\circ$):
 
-$$M\left(\frac{\pi}{4}\right) = 
+$$R\left(\frac{\pi}{4}\right) = 
 \begin{bmatrix} 
 \cos\left(\frac{\pi}{4}\right) & -\sin\left(\frac{\pi}{4}\right) \\ 
 \sin\left(\frac{\pi}{4}\right) & \cos\left(\frac{\pi}{4}\right) 
@@ -183,7 +183,7 @@ $$M\left(\frac{\pi}{4}\right) =
 
 ```{r}
 # Define the matrix-valued function
-M <- function(theta) {
+R <- function(theta) {
   entries <- c(cos(theta), -sin(theta),
                sin(theta),  cos(theta))
   
@@ -198,25 +198,25 @@ M <- function(theta) {
 theta <- pi / 4   
 
 # Use the function to construct the matrix
-M(theta)
+R(theta)
 ```
 
  
 
-The geometric effect of the planar rotation matrix $M(\frac{\pi}{4})$ on a unit square is shown below.
+The geometric effect of the planar rotation matrix $R(\theta)$ on a unit square for $\theta = \pi/4$ is shown in @fig-rotation.
 
 ```{r}
 #| echo: false
 #| warning: false
 #| fig-align: center
 #| label: fig-rotation
-#| fig-cap: "Planar rotation of a unit square by $\\pi/4$."
+#| fig-cap: 'Planar rotation of the unit square by $R(\theta)$ around the origin $(0,0)$. At $\theta = \pi/4$, the square transforms into a diamond configuration: the pivot $\Sigma_1(0,0)$ remains invariant ($\Sigma_1 = \Sigma_1^\prime$), while the remaining vertices map to $\Sigma_2^\prime(\sqrt{2}/2, \sqrt{2}/2)$, the apex $\Sigma_3^\prime(0, \sqrt{2})$, and $\Sigma_4^\prime(-\sqrt{2}/2, \sqrt{2}/2)$.'
 
 library(ggplot2)
 library(dplyr)
 
 
-rot_matrix <- M(theta)
+rot_matrix <- R(theta)
 
 # Define the unit square vertices
 square_coords <- matrix(c(0,0, 1,0, 1,1, 0,1, 0,0), ncol = 2, byrow = TRUE)
@@ -310,16 +310,12 @@ ggplot() +
 
 ```
 
-
-In @fig-rotation the planar rotation matrix $M(\theta)$ rotates the unit square counter-clockwise around the origin $(0,0)$. At $\theta = \pi/4$, the square maps to a diamond configuration, where the vertices are transformed as follows:
-$\Sigma_1(0,0)$ remains fixed at $\Sigma'_1(0,0)$; $\Sigma_2(1,0)$ maps to $\Sigma'_2(\sqrt{2}/2, \sqrt{2}/2)$; $\Sigma_3(1,1)$ rotates to the apex $\Sigma'_3(0, \sqrt{2})$; and $\Sigma_4(0,1)$ maps to $\Sigma'_4(-\sqrt{2}/2, \sqrt{2}/2)$. 
-
-
+ 
 ## Special Types of Matrices
 
 ### The Null Matrix
 
-An $m \times n$ matrix is called a null matrix (or zero matrix) if all its entries are zero, and is typically denoted by $O_{m \times n}$ or simply $O$:
+An $m \times n$ matrix is called a **null matrix** (or zero matrix) if all its entries are zero, and is typically denoted by $O_{m \times n}$ or simply $O$:
 
 
 $$A = \begin{bmatrix}
@@ -352,42 +348,88 @@ O
 
 ### The Square Matrix
 
-If a matrix $A$ has $m$ rows and $n$ columns, it is called a square matrix if $m = n$, that is, if it has an equal number of rows and columns. In this case, $A$ is said to be of order $n$, denoted $A_{n \times n}$ or simply $A_n$.
+A matrix $A$ is called a **square matrix** if $m = n$, that is, if it has an equal number of rows and columns. In this case, $A$ is said to be of **order** $n$, denoted $A_{n \times n}$ or simply $A_n$. 
 
 
 $$A_{n \times n} = \begin{bmatrix}
-a_{11} & a_{12} & \cdots & a_{1n} \\
-a_{21} & a_{22} & \cdots & a_{2n} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{n1} & a_{n2} & \cdots & a_{nn}
+\boldsymbol{a_{11}} & a_{12}              & \cdots & a_{1n} \\
+a_{21}              & \boldsymbol{a_{22}} & \cdots & a_{2n} \\
+\vdots              & \vdots              & \ddots & \vdots \\
+a_{n1}              & a_{n2}              & \cdots & \boldsymbol{a_{nn}}
 \end{bmatrix}$$
 
+The **main diagonal** (or principal diagonal) of this matrix consists of the entries $a_{ij}$ for which the row index equals the column index, that is, $i = j$ (shown in bold in the matrix), denoted:
 
-The most significant structural feature of a square matrix is the main diagonal (or principal diagonal). This diagonal consists of the set of entries $a_{ij}$ where the row index $i$ is equal to the column index $j$:$$\text{diag}(A) = \{a_{11}, a_{22}, \dots, a_{nn}\}$$Entries not located on this line are referred to as off-diagonal elements.
+$$\text{diag}(A) = \{a_{11}, a_{22}, \dots, a_{nn}\}$$
+
+All remaining entries, where $i \neq j$, are referred to as off-diagonal elements.
+
+::: content-box-white
+**REMARK:** Although the main diagonal is most naturally associated with square matrices, it is defined for any $m \times n$ rectangular matrix, consisting of the entries $a_{ii}$ for $i = 1, 2, \ldots, \min(m, n)$.
+:::
 
 
+The **trace** of a square matrix $A_{n \times n}$ is the sum of its main diagonal entries, denoted by $\text{tr}(A)$:
+
+$$\text{tr}(A) = a_{11} + a_{22} + \cdots + a_{nn} = \sum_{i=1}^{n} a_{ii}$$
+
+The trace is defined only for square matrices.
+
+ 
 
 #### Example: A $3 \times 3$ Square Matrix
 
+Consider the following square matrix of order 3:
 
-$$A_{3 \times 3} =
-  \begin{bmatrix}
-    5 & 1 & 0\\
-    3 & -1 & 2\\
-    4 & 0 & -1
-    \end{bmatrix}$$
+$$A_{3 \times 3} = \begin{bmatrix} 
+\mathbf{5} & 1 & 0 \\ 
+3 & \mathbf{-1} & 2 \\ 
+4 & 0 & \mathbf{-1}
+\end{bmatrix}$$
 
+
+
+The main diagonal entries (shown in bold) are $a_{11} = 5$, $a_{22} = -1$, and $a_{33} = -1$, giving:
+
+$$\text{diag}(A) = \{5, -1, -1\}$$  
+
+$$\text{tr}(A) = 5 + (-1) + (-1) = 3$$
 
 
 
 ##### *Implementation in R*
 
-```{r}
-A <- matrix(c(5, 1, 0,
-              3, -1, 2,
-              4, 0, -1),
-            nrow = 3, ncol = 3, byrow = TRUE)
+We construct $A$ in R and use the built-in `diag()` function to extract its main diagonal entries. 
 
+```{r}
+entries <- c(5, 1, 0,
+             3, -1, 2,
+             4, 0, -1)
+
+A <- matrix(entries, nrow = 3, ncol = 3, byrow = TRUE)
 A
 ```
+
+
+
+
+```{r}
+# Main diagonal
+diag(A)
+```
+
+
+
+The trace is not available as a standalone function in base R, but is straightforwardly computed as sum:
+
+```{r}
+# Trace
+sum(diag(A))
+```
+
+
+
+
+
+
 

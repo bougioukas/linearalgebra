@@ -209,14 +209,14 @@ window.Quarto = {
 
 </header><section id="matrix-notation" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="matrix-notation">
 <span class="header-section-number">1.1</span> Matrix Notation</h2>
-<p>Let <span class="math inline">\(\mathbb{K}\)</span> be a field and <span class="math inline">\(m, n \in \mathbb{N}\)</span>. An <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> over the field <span class="math inline">\(\mathbb{K}\)</span> is a rectangular array of elements <span class="math inline">\(a_{ij} \in \mathbb{K}\)</span> arranged in <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns, usually presented in the following form:</p>
+<p>Let <span class="math inline">\(\mathbb{K}\)</span> be a field and <span class="math inline">\(m, n \in \mathbb{N}\)</span>. An <strong><span class="math inline">\(\mathbf{m} \times \mathbf{n}\)</span> matrix</strong> <span class="math inline">\(A\)</span> over the field <span class="math inline">\(\mathbb{K}\)</span> is a rectangular array of elements <span class="math inline">\(a_{ij} \in \mathbb{K}\)</span> arranged in <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns, usually presented in the following form:</p>
 <p><span class="math display">\[A = [a_{ij}] = \begin{bmatrix}
 a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
 a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
 a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 \end{bmatrix}\]</span></p>
-<p>where <span class="math inline">\(a_{ij}\)</span> denotes the <span class="math inline">\((ij)\)</span>-th element (or entry) of the matrix, corresponding to row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span>.</p>
+<p>where <span class="math inline">\(a_{ij}\)</span> denotes the <span class="math inline">\((ij)\)</span>-th entry (or element) of the matrix, corresponding to row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span>.</p>
 <p><strong>Matrix dimensions (or size)</strong> refer to the number of rows and columns of a matrix, denoted as <span class="math inline">\(m \times n\)</span>. The matrix <span class="math inline">\(A\)</span> is often written as <span class="math inline">\(A_{m \times n}\)</span> to make its dimensions explicit.</p>
 <div class="content-box-white">
 <p><strong>NOTE:</strong> While <span class="math inline">\(\mathbb{K}\)</span> usually represents the real numbers (<span class="math inline">\(\mathbb{R}\)</span>) or complex numbers (<span class="math inline">\(\mathbb{C}\)</span>), it can also represent other fields.</p>
@@ -373,9 +373,9 @@ r_1 = \begin{bmatrix} 4 &amp; 0 &amp; 2 &amp; 1 \end{bmatrix}, \qquad c_1 = \beg
 </div>
 <p>&nbsp;</p>
 </section></section><section id="example-the-planar-rotation-matrix" class="level4"><h4 class="anchored" data-anchor-id="example-the-planar-rotation-matrix">Example: The Planar Rotation Matrix</h4>
-<p>When matrix entries are functions, the matrix is called a matrix-valued function. A fundamental example in linear algebra and geometry is the planar rotation matrix <span class="math inline">\(M(\theta)\)</span>, which represents a counter-clockwise rotation by an angle <span class="math inline">\(\theta\)</span> in <span class="math inline">\(\mathbb{R}^2\)</span>. Mathematically, it is defined as:</p>
-<p><span class="math display">\[M(\theta) = \begin{bmatrix} \cos(\theta) &amp; -\sin(\theta) \\ \sin(\theta) &amp; \cos(\theta) \end{bmatrix}\]</span> For <span class="math inline">\(\theta = \frac{\pi}{4}\)</span> (a rotation of <span class="math inline">\(45^\circ\)</span>):</p>
-<p><span class="math display">\[M\left(\frac{\pi}{4}\right) =
+<p>When matrix entries are functions, the matrix is called a matrix-valued function. A fundamental example in linear algebra and geometry is the planar rotation matrix <span class="math inline">\(R(\theta)\)</span>, which represents a counter-clockwise rotation by an angle <span class="math inline">\(\theta\)</span> in <span class="math inline">\(\mathbb{R}^2\)</span>. Mathematically, it is defined as:</p>
+<p><span class="math display">\[R(\theta) = \begin{bmatrix} \cos(\theta) &amp; -\sin(\theta) \\ \sin(\theta) &amp; \cos(\theta) \end{bmatrix}\]</span> For <span class="math inline">\(\theta = \frac{\pi}{4}\)</span> (a rotation of <span class="math inline">\(45^\circ\)</span>):</p>
+<p><span class="math display">\[R\left(\frac{\pi}{4}\right) =
 \begin{bmatrix}
 \cos\left(\frac{\pi}{4}\right) &amp; -\sin\left(\frac{\pi}{4}\right) \\
 \sin\left(\frac{\pi}{4}\right) &amp; \cos\left(\frac{\pi}{4}\right)
@@ -388,7 +388,7 @@ r_1 = \begin{bmatrix} 4 &amp; 0 &amp; 2 &amp; 1 \end{bmatrix}, \qquad c_1 = \beg
 <section id="implementation-in-r-2" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-2"><em>Implementation in R</em></h5>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define the matrix-valued function</span></span>
-<span><span class="va">M</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">theta</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="va">R</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">theta</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">cos</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>, <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,</span>
 <span>               <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span>,  <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">cos</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span></span>
 <span>  </span>
@@ -400,7 +400,7 @@ r_1 = \begin{bmatrix} 4 &amp; 0 &amp; 2 &amp; 1 \end{bmatrix}, \qquad c_1 = \beg
 <span><span class="va">theta</span> <span class="op">&lt;-</span> <span class="va">pi</span> <span class="op">/</span> <span class="fl">4</span>   </span>
 <span></span>
 <span><span class="co"># Use the function to construct the matrix</span></span>
-<span><span class="fu">M</span><span class="op">(</span><span class="va">theta</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">R</span><span class="op">(</span><span class="va">theta</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          [,1]       [,2]
 [1,] 0.7071068 -0.7071068
@@ -408,7 +408,7 @@ r_1 = \begin{bmatrix} 4 &amp; 0 &amp; 2 &amp; 1 \end{bmatrix}, \qquad c_1 = \beg
 </div>
 </div>
 <p>&nbsp;</p>
-<p>The geometric effect of the planar rotation matrix <span class="math inline">\(M(\frac{\pi}{4})\)</span> on a unit square is shown below.</p>
+<p>The geometric effect of the planar rotation matrix <span class="math inline">\(R(\theta)\)</span> on a unit square for <span class="math inline">\(\theta = \pi/4\)</span> is shown in <a href="#fig-rotation" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-rotation" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -416,17 +416,16 @@ r_1 = \begin{bmatrix} 4 &amp; 0 &amp; 2 &amp; 1 \end{bmatrix}, \qquad c_1 = \beg
 <img src="matrices_files/figure-html/fig-rotation-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.1: Planar rotation of a unit square by <span class="math inline">\(\pi/4\)</span>.
+Figure&nbsp;1.1: Planar rotation of the unit square by <span class="math inline">\(R(\theta)\)</span> around the origin <span class="math inline">\((0,0)\)</span>. At <span class="math inline">\(\theta = \pi/4\)</span>, the square transforms into a diamond configuration: the pivot <span class="math inline">\(\Sigma_1(0,0)\)</span> remains invariant (<span class="math inline">\(\Sigma_1 = \Sigma_1^\prime\)</span>), while the remaining vertices map to <span class="math inline">\(\Sigma_2^\prime(\sqrt{2}/2, \sqrt{2}/2)\)</span>, the apex <span class="math inline">\(\Sigma_3^\prime(0, \sqrt{2})\)</span>, and <span class="math inline">\(\Sigma_4^\prime(-\sqrt{2}/2, \sqrt{2}/2)\)</span>.
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>In <a href="#fig-rotation" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> the planar rotation matrix <span class="math inline">\(M(\theta)\)</span> rotates the unit square counter-clockwise around the origin <span class="math inline">\((0,0)\)</span>. At <span class="math inline">\(\theta = \pi/4\)</span>, the square maps to a diamond configuration, where the vertices are transformed as follows: <span class="math inline">\(\Sigma_1(0,0)\)</span> remains fixed at <span class="math inline">\(\Sigma'_1(0,0)\)</span>; <span class="math inline">\(\Sigma_2(1,0)\)</span> maps to <span class="math inline">\(\Sigma'_2(\sqrt{2}/2, \sqrt{2}/2)\)</span>; <span class="math inline">\(\Sigma_3(1,1)\)</span> rotates to the apex <span class="math inline">\(\Sigma'_3(0, \sqrt{2})\)</span>; and <span class="math inline">\(\Sigma_4(0,1)\)</span> maps to <span class="math inline">\(\Sigma'_4(-\sqrt{2}/2, \sqrt{2}/2)\)</span>.</p>
 </section></section></section><section id="special-types-of-matrices" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="special-types-of-matrices">
 <span class="header-section-number">1.2</span> Special Types of Matrices</h2>
 <section id="the-null-matrix" class="level3" data-number="1.2.1"><h3 data-number="1.2.1" class="anchored" data-anchor-id="the-null-matrix">
 <span class="header-section-number">1.2.1</span> The Null Matrix</h3>
-<p>An <span class="math inline">\(m \times n\)</span> matrix is called a null matrix (or zero matrix) if all its entries are zero, and is typically denoted by <span class="math inline">\(O_{m \times n}\)</span> or simply <span class="math inline">\(O\)</span>:</p>
+<p>An <span class="math inline">\(m \times n\)</span> matrix is called a <strong>null matrix</strong> (or zero matrix) if all its entries are zero, and is typically denoted by <span class="math inline">\(O_{m \times n}\)</span> or simply <span class="math inline">\(O\)</span>:</p>
 <p><span class="math display">\[A = \begin{bmatrix}
 0 &amp; 0 &amp; \cdots &amp; 0 \\
 0 &amp; 0 &amp; \cdots &amp; 0 \\
@@ -454,34 +453,62 @@ Figure&nbsp;1.1: Planar rotation of a unit square by <span class="math inline">\
 <p>&nbsp;</p>
 </section></section></section><section id="the-square-matrix" class="level3" data-number="1.2.2"><h3 data-number="1.2.2" class="anchored" data-anchor-id="the-square-matrix">
 <span class="header-section-number">1.2.2</span> The Square Matrix</h3>
-<p>If a matrix <span class="math inline">\(A\)</span> has <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns, it is called a square matrix if <span class="math inline">\(m = n\)</span>, that is, if it has an equal number of rows and columns. In this case, <span class="math inline">\(A\)</span> is said to be of order <span class="math inline">\(n\)</span>, denoted <span class="math inline">\(A_{n \times n}\)</span> or simply <span class="math inline">\(A_n\)</span>.</p>
+<p>A matrix <span class="math inline">\(A\)</span> is called a <strong>square matrix</strong> if <span class="math inline">\(m = n\)</span>, that is, if it has an equal number of rows and columns. In this case, <span class="math inline">\(A\)</span> is said to be of <strong>order</strong> <span class="math inline">\(n\)</span>, denoted <span class="math inline">\(A_{n \times n}\)</span> or simply <span class="math inline">\(A_n\)</span>.</p>
 <p><span class="math display">\[A_{n \times n} = \begin{bmatrix}
-a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}
+\boldsymbol{a_{11}} &amp; a_{12}              &amp; \cdots &amp; a_{1n} \\
+a_{21}              &amp; \boldsymbol{a_{22}} &amp; \cdots &amp; a_{2n} \\
+\vdots              &amp; \vdots              &amp; \ddots &amp; \vdots \\
+a_{n1}              &amp; a_{n2}              &amp; \cdots &amp; \boldsymbol{a_{nn}}
 \end{bmatrix}\]</span></p>
-<p>The most significant structural feature of a square matrix is the main diagonal (or principal diagonal). This diagonal consists of the set of entries <span class="math inline">\(a_{ij}\)</span> where the row index <span class="math inline">\(i\)</span> is equal to the column index <span class="math inline">\(j\)</span>:<span class="math display">\[\text{diag}(A) = \{a_{11}, a_{22}, \dots, a_{nn}\}\]</span>Entries not located on this line are referred to as off-diagonal elements.</p>
+<p>The <strong>main diagonal</strong> (or principal diagonal) of this matrix consists of the entries <span class="math inline">\(a_{ij}\)</span> for which the row index equals the column index, that is, <span class="math inline">\(i = j\)</span> (shown in bold in the matrix), denoted:</p>
+<p><span class="math display">\[\text{diag}(A) = \{a_{11}, a_{22}, \dots, a_{nn}\}\]</span></p>
+<p>All remaining entries, where <span class="math inline">\(i \neq j\)</span>, are referred to as off-diagonal elements.</p>
+<div class="content-box-white">
+<p><strong>REMARK:</strong> Although the main diagonal is most naturally associated with square matrices, it is defined for any <span class="math inline">\(m \times n\)</span> rectangular matrix, consisting of the entries <span class="math inline">\(a_{ii}\)</span> for <span class="math inline">\(i = 1, 2, \ldots, \min(m, n)\)</span>.</p>
+</div>
+<p>The <strong>trace</strong> of a square matrix <span class="math inline">\(A_{n \times n}\)</span> is the sum of its main diagonal entries, denoted by <span class="math inline">\(\text{tr}(A)\)</span>:</p>
+<p><span class="math display">\[\text{tr}(A) = a_{11} + a_{22} + \cdots + a_{nn} = \sum_{i=1}^{n} a_{ii}\]</span></p>
+<p>The trace is defined only for square matrices.</p>
+<p>&nbsp;</p>
 <section id="example-a-3-times-3-square-matrix" class="level4"><h4 class="anchored" data-anchor-id="example-a-3-times-3-square-matrix">Example: A <span class="math inline">\(3 \times 3\)</span> Square Matrix</h4>
-<p><span class="math display">\[A_{3 \times 3} =
-  \begin{bmatrix}
-    5 &amp; 1 &amp; 0\\
-    3 &amp; -1 &amp; 2\\
-    4 &amp; 0 &amp; -1
-    \end{bmatrix}\]</span></p>
+<p>Consider the following square matrix of order 3:</p>
+<p><span class="math display">\[A_{3 \times 3} = \begin{bmatrix}
+\mathbf{5} &amp; 1 &amp; 0 \\
+3 &amp; \mathbf{-1} &amp; 2 \\
+4 &amp; 0 &amp; \mathbf{-1}
+\end{bmatrix}\]</span></p>
+<p>The main diagonal entries (shown in bold) are <span class="math inline">\(a_{11} = 5\)</span>, <span class="math inline">\(a_{22} = -1\)</span>, and <span class="math inline">\(a_{33} = -1\)</span>, giving:</p>
+<p><span class="math display">\[\text{diag}(A) = \{5, -1, -1\}\]</span></p>
+<p><span class="math display">\[\text{tr}(A) = 5 + (-1) + (-1) = 3\]</span></p>
 <section id="implementation-in-r-4" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-4"><em>Implementation in R</em></h5>
+<p>We construct <span class="math inline">\(A\)</span> in R and use the built-in <code><a href="https://rdrr.io/r/base/diag.html">diag()</a></code> function to extract its main diagonal entries.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">0</span>,</span>
-<span>              <span class="fl">3</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">2</span>,</span>
-<span>              <span class="fl">4</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span>,</span>
-<span>            nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">3</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">0</span>,</span>
+<span>             <span class="fl">3</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">2</span>,</span>
+<span>             <span class="fl">4</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span></span>
+<span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">entries</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">3</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">A</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    5    1    0
 [2,]    3   -1    2
 [3,]    4    0   -1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Main diagonal</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  5 -1 -1</code></pre>
+</div>
+</div>
+<p>The trace is not available as a standalone function in base R, but is straightforwardly computed as sum:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Trace</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
 </div>
 </div>
 
