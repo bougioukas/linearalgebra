@@ -520,6 +520,12 @@ a_{21} & a_{22} & \dots & 0 \\
 a_{n1} & a_{n2} & \dots & a_{nn}
 \end{bmatrix}$$
 
+ 
+
+::: content-box-white
+**NOTE:** A matrix that is simultaneously upper and lower triangular has zeros both above and below the main diagonal, and is therefore necessarily a diagonal matrix.
+:::
+
 
  
 
