@@ -874,12 +874,11 @@ Any meaningful algebra requires a precise notion of equality. Two matrices $A = 
 
 #### Example: Equal Matrices
 
-Two matrices are equal when they are identical in every respect:
+Let 
 
 $$A = \begin{bmatrix} 2 & 5 \\ -1 & 0 \end{bmatrix}, \quad B = \begin{bmatrix} 2 & 5 \\ -1 & 0 \end{bmatrix}$$
 
-Here, $A = B$ because both are $2 \times 2$ and every entry matches its counterpart.
-
+Since both matrices are $2 \times 2$ and every entry matches its counterpart, we conclude that $A = B$.
 
  
 
