@@ -505,11 +505,14 @@ a_{41} &amp; a_{42} &amp; a_{43}
 <li>In a square matrix <span class="math inline">\(A\)</span> of order <span class="math inline">\(n\)</span>, the <strong>anti-diagonal</strong> (also known as the secondary diagonal) consists of the entries <span class="math inline">\(a_{i,j}\)</span> for which <span class="math inline">\(i + j = n + 1\)</span>, running from the upper-right corner to the lower-left corner.</li>
 </ul>
 <p><span class="math display">\[A_{n \times n} = \begin{bmatrix}
-a_{11}              &amp; a_{12}  &amp; \cdots &amp; \boldsymbol{a_{1n}}     \\
-a_{21}              &amp; \cdots  &amp; \boldsymbol{a_{2,n-1}} &amp; a_{2n} \\
-\vdots              &amp; \cdot \! \cdot \! \cdot \\
-\boldsymbol{a_{n1}} &amp; a_{n2}  &amp; \cdots &amp; a_{nn}
+a_{11}  &amp; a_{12} &amp; \cdots  &amp; a_{1 \ (n-1)} &amp; \boldsymbol{a_{1n}} \\
+a_{21}  &amp; a_{22} &amp; \cdots &amp; \boldsymbol{a_{2 \ (n-1)}} &amp; a_{2n} \\
+\vdots  &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+a_{(n-1) \ 1}    &amp; \boldsymbol{a_{(n-1) \ 2}} &amp; \cdots &amp; a_{(n-1) \ (n-1)} &amp; a_{(n-1) \ n} \\
+\boldsymbol{a_{n1}} &amp; a_{n2}  &amp; \cdots &amp; a_{n \ (n-1)} &amp; a_{nn}
 \end{bmatrix}\]</span></p>
+<p>The anti-diagonal entries are shown in bold in the matrix:</p>
+<p><span class="math display">\[\text{anti-diag}(A) = \{a_{1n}, a_{2 \ (n-1)}, \dots, a_{(n-1) \ 2}, a_{n1}\}\]</span></p>
 <p>&nbsp;</p>
 <ul>
 <li>The <strong>trace</strong> of a square matrix <span class="math inline">\(A_{n \times n}\)</span> is the sum of its <strong>main diagonal</strong> entries, denoted by <span class="math inline">\(\text{tr}(A)\)</span>:</li>
@@ -636,9 +639,9 @@ a_{21}              &amp; \cdots  &amp; \boldsymbol{a_{2,n-1}} &amp; a_{2n} \\
 <p>Formally, a square matrix <span class="math inline">\(A\)</span> is anti-diagonal if <span class="math inline">\(a_{ij} = 0\)</span> whenever <span class="math inline">\(i + j \neq n + 1\)</span>:</p>
 <p><span class="math display">\[A_{n \times n} = \begin{bmatrix}
 0      &amp; 0      &amp; \cdots &amp; 0      &amp; a_{1n} \\
-0      &amp; 0      &amp; \cdots &amp; a_{2,n-1} &amp; 0   \\
-\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
-0      &amp; a_{n-1,2} &amp; \cdots &amp; 0   &amp; 0      \\
+0      &amp; 0      &amp; \cdots &amp; a_{2 \ (n-1)} &amp; 0   \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+0      &amp; a_{(n-1) \ 2} &amp; \cdots &amp; 0   &amp; 0      \\
 a_{n1} &amp; 0      &amp; \cdots &amp; 0      &amp; 0
 \end{bmatrix}\]</span></p>
 <p>&nbsp;</p>
@@ -700,14 +703,14 @@ a_{n1} &amp; 0      &amp; \cdots &amp; 0      &amp; 0
 </section></section></section><section id="the-triangular-matrices" class="level3" data-number="1.2.5"><h3 data-number="1.2.5" class="anchored" data-anchor-id="the-triangular-matrices">
 <span class="header-section-number">1.2.5</span> The Triangular Matrices</h3>
 <p>A square matrix <span class="math inline">\(A\)</span> is called <strong>upper triangular</strong> if all entries below the main diagonal are zero, that is, <span class="math inline">\(a_{ij} = 0\)</span> for all <span class="math inline">\(i &gt; j\)</span>.</p>
-<p><span class="math display">\[A = \begin{bmatrix}
+<p><span class="math display">\[A_{upper} = \begin{bmatrix}
 a_{11} &amp; a_{12} &amp; \dots &amp; a_{1n} \\
 0 &amp; a_{22} &amp; \dots &amp; a_{2n} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
 0 &amp; 0 &amp; \dots &amp; a_{nn}
 \end{bmatrix}\]</span></p>
 <p>Conversely, a square matrix <span class="math inline">\(A\)</span> is called <strong>lower triangular</strong> if all entries above the main diagonal are zero, that is, <span class="math inline">\(a_{ij} = 0\)</span> for all <span class="math inline">\(i &lt; j\)</span>.</p>
-<p><span class="math display">\[A = \begin{bmatrix}
+<p><span class="math display">\[A_{lower} = \begin{bmatrix}
 a_{11} &amp; 0 &amp; \dots &amp; 0 \\
 a_{21} &amp; a_{22} &amp; \dots &amp; 0 \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
@@ -800,7 +803,7 @@ a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn}
 <p>A square matrix <span class="math inline">\(A\)</span> is <strong>symmetric</strong> if its entries satisfy:</p>
 <p><span class="math display">\[a_{ij} = a_{ji} \quad \text{for all } i, j\]</span></p>
 <p>This condition implies that the matrix is symmetric with respect to its main diagonal. Equivalently, interchanging its rows and columns leaves the matrix unchanged.</p>
-<p>In its general form, the entries below the diagonal are reflections of those above it:</p>
+<p>In its general form, the entries below the main diagonal are reflections of those above it:</p>
 <p><span class="math display">\[A = \begin{bmatrix}
 a_{11} &amp; a_{12} &amp; \dots &amp; a_{1n} \\
 a_{12} &amp; a_{22} &amp; \dots &amp; a_{2n} \\
@@ -840,7 +843,7 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 <span class="header-section-number">1.2.8</span> The Antisymmetric Matrix</h3>
 <p>A square matrix <span class="math inline">\(A\)</span> is <strong>antisymmetric</strong> (or skew-symmetric) if its entries satisfy:<span class="math display">\[a_{ij} = -a_{ji} \quad \text{for all } i, j\]</span></p>
 <p>A key property of antisymmetric matrices is that all elements on the main diagonal must be zero, because for <span class="math inline">\(i=j\)</span>, the condition <span class="math inline">\(a_{ii} = -a_{ii}\)</span> can only be true if <span class="math inline">\(a_{ii} = 0\)</span>.</p>
-<p>In its general form, entries below the diagonal are the negative reflections of those above it:</p>
+<p>In its general form, entries below the main diagonal are the negative reflections of those above it:</p>
 <p><span class="math display">\[A = \begin{bmatrix}
 0 &amp; a_{12} &amp; \dots &amp; a_{1n} \\
 -a_{12} &amp; 0 &amp; \dots &amp; a_{2n} \\

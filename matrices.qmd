@@ -410,13 +410,16 @@ Here, $\text{diag}(B) = \{2, -1, 5\}$. Note that the fourth row contains no diag
 
 
 $$A_{n \times n} = \begin{bmatrix}
-a_{11}              & a_{12}  & \cdots & \boldsymbol{a_{1n}}     \\
-a_{21}              & \cdots  & \boldsymbol{a_{2,n-1}} & a_{2n} \\
-\vdots              & \cdot \! \cdot \! \cdot \\
-\boldsymbol{a_{n1}} & a_{n2}  & \cdots & a_{nn}
+a_{11}  & a_{12} & \cdots  & a_{1 \ (n-1)} & \boldsymbol{a_{1n}} \\
+a_{21}  & a_{22} & \cdots & \boldsymbol{a_{2 \ (n-1)}} & a_{2n} \\
+\vdots  & \vdots & \ddots & \vdots & \vdots \\
+a_{(n-1) \ 1}    & \boldsymbol{a_{(n-1) \ 2}} & \cdots & a_{(n-1) \ (n-1)} & a_{(n-1) \ n} \\
+\boldsymbol{a_{n1}} & a_{n2}  & \cdots & a_{n \ (n-1)} & a_{nn}
 \end{bmatrix}$$
 
+The anti-diagonal entries are shown in bold in the matrix: 
 
+$$\text{anti-diag}(A) = \{a_{1n}, a_{2 \ (n-1)}, \dots, a_{(n-1) \ 2}, a_{n1}\}$$
 
  
 
@@ -572,9 +575,9 @@ Formally, a square matrix $A$ is anti-diagonal if $a_{ij} = 0$ whenever $i + j \
 
 $$A_{n \times n} = \begin{bmatrix}
 0      & 0      & \cdots & 0      & a_{1n} \\
-0      & 0      & \cdots & a_{2,n-1} & 0   \\
-\vdots & \vdots & \vdots & \vdots & \vdots \\
-0      & a_{n-1,2} & \cdots & 0   & 0      \\
+0      & 0      & \cdots & a_{2 \ (n-1)} & 0   \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0      & a_{(n-1) \ 2} & \cdots & 0   & 0      \\
 a_{n1} & 0      & \cdots & 0      & 0
 \end{bmatrix}$$
 
@@ -648,7 +651,7 @@ A[cbind(1:n, n:1)]
 
 A square matrix $A$ is called **upper triangular** if all entries below the main diagonal are zero, that is, $a_{ij} = 0$ for all $i > j$.
 
-$$A = \begin{bmatrix}
+$$A_{upper} = \begin{bmatrix}
 a_{11} & a_{12} & \dots & a_{1n} \\
 0 & a_{22} & \dots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
@@ -657,7 +660,7 @@ a_{11} & a_{12} & \dots & a_{1n} \\
 
 Conversely, a square matrix $A$ is called **lower triangular** if all entries above the main diagonal are zero, that is, $a_{ij} = 0$ for all $i < j$.
 
-$$A = \begin{bmatrix}
+$$A_{lower} = \begin{bmatrix}
 a_{11} & 0 & \dots & 0 \\
 a_{21} & a_{22} & \dots & 0 \\
 \vdots & \vdots & \ddots & \vdots \\
@@ -762,7 +765,7 @@ $$a_{ij} = a_{ji} \quad \text{for all } i, j$$
 
 This condition implies that the matrix is symmetric with respect to its main diagonal. Equivalently, interchanging its rows and columns leaves the matrix unchanged.
 
-In its general form, the entries below the diagonal are reflections of those above it:
+In its general form, the entries below the main diagonal are reflections of those above it:
 
 $$A = \begin{bmatrix}
 a_{11} & a_{12} & \dots & a_{1n} \\
@@ -815,7 +818,7 @@ A square matrix $A$ is **antisymmetric** (or skew-symmetric) if its entries sati
 A key property of antisymmetric matrices is that all elements on the main diagonal must be zero, because for $i=j$, the condition $a_{ii} = -a_{ii}$ can only be true if $a_{ii} = 0$.
 
 
-In its general form, entries below the diagonal are the negative reflections of those above it:
+In its general form, entries below the main diagonal are the negative reflections of those above it:
 
 $$A = \begin{bmatrix}
 0 & a_{12} & \dots & a_{1n} \\
