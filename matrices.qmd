@@ -577,7 +577,7 @@ $$A_{n \times n} = \begin{bmatrix}
 0      & 0      & \cdots & 0      & a_{1n} \\
 0      & 0      & \cdots & a_{2 \ (n-1)} & 0   \\
 \vdots & \vdots & \ddots & \vdots & \vdots \\
-0      & a_{(n-1) \ 2} & \cdots & 0   & 0      \\
+0      & a_{(n-1) \ 2}   & \cdots & 0   & 0      \\
 a_{n1} & 0      & \cdots & 0      & 0
 \end{bmatrix}$$
 
@@ -855,6 +855,61 @@ entries <- c( 0,  5, -2,
 # Create the antisymmetric matrix 
 A <- matrix(entries, nrow = 3, byrow = TRUE)
 A
+```
+
+
+
+
+## The Algebra of Matrices
+
+### Equality of Matrices
+
+Any meaningful algebra requires a precise notion of equality. Two matrices $A = [a_{ij}]_{m \times n}$ and $B = [b_{ij}]_{p \times q}$ are equal, written $A = B$, if and only if they have the same dimensions and identical corresponding entries:
+
+- $m = p$ and $n = q$
+- $a_{ij} = b_{ij}$ for all $i, j$
+
+
+
+
+#### Example: Equal Matrices
+
+Two matrices are equal when they are identical in every respect:
+
+$$A = \begin{bmatrix} 2 & 5 \\ -1 & 0 \end{bmatrix}, \quad B = \begin{bmatrix} 2 & 5 \\ -1 & 0 \end{bmatrix}$$
+
+Here, $A = B$ because both are $2 \times 2$ and every entry matches its counterpart.
+
+
+ 
+
+##### *Implementation in R*
+
+We construct both matrices and verify equality.
+
+```{r}
+A <- matrix(c(2,  5,
+             -1,  0),
+            nrow = 2, ncol = 2, byrow = TRUE)
+
+B <- matrix(c(2,  5,
+             -1,  0),
+            nrow = 2, ncol = 2, byrow = TRUE)
+```
+
+First, we confirm that $A$ and $B$ have the same dimensions:
+
+```{r}
+# Check dimensions
+dim(A) == dim(B)   # TRUE TRUE — number of rows match, number of columns match
+```
+
+
+Then, we verify that every corresponding entry satisfies $a_{ij} = b_{ij}$:
+
+```{r}
+# Check entry-wise equality 
+all(A == B)   # TRUE — all entries match
 ```
 
 
