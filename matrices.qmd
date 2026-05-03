@@ -452,9 +452,9 @@ sum(diag(A))
 
 ### The Diagonal Matrix
 
-A **diagonal matrix**, typically denoted as $D$, is a square matrix in which all off-diagonal entries are zero, that is, $a_{ij} = 0$ for all $i \neq j$:
+A **diagonal matrix** $A$ is a square matrix in which all off-diagonal entries are zero, that is, $a_{ij} = 0$ for all $i \neq j$:
 
-$$D_{n \times n} = \begin{bmatrix} a_{11} & 0 & \dots & 0 \\ 
+$$A_{n \times n} = \begin{bmatrix} a_{11} & 0 & \dots & 0 \\ 
 0 & a_{22} & \dots & 0 \\ 
 \vdots & \vdots & \ddots & \vdots \\ 
 0 & 0 & \dots & a_{nn} 
@@ -465,7 +465,7 @@ $$D_{n \times n} = \begin{bmatrix} a_{11} & 0 & \dots & 0 \\
 #### Example: A $3 \times 3$ Diagonal Matrix
 
 
-$$D_{3\times 3} =
+$$A_{3\times 3} =
   \begin{bmatrix}
     4 & 0 & 0\\
     0 & -1 & 0\\
@@ -473,7 +473,7 @@ $$D_{3\times 3} =
   \end{bmatrix}$$
 
 
-with $\text{diag}(D) = \{4, -1, -5\}$ and $\text{tr}(D) = 4 + (-1) + (-5) = -2$.
+with $\text{diag}(A) = \{4, -1, -5\}$ and $\text{tr}(D) = 4 + (-1) + (-5) = -2$.
 
  
 
@@ -485,26 +485,86 @@ In R, a diagonal matrix can be constructed using the `diag()` function.
 ```{r}
 entries <- c(4, -1, -5)
 
-D <- diag(entries)
-D
+A <- diag(entries)
+A
 ```
 
 
 
 ```{r}
 # Main diagonal and trace
-diag(D)      
-sum(diag(D))
+diag(A)      
+sum(diag(A))
 ```
 
 
  
 
+### The Triangular Matrices
+
+A square matrix $A$ is called **upper triangular** if all entries below the main diagonal are zero, that is, $a_{ij} = 0$ for all $i > j$.
+
+$$A = \begin{bmatrix}
+a_{11} & a_{12} & \dots & a_{1n} \\
+0 & a_{22} & \dots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \dots & a_{nn}
+\end{bmatrix}$$
+
+Conversely, a square matrix $A$ is called **lower triangular** if all entries above the main diagonal are zero, that is, $a_{ij} = 0$ for all $i < j$.
+
+$$A = \begin{bmatrix}
+a_{11} & 0 & \dots & 0 \\
+a_{21} & a_{22} & \dots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \dots & a_{nn}
+\end{bmatrix}$$
+
+
+ 
+
+#### Example: $3 \times 3$ Triangular Matrices
+
+$$A_{upper} = \begin{bmatrix} \mathbf{2} & 3 & -1 \\ 0 & \mathbf{5} & 4 \\ 0 & 0 & \mathbf{7} \end{bmatrix}, \qquad A_{lower} = \begin{bmatrix} \mathbf{2} & 0 & 0 \\ 3 & \mathbf{5} & 0 \\ -1 & 4 & \mathbf{7} \end{bmatrix}$$
+ 
+
+##### *Implementation in R*
+
+- The upper triangular matrix
+
+```{r}
+# Define the entries for the upper matrix
+entries_upper <- c(2, 3, -1, 
+                   0, 5,  4, 
+                   0, 0,  7)
+
+# Create the upper matrix
+A_upper <- matrix(entries_upper, nrow = 3, byrow = TRUE)
+A_upper
+```
+
+
+- The lower triangular matrix
+
+```{r}
+# Define the entries for the lower matrix
+entries_lower <- c(2, 0,  0, 
+                   3, 5,  0, 
+                  -1, 4,  7)
+
+
+# Create the lower matrix
+A_lower <- matrix(entries_lower, nrow = 3, byrow = TRUE)
+A_lower
+```
+
+ 
+
 ### The Identity Matrix
 
-An **identity matrix**, typically denoted as $I$, is a square matrix whose entries satisfy the condition:
+An **identity matrix**, typically denoted as $I$, is a square matrix whose entries are given by the Kronecker delta $\delta_{ij}$:
 
-$$a_{ij} = \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}$$ 
+$$\delta_{ij} = \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}$$ 
 
 That is, it has ones on the main diagonal and zeros everywhere else. In explicit form, it is written as:
 
@@ -541,5 +601,108 @@ In R, the `diag()` function is used to generate identity matrices. When passed a
 I <- diag(3)
 I
 ```
+
+ 
+
+### The Symmetric Matrix
+
+A square matrix $A$ is **symmetric** if its entries satisfy:
+
+$$a_{ij} = a_{ji} \quad \text{for all } i, j$$
+
+This condition implies that the matrix is symmetric with respect to its main diagonal. Equivalently, interchanging its rows and columns leaves the matrix unchanged.
+
+In its general form, the entries below the diagonal are reflections of those above it:
+
+$$A = \begin{bmatrix}
+a_{11} & a_{12} & \dots & a_{1n} \\
+a_{12} & a_{22} & \dots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{1n} & a_{2n} & \dots & a_{nn}
+\end{bmatrix}$$
+
+
+ 
+
+#### Example: A $3 \times 3$ Symmetric Matrix
+
+Consider the following symmetric matrix $A$ of order 3:
+
+$$A_{3\times 3} =
+  \begin{bmatrix}
+    13 & -4 & 2\\
+    -4 & 11 & -2\\
+    2 & -2 & 8
+  \end{bmatrix}$$
+
+In this matrix, the entries at positions (1,2) and (2,1) are both -4, the entries at positions (1,3) and (3,1) are both 2, and the entries at positions (2,3) and (3,2) are both -2. This reflects the symmetry property.
+
+
+ 
+
+##### *Implementation in R*
+
+
+```{r}
+# Define entries row-wise
+entries <- c(13, -4, 2,
+            -4, 11, -2,
+             2, -2, 8)
+
+# Create the symmetric matrix 
+A <- matrix(entries, nrow = 3)
+A
+```
+
+
+
+ 
+
+### The Antisymmetric Matrix
+
+A square matrix $A$ is **antisymmetric** (or skew-symmetric) if its entries satisfy:$$a_{ij} = -a_{ji} \quad \text{for all } i, j$$
+
+A key property of antisymmetric matrices is that all elements on the main diagonal must be zero, because for $i=j$, the condition $a_{ii} = -a_{ii}$ can only be true if $a_{ii} = 0$.
+
+
+In its general form, entries below the diagonal are the negative reflections of those above it:
+
+$$A = \begin{bmatrix}
+0 & a_{12} & \dots & a_{1n} \\
+-a_{12} & 0 & \dots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+-a_{1n} & -a_{2n} & \dots & 0
+\end{bmatrix}$$
+
+
+ 
+
+#### Example: A $3 \times 3$ Antisymmetric Matrix
+
+Consider the following antisymmetric matrix $A$ of order 3:
+
+$$A_{3\times 3} =\begin{bmatrix}0 & 5 & -2\\
+-5 & 0 & 1\\
+2 & -1 & 0
+\end{bmatrix}$$
+
+In this matrix, notice that the diagonal is all zeros. Furthermore, the entries at positions (1,2) and (2,1) are 5 and -5, (1,3) and (3,1) are -2 and 2, and (2,3) and (3,2) are 1 and -1. This reflects the antisymmetry property.
+
+
+ 
+
+##### *Implementation in R*
+
+```{r}
+# Define entries row-wise
+entries <- c( 0,  5, -2,
+             -5,  0,  1,
+              2, -1,  0)
+
+# Create the antisymmetric matrix 
+A <- matrix(entries, nrow = 3, byrow = TRUE)
+A
+```
+
 
 
