@@ -188,10 +188,11 @@ window.Quarto = {
 <li><a href="#the-null-matrix" id="toc-the-null-matrix" class="nav-link" data-scroll-target="#the-null-matrix"><span class="header-section-number">1.2.1</span> The Null Matrix</a></li>
   <li><a href="#the-square-matrix" id="toc-the-square-matrix" class="nav-link" data-scroll-target="#the-square-matrix"><span class="header-section-number">1.2.2</span> The Square Matrix</a></li>
   <li><a href="#the-diagonal-matrix" id="toc-the-diagonal-matrix" class="nav-link" data-scroll-target="#the-diagonal-matrix"><span class="header-section-number">1.2.3</span> The Diagonal Matrix</a></li>
-  <li><a href="#the-triangular-matrices" id="toc-the-triangular-matrices" class="nav-link" data-scroll-target="#the-triangular-matrices"><span class="header-section-number">1.2.4</span> The Triangular Matrices</a></li>
-  <li><a href="#the-identity-matrix" id="toc-the-identity-matrix" class="nav-link" data-scroll-target="#the-identity-matrix"><span class="header-section-number">1.2.5</span> The Identity Matrix</a></li>
-  <li><a href="#the-symmetric-matrix" id="toc-the-symmetric-matrix" class="nav-link" data-scroll-target="#the-symmetric-matrix"><span class="header-section-number">1.2.6</span> The Symmetric Matrix</a></li>
-  <li><a href="#the-antisymmetric-matrix" id="toc-the-antisymmetric-matrix" class="nav-link" data-scroll-target="#the-antisymmetric-matrix"><span class="header-section-number">1.2.7</span> The Antisymmetric Matrix</a></li>
+  <li><a href="#the-anti-diagonal-matrix" id="toc-the-anti-diagonal-matrix" class="nav-link" data-scroll-target="#the-anti-diagonal-matrix"><span class="header-section-number">1.2.4</span> The Anti-Diagonal Matrix</a></li>
+  <li><a href="#the-triangular-matrices" id="toc-the-triangular-matrices" class="nav-link" data-scroll-target="#the-triangular-matrices"><span class="header-section-number">1.2.5</span> The Triangular Matrices</a></li>
+  <li><a href="#the-identity-matrix" id="toc-the-identity-matrix" class="nav-link" data-scroll-target="#the-identity-matrix"><span class="header-section-number">1.2.6</span> The Identity Matrix</a></li>
+  <li><a href="#the-symmetric-matrix" id="toc-the-symmetric-matrix" class="nav-link" data-scroll-target="#the-symmetric-matrix"><span class="header-section-number">1.2.7</span> The Symmetric Matrix</a></li>
+  <li><a href="#the-antisymmetric-matrix" id="toc-the-antisymmetric-matrix" class="nav-link" data-scroll-target="#the-antisymmetric-matrix"><span class="header-section-number">1.2.8</span> The Antisymmetric Matrix</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -242,7 +243,7 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
     3 &amp; 1 &amp; 4 &amp; 2\\
     2 &amp; 0 &amp; 1 &amp; 3
   \end{bmatrix}\]</span></p>
-<p>is a <span class="math inline">\(3 \times 4\)</span> matrix over the field of real numbers (<span class="math inline">\(\mathbb{R}\)</span>). Its first row vector and first column vector are, respectively:</p>
+<p>is a <span class="math inline">\(3 \times 4\)</span> rectangular matrix over the field of real numbers (<span class="math inline">\(\mathbb{R}\)</span>). Its first row vector and first column vector are, respectively:</p>
 <p><span class="math display">\[
 r_1 = \begin{bmatrix} 4 &amp; 0 &amp; 2 &amp; 1 \end{bmatrix}, \qquad c_1 = \begin{bmatrix} 4 \\ 3 \\ 2 \end{bmatrix}
 \]</span></p>
@@ -466,7 +467,9 @@ a_{21}              &amp; \boldsymbol{a_{22}} &amp; \cdots &amp; a_{2n} \\
 a_{n1}              &amp; a_{n2}              &amp; \cdots &amp; \boldsymbol{a_{nn}}
 \end{bmatrix}\]</span></p>
 <p>&nbsp;</p>
-<p>The <strong>main diagonal</strong> (or principal diagonal) of this matrix consists of the entries <span class="math inline">\(a_{ij}\)</span> for which the row index equals the column index, that is, <span class="math inline">\(i = j\)</span> (shown in bold in the matrix), denoted:</p>
+<ul>
+<li>The <strong>main diagonal</strong> (or principal diagonal) of this matrix consists of the entries <span class="math inline">\(a_{ij}\)</span> for which the row index equals the column index, that is, <span class="math inline">\(i = j\)</span> (shown in bold in the matrix), denoted:</li>
+</ul>
 <p><span class="math display">\[\text{diag}(A) = \{a_{11}, a_{22}, \dots, a_{nn}\}\]</span></p>
 <p>All remaining entries, where <span class="math inline">\(i \neq j\)</span>, are referred to as off-diagonal elements.</p>
 <div class="content-box-white">
@@ -475,17 +478,42 @@ a_{n1}              &amp; a_{n2}              &amp; \cdots &amp; \boldsymbol{a_{
 <li><strong>Case 1: Horizontal Rectangular Matrix (<span class="math inline">\(m &lt; n\)</span>)</strong></li>
 </ul>
 <p>For a <span class="math inline">\(3 \times 4\)</span> matrix, where <span class="math inline">\(\min(3, 4) = 3\)</span>, the main diagonal contains exactly three entries. The diagonal terminates before reaching the final column.</p>
+<p><span class="math display">\[A_{3 \times 4} = \begin{bmatrix}
+\boldsymbol{a_{11}} &amp; a_{12} &amp; a_{13} &amp; a_{14} \\
+a_{21} &amp; \boldsymbol{a_{22}} &amp; a_{23} &amp; a_{24} \\
+a_{31} &amp; a_{32} &amp; \boldsymbol{a_{33}} &amp; a_{34}
+\end{bmatrix}\]</span></p>
+<p>For example:</p>
 <p><span class="math display">\[A_{3 \times 4} = \begin{bmatrix} \mathbf{4} &amp; 0 &amp; 2 &amp; 1 \\ 3 &amp; \mathbf{1} &amp; 4 &amp; 2 \\ 2 &amp; 0 &amp; \mathbf{1} &amp; 3 \end{bmatrix}\]</span></p>
 <p>In this instance, <span class="math inline">\(\text{diag}(A) = \{4, 1, 1\}\)</span>.</p>
 <ul>
 <li><strong>Case 2: Vertical Rectangular Matrix (<span class="math inline">\(m &gt; n\)</span>)</strong></li>
 </ul>
 <p>For a <span class="math inline">\(4 \times 3\)</span> matrix, where <span class="math inline">\(\min(4, 3) = 3\)</span>, the diagonal also contains three entries. Here, the diagonal is exhausted before reaching the final row.</p>
-<p><span class="math display">\[B_{4 \times 3} = \begin{bmatrix} \mathbf{2} &amp; 1 &amp; 0 \\ 3 &amp; \mathbf{-1} &amp; 4 \\ 1 &amp; 2 &amp; \mathbf{5} \\ 0 &amp; 3 &amp; 1 \end{bmatrix}\]</span></p>
+<p><span class="math display">\[A_{4 \times 3} = \begin{bmatrix}
+\boldsymbol{a_{11}} &amp; a_{12} &amp; a_{13} \\
+a_{21} &amp; \boldsymbol{a_{22}} &amp; a_{23} \\
+a_{31} &amp; a_{32} &amp; \boldsymbol{a_{33}} \\
+a_{41} &amp; a_{42} &amp; a_{43}
+\end{bmatrix}\]</span></p>
+<p>For example:</p>
+<p><span class="math display">\[A_{4 \times 3} = \begin{bmatrix} \mathbf{2} &amp; 1 &amp; 0 \\ 3 &amp; \mathbf{-1} &amp; 4 \\ 1 &amp; 2 &amp; \mathbf{5} \\ 0 &amp; 3 &amp; 1 \end{bmatrix}\]</span></p>
 <p>Here, <span class="math inline">\(\text{diag}(B) = \{2, -1, 5\}\)</span>. Note that the fourth row contains no diagonal entry because the index <span class="math inline">\(i=4\)</span> has no corresponding column index <span class="math inline">\(j=4\)</span>.</p>
 </div>
 <p>&nbsp;</p>
-<p>The <strong>trace</strong> of a square matrix <span class="math inline">\(A_{n \times n}\)</span> is the sum of its main diagonal entries, denoted by <span class="math inline">\(\text{tr}(A)\)</span>:</p>
+<ul>
+<li>In a square matrix <span class="math inline">\(A\)</span> of order <span class="math inline">\(n\)</span>, the <strong>anti-diagonal</strong> (also known as the secondary diagonal) consists of the entries <span class="math inline">\(a_{i,j}\)</span> for which <span class="math inline">\(i + j = n + 1\)</span>, running from the upper-right corner to the lower-left corner.</li>
+</ul>
+<p><span class="math display">\[A_{n \times n} = \begin{bmatrix}
+a_{11}              &amp; a_{12}  &amp; \cdots &amp; \boldsymbol{a_{1n}}     \\
+a_{21}              &amp; \cdots  &amp; \boldsymbol{a_{2,n-1}} &amp; a_{2n} \\
+\vdots              &amp; \cdot \! \cdot \! \cdot \\
+\boldsymbol{a_{n1}} &amp; a_{n2}  &amp; \cdots &amp; a_{nn}
+\end{bmatrix}\]</span></p>
+<p>&nbsp;</p>
+<ul>
+<li>The <strong>trace</strong> of a square matrix <span class="math inline">\(A_{n \times n}\)</span> is the sum of its <strong>main diagonal</strong> entries, denoted by <span class="math inline">\(\text{tr}(A)\)</span>:</li>
+</ul>
 <p><span class="math display">\[\text{tr}(A) = a_{11} + a_{22} + \cdots + a_{nn} = \sum_{i=1}^{n} a_{ii}\]</span></p>
 <p>The trace is defined only for square matrices.</p>
 <p>&nbsp;</p>
@@ -496,9 +524,12 @@ a_{n1}              &amp; a_{n2}              &amp; \cdots &amp; \boldsymbol{a_{
 3 &amp; \mathbf{-1} &amp; 2 \\
 4 &amp; 0 &amp; \mathbf{-1}
 \end{bmatrix}\]</span></p>
-<p>The main diagonal entries (shown in bold) are <span class="math inline">\(a_{11} = 5\)</span>, <span class="math inline">\(a_{22} = -1\)</span>, and <span class="math inline">\(a_{33} = -1\)</span>, giving:</p>
+<p>The main diagonal entries (shown in bold) are <span class="math inline">\(a_{11} = 5\)</span>, <span class="math inline">\(a_{22} = -1\)</span>, and <span class="math inline">\(a_{33} = -1\)</span>, hence</p>
 <p><span class="math display">\[\text{diag}(A) = \{5, -1, -1\}\]</span></p>
 <p><span class="math display">\[\text{tr}(A) = 5 + (-1) + (-1) = 3\]</span></p>
+<p>The anti-diagonal entries, for which <span class="math inline">\(i + j = 4\)</span>, are <span class="math inline">\(a_{13} = 0\)</span>, <span class="math inline">\(a_{22} = -1\)</span>, and <span class="math inline">\(a_{31} = 4\)</span>, hence</p>
+<p><span class="math display">\[\text{anti-diag}(A) = \{0, -1, 4\}\]</span></p>
+<p>Note that <span class="math inline">\(a_{22} = -1\)</span> lies on both the main diagonal and the anti-diagonal. This occurs in every square matrix of odd order, where the central entry belongs to both diagonals.</p>
 <p>&nbsp;</p>
 <section id="implementation-in-r-4" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-4"><em>Implementation in R</em></h5>
 <p>We construct <span class="math inline">\(A\)</span> in R and use the built-in <code><a href="https://rdrr.io/r/base/diag.html">diag()</a></code> function to extract its main diagonal entries.</p>
@@ -531,6 +562,15 @@ a_{n1}              &amp; a_{n2}              &amp; \cdots &amp; \boldsymbol{a_{
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
+<p>Extracting the anti-diagonal in R requires indexing. This can be achieved using <code><a href="https://rdrr.io/r/base/cbind.html">cbind()</a></code> to pair row and column indices appropriately:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Anti-diagonal </span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span>
+<span><span class="va">A</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span>, <span class="va">n</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  0 -1  4</code></pre>
+</div>
+</div>
 <p>&nbsp;</p>
 </section></section></section><section id="the-diagonal-matrix" class="level3" data-number="1.2.3"><h3 data-number="1.2.3" class="anchored" data-anchor-id="the-diagonal-matrix">
 <span class="header-section-number">1.2.3</span> The Diagonal Matrix</h3>
@@ -548,12 +588,15 @@ a_{n1}              &amp; a_{n2}              &amp; \cdots &amp; \boldsymbol{a_{
     0 &amp; -1 &amp; 0\\
     0 &amp; 0 &amp; -5
   \end{bmatrix}\]</span></p>
-<p>with <span class="math inline">\(\text{diag}(A) = \{4, -1, -5\}\)</span> and <span class="math inline">\(\text{tr}(D) = 4 + (-1) + (-5) = -2\)</span>.</p>
+<p>with</p>
+<p><span class="math inline">\(\text{diag}(A) = \{4, -1, -5\}\)</span></p>
+<p><span class="math inline">\(\text{tr}(A) = 4 + (-1) + (-5) = -2\)</span></p>
+<p><span class="math inline">\(\text{anti-diag}(A) = \{0, -1, 0\}\)</span></p>
 <p>&nbsp;</p>
 <section id="implementation-in-r-5" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-5"><em>Implementation in R</em></h5>
 <p>In R, a diagonal matrix can be constructed using the <code><a href="https://rdrr.io/r/base/diag.html">diag()</a></code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">5</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">5</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">entries</span><span class="op">)</span></span>
 <span><span class="va">A</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -565,19 +608,97 @@ a_{n1}              &amp; a_{n2}              &amp; \cdots &amp; \boldsymbol{a_{
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Main diagonal and trace</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Main diagonal </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span>      </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  4 -1 -5</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Trace</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2</code></pre>
 </div>
 </div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Anti-diagonal </span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span>
+<span><span class="va">A</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span>, <span class="va">n</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  0 -1  0</code></pre>
+</div>
+</div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-triangular-matrices" class="level3" data-number="1.2.4"><h3 data-number="1.2.4" class="anchored" data-anchor-id="the-triangular-matrices">
-<span class="header-section-number">1.2.4</span> The Triangular Matrices</h3>
+</section></section></section><section id="the-anti-diagonal-matrix" class="level3" data-number="1.2.4"><h3 data-number="1.2.4" class="anchored" data-anchor-id="the-anti-diagonal-matrix">
+<span class="header-section-number">1.2.4</span> The Anti-Diagonal Matrix</h3>
+<p>An <strong>anti-diagonal matrix</strong> (or skew-diagonal matrix) is a square matrix where all entries are zero except for those on the diagonal going from the lower-left corner to the upper-right corner.</p>
+<p>Formally, a square matrix <span class="math inline">\(A\)</span> is anti-diagonal if <span class="math inline">\(a_{ij} = 0\)</span> whenever <span class="math inline">\(i + j \neq n + 1\)</span>:</p>
+<p><span class="math display">\[A_{n \times n} = \begin{bmatrix}
+0      &amp; 0      &amp; \cdots &amp; 0      &amp; a_{1n} \\
+0      &amp; 0      &amp; \cdots &amp; a_{2,n-1} &amp; 0   \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+0      &amp; a_{n-1,2} &amp; \cdots &amp; 0   &amp; 0      \\
+a_{n1} &amp; 0      &amp; \cdots &amp; 0      &amp; 0
+\end{bmatrix}\]</span></p>
+<p>&nbsp;</p>
+<div class="content-box-white">
+<p><strong>NOTE:</strong> An anti-diagonal matrix <span class="math inline">\(A\)</span> of size <span class="math inline">\(n \times n\)</span> has nonzero entries only on the anti-diagonal (from the top-right to the bottom-left). The trace of <span class="math inline">\(A\)</span> is guaranteed to be zero if <span class="math inline">\(n\)</span> is even, but it may be non-zero if <span class="math inline">\(n\)</span> is odd.</p>
+</div>
+<p>&nbsp;</p>
+<section id="example-a-3-times-3-anti-diagonal-matrix" class="level4"><h4 class="anchored" data-anchor-id="example-a-3-times-3-anti-diagonal-matrix">Example: A <span class="math inline">\(3 \times 3\)</span> Anti-Diagonal Matrix</h4>
+<p>In a <span class="math inline">\(3 \times 3\)</span> matrix, the anti-diagonal entries are those where <span class="math inline">\(i + j = 4\)</span>:</p>
+<p><span class="math display">\[A_{3\times 3} =\begin{bmatrix}
+0 &amp; 0 &amp; 7\\
+0 &amp; 2 &amp; 0\\
+-3 &amp; 0 &amp; 0
+\end{bmatrix}\]</span></p>
+<p>with</p>
+<p><span class="math inline">\(\text{diag}(A) = \{0, 2, 0\}\)</span></p>
+<p><span class="math inline">\(\text{tr}(A) = 0 + 2 + 0 = 2\)</span></p>
+<p><span class="math inline">\(\text{anti-diag}(A) = \{7, 2, -3\}\)</span></p>
+<p>&nbsp;</p>
+<section id="implementation-in-r-6" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-6"><em>Implementation in R</em></h5>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">7</span>,</span>
+<span>             <span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">0</span>,</span>
+<span>            <span class="op">-</span><span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">entries</span>, nrow <span class="op">=</span> <span class="fl">3</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">A</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    0    0    7
+[2,]    0    2    0
+[3,]   -3    0    0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Main diagonal </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span>      </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0 2 0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Trace</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Anti-diagonal </span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span>
+<span><span class="va">A</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span>, <span class="va">n</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  7  2 -3</code></pre>
+</div>
+</div>
+<p>&nbsp;</p>
+</section></section></section><section id="the-triangular-matrices" class="level3" data-number="1.2.5"><h3 data-number="1.2.5" class="anchored" data-anchor-id="the-triangular-matrices">
+<span class="header-section-number">1.2.5</span> The Triangular Matrices</h3>
 <p>A square matrix <span class="math inline">\(A\)</span> is called <strong>upper triangular</strong> if all entries below the main diagonal are zero, that is, <span class="math inline">\(a_{ij} = 0\)</span> for all <span class="math inline">\(i &gt; j\)</span>.</p>
 <p><span class="math display">\[A = \begin{bmatrix}
 a_{11} &amp; a_{12} &amp; \dots &amp; a_{1n} \\
@@ -594,17 +715,17 @@ a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn}
 \end{bmatrix}\]</span></p>
 <p>&nbsp;</p>
 <div class="content-box-white">
-<p><strong>NOTE:</strong> A matrix that is simultaneously upper and lower triangular has zeros both above and below the main diagonal, and is therefore necessarily a diagonal matrix.</p>
+<p><strong>NOTE:</strong> A square matrix that is simultaneously upper and lower triangular has zeros both above and below the main diagonal, and is therefore necessarily a diagonal matrix.</p>
 </div>
 <p>&nbsp;</p>
 <section id="example-3-times-3-triangular-matrices" class="level4"><h4 class="anchored" data-anchor-id="example-3-times-3-triangular-matrices">Example: <span class="math inline">\(3 \times 3\)</span> Triangular Matrices</h4>
 <p><span class="math display">\[A_{upper} = \begin{bmatrix} \mathbf{2} &amp; 3 &amp; -1 \\ 0 &amp; \mathbf{5} &amp; 4 \\ 0 &amp; 0 &amp; \mathbf{7} \end{bmatrix}, \qquad A_{lower} = \begin{bmatrix} \mathbf{2} &amp; 0 &amp; 0 \\ 3 &amp; \mathbf{5} &amp; 0 \\ -1 &amp; 4 &amp; \mathbf{7} \end{bmatrix}\]</span> &nbsp;</p>
-<section id="implementation-in-r-6" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-6"><em>Implementation in R</em></h5>
+<section id="implementation-in-r-7" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-7"><em>Implementation in R</em></h5>
 <ul>
 <li>The upper triangular matrix</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define the entries for the upper matrix</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define the entries for the upper matrix</span></span>
 <span><span class="va">entries_upper</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="op">-</span><span class="fl">1</span>, </span>
 <span>                   <span class="fl">0</span>, <span class="fl">5</span>,  <span class="fl">4</span>, </span>
 <span>                   <span class="fl">0</span>, <span class="fl">0</span>,  <span class="fl">7</span><span class="op">)</span></span>
@@ -623,7 +744,7 @@ a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn}
 <li>The lower triangular matrix</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define the entries for the lower matrix</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define the entries for the lower matrix</span></span>
 <span><span class="va">entries_lower</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0</span>,  <span class="fl">0</span>, </span>
 <span>                   <span class="fl">3</span>, <span class="fl">5</span>,  <span class="fl">0</span>, </span>
 <span>                  <span class="op">-</span><span class="fl">1</span>, <span class="fl">4</span>,  <span class="fl">7</span><span class="op">)</span></span>
@@ -640,8 +761,8 @@ a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-identity-matrix" class="level3" data-number="1.2.5"><h3 data-number="1.2.5" class="anchored" data-anchor-id="the-identity-matrix">
-<span class="header-section-number">1.2.5</span> The Identity Matrix</h3>
+</section></section></section><section id="the-identity-matrix" class="level3" data-number="1.2.6"><h3 data-number="1.2.6" class="anchored" data-anchor-id="the-identity-matrix">
+<span class="header-section-number">1.2.6</span> The Identity Matrix</h3>
 <p>An <strong>identity matrix</strong>, typically denoted as <span class="math inline">\(I\)</span>, is a square matrix whose entries are given by the Kronecker delta <span class="math inline">\(\delta_{ij}\)</span>:</p>
 <p><span class="math display">\[\delta_{ij} = \begin{cases} 1 &amp; \text{if } i = j \\ 0 &amp; \text{if } i \neq j \end{cases}\]</span></p>
 <p>That is, it has ones on the main diagonal and zeros everywhere else. In explicit form, it is written as:</p>
@@ -661,10 +782,10 @@ a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn}
     0 &amp; 0 &amp; 1
   \end{bmatrix}\]</span></p>
 <p>&nbsp;</p>
-<section id="implementation-in-r-7" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-7"><em>Implementation in R</em></h5>
+<section id="implementation-in-r-8" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-8"><em>Implementation in R</em></h5>
 <p>In R, the <code><a href="https://rdrr.io/r/base/diag.html">diag()</a></code> function is used to generate identity matrices. When passed a single integer <span class="math inline">\(n\)</span>, it returns an <span class="math inline">\(n \times n\)</span> identity matrix.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">I</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">I</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="va">I</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
@@ -674,8 +795,8 @@ a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-symmetric-matrix" class="level3" data-number="1.2.6"><h3 data-number="1.2.6" class="anchored" data-anchor-id="the-symmetric-matrix">
-<span class="header-section-number">1.2.6</span> The Symmetric Matrix</h3>
+</section></section></section><section id="the-symmetric-matrix" class="level3" data-number="1.2.7"><h3 data-number="1.2.7" class="anchored" data-anchor-id="the-symmetric-matrix">
+<span class="header-section-number">1.2.7</span> The Symmetric Matrix</h3>
 <p>A square matrix <span class="math inline">\(A\)</span> is <strong>symmetric</strong> if its entries satisfy:</p>
 <p><span class="math display">\[a_{ij} = a_{ji} \quad \text{for all } i, j\]</span></p>
 <p>This condition implies that the matrix is symmetric with respect to its main diagonal. Equivalently, interchanging its rows and columns leaves the matrix unchanged.</p>
@@ -697,9 +818,9 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
   \end{bmatrix}\]</span></p>
 <p>In this matrix, the entries at positions (1,2) and (2,1) are both -4, the entries at positions (1,3) and (3,1) are both 2, and the entries at positions (2,3) and (3,2) are both -2. This reflects the symmetry property.</p>
 <p>&nbsp;</p>
-<section id="implementation-in-r-8" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-8"><em>Implementation in R</em></h5>
+<section id="implementation-in-r-9" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-9"><em>Implementation in R</em></h5>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define entries row-wise</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define entries row-wise</span></span>
 <span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">13</span>, <span class="op">-</span><span class="fl">4</span>, <span class="fl">2</span>,</span>
 <span>            <span class="op">-</span><span class="fl">4</span>, <span class="fl">11</span>, <span class="op">-</span><span class="fl">2</span>,</span>
 <span>             <span class="fl">2</span>, <span class="op">-</span><span class="fl">2</span>, <span class="fl">8</span><span class="op">)</span></span>
@@ -715,8 +836,8 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-antisymmetric-matrix" class="level3" data-number="1.2.7"><h3 data-number="1.2.7" class="anchored" data-anchor-id="the-antisymmetric-matrix">
-<span class="header-section-number">1.2.7</span> The Antisymmetric Matrix</h3>
+</section></section></section><section id="the-antisymmetric-matrix" class="level3" data-number="1.2.8"><h3 data-number="1.2.8" class="anchored" data-anchor-id="the-antisymmetric-matrix">
+<span class="header-section-number">1.2.8</span> The Antisymmetric Matrix</h3>
 <p>A square matrix <span class="math inline">\(A\)</span> is <strong>antisymmetric</strong> (or skew-symmetric) if its entries satisfy:<span class="math display">\[a_{ij} = -a_{ji} \quad \text{for all } i, j\]</span></p>
 <p>A key property of antisymmetric matrices is that all elements on the main diagonal must be zero, because for <span class="math inline">\(i=j\)</span>, the condition <span class="math inline">\(a_{ii} = -a_{ii}\)</span> can only be true if <span class="math inline">\(a_{ii} = 0\)</span>.</p>
 <p>In its general form, entries below the diagonal are the negative reflections of those above it:</p>
@@ -735,9 +856,9 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 \end{bmatrix}\]</span></p>
 <p>In this matrix, notice that the diagonal is all zeros. Furthermore, the entries at positions (1,2) and (2,1) are 5 and -5, (1,3) and (3,1) are -2 and 2, and (2,3) and (3,2) are 1 and -1. This reflects the antisymmetry property.</p>
 <p>&nbsp;</p>
-<section id="implementation-in-r-9" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-9"><em>Implementation in R</em></h5>
+<section id="implementation-in-r-10" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-10"><em>Implementation in R</em></h5>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define entries row-wise</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define entries row-wise</span></span>
 <span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="fl">0</span>,  <span class="fl">5</span>, <span class="op">-</span><span class="fl">2</span>,</span>
 <span>             <span class="op">-</span><span class="fl">5</span>,  <span class="fl">0</span>,  <span class="fl">1</span>,</span>
 <span>              <span class="fl">2</span>, <span class="op">-</span><span class="fl">1</span>,  <span class="fl">0</span><span class="op">)</span></span>

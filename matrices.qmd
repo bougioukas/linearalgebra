@@ -49,7 +49,7 @@ $$A_{3 \times 4}= \begin{bmatrix}
     2 & 0 & 1 & 3
   \end{bmatrix}$$
 
-is a $3 \times 4$ matrix over the field of real numbers ($\mathbb{R}$). Its first row vector and first column vector are, respectively:
+is a $3 \times 4$ rectangular matrix over the field of real numbers ($\mathbb{R}$). Its first row vector and first column vector are, respectively:
 
 $$
 r_1 = \begin{bmatrix} 4 & 0 & 2 & 1 \end{bmatrix}, \qquad c_1 = \begin{bmatrix} 4 \\ 3 \\ 2 \end{bmatrix}
@@ -360,7 +360,7 @@ a_{n1}              & a_{n2}              & \cdots & \boldsymbol{a_{nn}}
 
  
 
-The **main diagonal** (or principal diagonal) of this matrix consists of the entries $a_{ij}$ for which the row index equals the column index, that is, $i = j$ (shown in bold in the matrix), denoted:
+- The **main diagonal** (or principal diagonal) of this matrix consists of the entries $a_{ij}$ for which the row index equals the column index, that is, $i = j$ (shown in bold in the matrix), denoted:
 
 $$\text{diag}(A) = \{a_{11}, a_{22}, \dots, a_{nn}\}$$
 
@@ -373,6 +373,14 @@ All remaining entries, where $i \neq j$, are referred to as off-diagonal element
 
 For a $3 \times 4$ matrix, where $\min(3, 4) = 3$, the main diagonal contains exactly three entries. The diagonal terminates before reaching the final column.
 
+$$A_{3 \times 4} = \begin{bmatrix}
+\boldsymbol{a_{11}} & a_{12} & a_{13} & a_{14} \\
+a_{21} & \boldsymbol{a_{22}} & a_{23} & a_{24} \\
+a_{31} & a_{32} & \boldsymbol{a_{33}} & a_{34}
+\end{bmatrix}$$
+
+For example:
+
 $$A_{3 \times 4} = \begin{bmatrix} \mathbf{4} & 0 & 2 & 1 \\ 3 & \mathbf{1} & 4 & 2 \\ 2 & 0 & \mathbf{1} & 3 \end{bmatrix}$$
 
 In this instance, $\text{diag}(A) = \{4, 1, 1\}$.
@@ -382,14 +390,37 @@ In this instance, $\text{diag}(A) = \{4, 1, 1\}$.
 
 For a $4 \times 3$ matrix, where $\min(4, 3) = 3$, the diagonal also contains three entries. Here, the diagonal is exhausted before reaching the final row.
 
-$$B_{4 \times 3} = \begin{bmatrix} \mathbf{2} & 1 & 0 \\ 3 & \mathbf{-1} & 4 \\ 1 & 2 & \mathbf{5} \\ 0 & 3 & 1 \end{bmatrix}$$
+$$A_{4 \times 3} = \begin{bmatrix}
+\boldsymbol{a_{11}} & a_{12} & a_{13} \\
+a_{21} & \boldsymbol{a_{22}} & a_{23} \\
+a_{31} & a_{32} & \boldsymbol{a_{33}} \\
+a_{41} & a_{42} & a_{43}
+\end{bmatrix}$$
+
+For example:
+
+$$A_{4 \times 3} = \begin{bmatrix} \mathbf{2} & 1 & 0 \\ 3 & \mathbf{-1} & 4 \\ 1 & 2 & \mathbf{5} \\ 0 & 3 & 1 \end{bmatrix}$$
 
 Here, $\text{diag}(B) = \{2, -1, 5\}$. Note that the fourth row contains no diagonal entry because the index $i=4$ has no corresponding column index $j=4$.
 :::
 
  
 
-The **trace** of a square matrix $A_{n \times n}$ is the sum of its main diagonal entries, denoted by $\text{tr}(A)$:
+- In a square matrix $A$ of order $n$, the **anti-diagonal** (also known as the secondary diagonal) consists of the entries $a_{i,j}$ for which $i + j = n + 1$, running from the upper-right corner to the lower-left corner.
+
+
+$$A_{n \times n} = \begin{bmatrix}
+a_{11}              & a_{12}  & \cdots & \boldsymbol{a_{1n}}     \\
+a_{21}              & \cdots  & \boldsymbol{a_{2,n-1}} & a_{2n} \\
+\vdots              & \cdot \! \cdot \! \cdot \\
+\boldsymbol{a_{n1}} & a_{n2}  & \cdots & a_{nn}
+\end{bmatrix}$$
+
+
+
+ 
+
+- The **trace** of a square matrix $A_{n \times n}$ is the sum of its **main diagonal** entries, denoted by $\text{tr}(A)$:
 
 $$\text{tr}(A) = a_{11} + a_{22} + \cdots + a_{nn} = \sum_{i=1}^{n} a_{ii}$$
 
@@ -409,11 +440,18 @@ $$A_{3 \times 3} = \begin{bmatrix}
 
 
 
-The main diagonal entries (shown in bold) are $a_{11} = 5$, $a_{22} = -1$, and $a_{33} = -1$, giving:
+The main diagonal entries (shown in bold) are $a_{11} = 5$, $a_{22} = -1$, and $a_{33} = -1$, hence
 
 $$\text{diag}(A) = \{5, -1, -1\}$$  
 
 $$\text{tr}(A) = 5 + (-1) + (-1) = 3$$
+
+
+The anti-diagonal entries, for which $i + j = 4$, are $a_{13} = 0$, $a_{22} = -1$, and $a_{31} = 4$, hence
+
+$$\text{anti-diag}(A) = \{0, -1, 4\}$$
+
+Note that $a_{22} = -1$ lies on both the main diagonal and the anti-diagonal. This occurs in every square matrix of odd order, where the central entry belongs to both diagonals.
 
  
 
@@ -447,6 +485,14 @@ The trace is not available as a standalone function in base R, but is straightfo
 sum(diag(A))
 ```
 
+Extracting the anti-diagonal in R requires indexing. This can be achieved using `cbind()` to pair row and column indices appropriately:
+
+```{r}
+# Anti-diagonal 
+n <- nrow(A)
+A[cbind(1:n, n:1)]
+```
+
 
  
 
@@ -473,7 +519,13 @@ $$A_{3\times 3} =
   \end{bmatrix}$$
 
 
-with $\text{diag}(A) = \{4, -1, -5\}$ and $\text{tr}(D) = 4 + (-1) + (-5) = -2$.
+with 
+
+$\text{diag}(A) = \{4, -1, -5\}$
+
+$\text{tr}(A) = 4 + (-1) + (-5) = -2$
+
+$\text{anti-diag}(A) = \{0, -1, 0\}$
 
  
 
@@ -490,15 +542,107 @@ A
 ```
 
 
+```{r}
+# Main diagonal 
+diag(A)      
+
+```
+
 
 ```{r}
-# Main diagonal and trace
-diag(A)      
+# Trace
 sum(diag(A))
 ```
 
 
+```{r}
+# Anti-diagonal 
+n <- nrow(A)
+A[cbind(1:n, n:1)]
+```
+
+
  
+
+### The Anti-Diagonal Matrix
+
+An **anti-diagonal matrix** (or skew-diagonal matrix) is a square matrix where all entries are zero except for those on the diagonal going from the lower-left corner to the upper-right corner. 
+
+Formally, a square matrix $A$ is anti-diagonal if $a_{ij} = 0$ whenever $i + j \neq n + 1$:
+
+$$A_{n \times n} = \begin{bmatrix}
+0      & 0      & \cdots & 0      & a_{1n} \\
+0      & 0      & \cdots & a_{2,n-1} & 0   \\
+\vdots & \vdots & \vdots & \vdots & \vdots \\
+0      & a_{n-1,2} & \cdots & 0   & 0      \\
+a_{n1} & 0      & \cdots & 0      & 0
+\end{bmatrix}$$
+
+ 
+
+::: content-box-white
+**NOTE:** An anti-diagonal matrix $A$ of size $n \times n$ has nonzero entries only on the anti-diagonal (from the top-right to the bottom-left). The trace of $A$ is guaranteed to be zero if $n$ is even, but it may be non-zero if $n$ is odd.
+:::
+
+
+ 
+
+#### Example: A $3 \times 3$ Anti-Diagonal Matrix
+
+In a $3 \times 3$ matrix, the anti-diagonal entries are those where $i + j = 4$:
+
+$$A_{3\times 3} =\begin{bmatrix}
+0 & 0 & 7\\
+0 & 2 & 0\\
+-3 & 0 & 0
+\end{bmatrix}$$
+
+
+with 
+
+$\text{diag}(A) = \{0, 2, 0\}$
+
+$\text{tr}(A) = 0 + 2 + 0 = 2$
+
+$\text{anti-diag}(A) = \{7, 2, -3\}$
+
+ 
+
+##### *Implementation in R*
+
+```{r}
+entries <- c(0, 0, 7,
+             0, 2, 0,
+            -3, 0, 0)
+
+A <- matrix(entries, nrow = 3, byrow = TRUE)
+
+A
+```
+
+
+```{r}
+# Main diagonal 
+diag(A)      
+
+```
+
+
+```{r}
+# Trace
+sum(diag(A))
+```
+
+
+```{r}
+# Anti-diagonal 
+n <- nrow(A)
+A[cbind(1:n, n:1)]
+```
+
+
+ 
+
 
 ### The Triangular Matrices
 
@@ -523,7 +667,7 @@ a_{n1} & a_{n2} & \dots & a_{nn}
  
 
 ::: content-box-white
-**NOTE:** A matrix that is simultaneously upper and lower triangular has zeros both above and below the main diagonal, and is therefore necessarily a diagonal matrix.
+**NOTE:** A square matrix that is simultaneously upper and lower triangular has zeros both above and below the main diagonal, and is therefore necessarily a diagonal matrix.
 :::
 
 
