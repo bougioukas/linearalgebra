@@ -191,8 +191,9 @@ window.Quarto = {
   <li><a href="#the-anti-diagonal-matrix" id="toc-the-anti-diagonal-matrix" class="nav-link" data-scroll-target="#the-anti-diagonal-matrix"><span class="header-section-number">1.2.4</span> The Anti-Diagonal Matrix</a></li>
   <li><a href="#the-triangular-matrices" id="toc-the-triangular-matrices" class="nav-link" data-scroll-target="#the-triangular-matrices"><span class="header-section-number">1.2.5</span> The Triangular Matrices</a></li>
   <li><a href="#the-identity-matrix" id="toc-the-identity-matrix" class="nav-link" data-scroll-target="#the-identity-matrix"><span class="header-section-number">1.2.6</span> The Identity Matrix</a></li>
-  <li><a href="#the-symmetric-matrix" id="toc-the-symmetric-matrix" class="nav-link" data-scroll-target="#the-symmetric-matrix"><span class="header-section-number">1.2.7</span> The Symmetric Matrix</a></li>
-  <li><a href="#the-antisymmetric-matrix" id="toc-the-antisymmetric-matrix" class="nav-link" data-scroll-target="#the-antisymmetric-matrix"><span class="header-section-number">1.2.8</span> The Antisymmetric Matrix</a></li>
+  <li><a href="#the-permutation-matrix" id="toc-the-permutation-matrix" class="nav-link" data-scroll-target="#the-permutation-matrix"><span class="header-section-number">1.2.7</span> The Permutation Matrix</a></li>
+  <li><a href="#the-symmetric-matrix" id="toc-the-symmetric-matrix" class="nav-link" data-scroll-target="#the-symmetric-matrix"><span class="header-section-number">1.2.8</span> The Symmetric Matrix</a></li>
+  <li><a href="#the-antisymmetric-matrix" id="toc-the-antisymmetric-matrix" class="nav-link" data-scroll-target="#the-antisymmetric-matrix"><span class="header-section-number">1.2.9</span> The Antisymmetric Matrix</a></li>
   </ul>
 </li>
   <li>
@@ -233,13 +234,13 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 <div class="content-box-white">
 <p><strong>NOTE:</strong> While <span class="math inline">\(\mathbb{K}\)</span> usually represents the real numbers (<span class="math inline">\(\mathbb{R}\)</span>) or complex numbers (<span class="math inline">\(\mathbb{C}\)</span>), it can also represent other fields.</p>
 </div>
-<p>The <span class="math inline">\(m\)</span> rows of matrix <span class="math inline">\(A\)</span> are <span class="math inline">\(1 \times n\)</span> matrices, also called <strong>row vectors</strong>:</p>
+<p>The <span class="math inline">\(m\)</span> rows of matrix <span class="math inline">\(A\)</span> are <span class="math inline">\(1 \times n\)</span> matrices, also called <strong>row vectors</strong> (or row matrix):</p>
 <p><span class="math inline">\(r_1 = \begin{bmatrix} a_{11} &amp; a_{12} &amp; ... &amp; a_{1n} \end{bmatrix}\)</span></p>
 <p><span class="math inline">\(r_2 = \begin{bmatrix} a_{21} &amp; a_{22} &amp; ... &amp; a_{2n} \end{bmatrix}\)</span></p>
 <p><span class="math inline">\(\vdots\)</span></p>
 <p><span class="math inline">\(r_m = \begin{bmatrix} a_{m1} &amp; a_{m2} &amp; ... &amp; a_{mn} \end{bmatrix}\)</span></p>
 <p>&nbsp;</p>
-<p>The <span class="math inline">\(n\)</span> columns of <span class="math inline">\(A\)</span> are <span class="math inline">\(m \times 1\)</span> matrices, are called <strong>column vectors</strong>:</p>
+<p>The <span class="math inline">\(n\)</span> columns of <span class="math inline">\(A\)</span> are <span class="math inline">\(m \times 1\)</span> matrices, are called <strong>column vectors</strong> (or column matrix):</p>
 <p><span class="math inline">\(c_1 = \begin{bmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{m1} \end{bmatrix}\)</span>, <span class="math inline">\(c_2 = \begin{bmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{m2} \end{bmatrix}\)</span>, …, <span class="math inline">\(c_n = \begin{bmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn} \end{bmatrix}\)</span></p>
 <p>&nbsp;</p>
 <section id="example-a-3-times-4-matrix" class="level4"><h4 class="anchored" data-anchor-id="example-a-3-times-4-matrix">Example: A <span class="math inline">\(3 \times 4\)</span> Matrix</h4>
@@ -804,8 +805,71 @@ a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-symmetric-matrix" class="level3" data-number="1.2.7"><h3 data-number="1.2.7" class="anchored" data-anchor-id="the-symmetric-matrix">
-<span class="header-section-number">1.2.7</span> The Symmetric Matrix</h3>
+</section></section></section><section id="the-permutation-matrix" class="level3" data-number="1.2.7"><h3 data-number="1.2.7" class="anchored" data-anchor-id="the-permutation-matrix">
+<span class="header-section-number">1.2.7</span> The Permutation Matrix</h3>
+<p>A permutation matrix is a square matrix with exactly one entry equal to <span class="math inline">\(1\)</span> in each row and each column, and <span class="math inline">\(0\)</span> elsewhere. Equivalently, it is obtained by permuting the rows (or columns) of an identity matrix.</p>
+<p>Formally, let <span class="math inline">\(\sigma\)</span> be a permutation of the set <span class="math inline">\(\{1, 2, \dots, n\}\)</span>. The associated permutation matrix</p>
+<p><span class="math display">\[P_{n \times n}= [p_{ij}] = \begin{bmatrix}
+p_{11} &amp; p_{12} &amp; \dots &amp; p_{1n} \\
+p_{21} &amp; p_{22} &amp; \dots &amp; p_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+p_{n1} &amp; p_{n2} &amp; \dots &amp; p_{nn}
+\end{bmatrix}\]</span></p>
+<p>is defined entry-wise by:</p>
+<p><span class="math display">\[\quad p_{ij} = \begin{cases} 1 &amp; \text{if } j = \sigma(i) \\ 0 &amp; \text{otherwise} \end{cases}\]</span></p>
+<p>This definition states that in each row <span class="math inline">\(i\)</span>, the entry <span class="math inline">\(1\)</span> is placed in column <span class="math inline">\(\sigma(i)\)</span>. This is equivalent to saying that <span class="math inline">\(P\)</span> is formed by taking the rows of the identity matrix <span class="math inline">\(I_n\)</span> and reordering them according to <span class="math inline">\(\sigma\)</span>.</p>
+<p>&nbsp;</p>
+<section id="example-a-3-times-3-permutation-matrix" class="level4"><h4 class="anchored" data-anchor-id="example-a-3-times-3-permutation-matrix">Example: A <span class="math inline">\(3 \times 3\)</span> Permutation Matrix</h4>
+<p>Let us consider a permutation <span class="math inline">\(\sigma\)</span> of the set <span class="math inline">\(\{1, 2, 3\}\)</span> defined as:</p>
+<p><span class="math display">\[\sigma(1) = 2, \quad \sigma(2) = 1, \quad \sigma(3) = 3\]</span></p>
+<p>We evaluate each row (<span class="math inline">\(i\)</span>) against each column (<span class="math inline">\(j\)</span>):</p>
+<ul>
+<li>For row <span class="math inline">\(i = 1\)</span>:</li>
+</ul>
+<p><span class="math display">\[\begin{aligned}
+j = 1 \neq \sigma(1) \rightarrow p_{11} = 0,\ \ \
+j = 2 = \sigma(1) \rightarrow p_{12} = 1, \ \ \
+j = 3 \neq \sigma(1) \rightarrow p_{13} = 0
+\end{aligned}\]</span></p>
+<ul>
+<li>For row <span class="math inline">\(i = 2\)</span>:</li>
+</ul>
+<p><span class="math display">\[\begin{aligned}
+j = 1 = \sigma(2) \rightarrow p_{21} = 1 ,\ \ \
+j = 2 \neq \sigma(2) \rightarrow p_{22} = 0 ,\ \ \
+j = 3 \neq \sigma(2) \rightarrow p_{23} = 0 ,\ \ \
+\end{aligned}\]</span></p>
+<ul>
+<li>For row <span class="math inline">\(i = 3\)</span>:</li>
+</ul>
+<p><span class="math display">\[\begin{aligned}
+j = 1 \neq \sigma(3) \rightarrow p_{31} = 0,\ \ \
+j = 2 \neq \sigma(3) \rightarrow p_{32} = 0,\ \ \
+j = 3 = \sigma(3) \rightarrow p_{33} = 1
+\end{aligned}\]</span></p>
+<p>By arranging these values according to the given permutation, we construct the corresponding permutation matrix <span class="math inline">\(P_{3 \times 3}\)</span>:</p>
+<p><span class="math display">\[P = \begin{bmatrix}
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}\]</span></p>
+<p>This matrix is obtained from the identity matrix by swapping the first and second rows, while leaving the third row unchanged. Hence, it is a permutation matrix corresponding to <span class="math inline">\(\sigma\)</span>.</p>
+<p>&nbsp;</p>
+<section id="implementation-in-r-9" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-9"><em>Implementation in R</em></h5>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># permutation matrix (swap rows 1 and 2 of identity matrix)</span></span>
+<span><span class="va">P</span> <span class="op">&lt;-</span> <span class="va">I</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>, <span class="op">]</span></span>
+<span><span class="va">P</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    0    1    0
+[2,]    1    0    0
+[3,]    0    0    1</code></pre>
+</div>
+</div>
+<p>&nbsp;</p>
+</section></section></section><section id="the-symmetric-matrix" class="level3" data-number="1.2.8"><h3 data-number="1.2.8" class="anchored" data-anchor-id="the-symmetric-matrix">
+<span class="header-section-number">1.2.8</span> The Symmetric Matrix</h3>
 <p>A square matrix <span class="math inline">\(A\)</span> is <strong>symmetric</strong> if its entries satisfy:</p>
 <p><span class="math display">\[a_{ij} = a_{ji} \quad \text{for all } i, j\]</span></p>
 <p>This condition implies that the matrix is symmetric with respect to its main diagonal. Equivalently, interchanging its rows and columns leaves the matrix unchanged.</p>
@@ -827,9 +891,9 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
   \end{bmatrix}\]</span></p>
 <p>In this matrix, the entries at positions (1,2) and (2,1) are both -4, the entries at positions (1,3) and (3,1) are both 2, and the entries at positions (2,3) and (3,2) are both -2. This reflects the symmetry property.</p>
 <p>&nbsp;</p>
-<section id="implementation-in-r-9" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-9"><em>Implementation in R</em></h5>
+<section id="implementation-in-r-10" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-10"><em>Implementation in R</em></h5>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define entries row-wise</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define entries row-wise</span></span>
 <span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">13</span>, <span class="op">-</span><span class="fl">4</span>, <span class="fl">2</span>,</span>
 <span>            <span class="op">-</span><span class="fl">4</span>, <span class="fl">11</span>, <span class="op">-</span><span class="fl">2</span>,</span>
 <span>             <span class="fl">2</span>, <span class="op">-</span><span class="fl">2</span>, <span class="fl">8</span><span class="op">)</span></span>
@@ -845,8 +909,8 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-antisymmetric-matrix" class="level3" data-number="1.2.8"><h3 data-number="1.2.8" class="anchored" data-anchor-id="the-antisymmetric-matrix">
-<span class="header-section-number">1.2.8</span> The Antisymmetric Matrix</h3>
+</section></section></section><section id="the-antisymmetric-matrix" class="level3" data-number="1.2.9"><h3 data-number="1.2.9" class="anchored" data-anchor-id="the-antisymmetric-matrix">
+<span class="header-section-number">1.2.9</span> The Antisymmetric Matrix</h3>
 <p>A square matrix <span class="math inline">\(A\)</span> is <strong>antisymmetric</strong> (or skew-symmetric) if its entries satisfy:<span class="math display">\[a_{ij} = -a_{ji} \quad \text{for all } i, j\]</span></p>
 <p>A key property of antisymmetric matrices is that all elements on the main diagonal must be zero, because for <span class="math inline">\(i=j\)</span>, the condition <span class="math inline">\(a_{ii} = -a_{ii}\)</span> can only be true if <span class="math inline">\(a_{ii} = 0\)</span>.</p>
 <p>In its general form, entries below the main diagonal are the negative reflections of those above it:</p>
@@ -865,9 +929,9 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 \end{bmatrix}\]</span></p>
 <p>In this matrix, notice that the diagonal is all zeros. Furthermore, the entries at positions (1,2) and (2,1) are 5 and -5, (1,3) and (3,1) are -2 and 2, and (2,3) and (3,2) are 1 and -1. This reflects the antisymmetry property.</p>
 <p>&nbsp;</p>
-<section id="implementation-in-r-10" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-10"><em>Implementation in R</em></h5>
+<section id="implementation-in-r-11" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-11"><em>Implementation in R</em></h5>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define entries row-wise</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define entries row-wise</span></span>
 <span><span class="va">entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="fl">0</span>,  <span class="fl">5</span>, <span class="op">-</span><span class="fl">2</span>,</span>
 <span>             <span class="op">-</span><span class="fl">5</span>,  <span class="fl">0</span>,  <span class="fl">1</span>,</span>
 <span>              <span class="fl">2</span>, <span class="op">-</span><span class="fl">1</span>,  <span class="fl">0</span><span class="op">)</span></span>
@@ -886,7 +950,7 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 <span class="header-section-number">1.3</span> The Algebra of Matrices</h2>
 <section id="equality-of-matrices" class="level3" data-number="1.3.1"><h3 data-number="1.3.1" class="anchored" data-anchor-id="equality-of-matrices">
 <span class="header-section-number">1.3.1</span> Equality of Matrices</h3>
-<p>Any meaningful algebra requires a precise notion of equality. Two matrices <span class="math inline">\(A = [a_{ij}]_{m \times n}\)</span> and <span class="math inline">\(B = [b_{ij}]_{p \times q}\)</span> are equal, written <span class="math inline">\(A = B\)</span>, if and only if they have the same dimensions and identical corresponding entries:</p>
+<p>Any meaningful algebra requires a precise notion of equality. Two matrices <span class="math inline">\(A = [a_{ij}]_{m \times n}\)</span> and <span class="math inline">\(B = [b_{ij}]_{p \times q}\)</span> are equal, written <span class="math inline">\(A = B\)</span>, if and only if they have the same size and identical corresponding entries:</p>
 <ul>
 <li>
 <span class="math inline">\(m = p\)</span> and <span class="math inline">\(n = q\)</span>
@@ -900,10 +964,10 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 <p><span class="math display">\[A = \begin{bmatrix} 2 &amp; 5 \\ -1 &amp; 0 \end{bmatrix}, \quad B = \begin{bmatrix} 2 &amp; 5 \\ -1 &amp; 0 \end{bmatrix}\]</span></p>
 <p>Since both matrices are <span class="math inline">\(2 \times 2\)</span> and every entry matches its counterpart, we conclude that <span class="math inline">\(A = B\)</span>.</p>
 <p>&nbsp;</p>
-<section id="implementation-in-r-11" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-11"><em>Implementation in R</em></h5>
+<section id="implementation-in-r-12" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-12"><em>Implementation in R</em></h5>
 <p>We construct both matrices and verify equality.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,  <span class="fl">5</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,  <span class="fl">5</span>,</span>
 <span>             <span class="op">-</span><span class="fl">1</span>,  <span class="fl">0</span><span class="op">)</span>,</span>
 <span>            nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -913,7 +977,7 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 </div>
 <p>First, we confirm that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> have the same dimensions:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Check dimensions</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Check dimensions</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">B</span><span class="op">)</span>   <span class="co"># TRUE TRUE — number of rows match, number of columns match</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE TRUE</code></pre>
@@ -921,7 +985,7 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 </div>
 <p>Then, we verify that every corresponding entry satisfies <span class="math inline">\(a_{ij} = b_{ij}\)</span>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Check entry-wise equality </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Check entry-wise equality </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">A</span> <span class="op">==</span> <span class="va">B</span><span class="op">)</span>   <span class="co"># TRUE — all entries match</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
