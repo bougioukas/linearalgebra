@@ -791,7 +791,7 @@ We evaluate each row ($i$) against each column ($j$):
 
 $$\begin{aligned}
 j = 1 \neq \sigma(1) \rightarrow p_{11} = 0,\ \ \
-j = 2 = \sigma(1) \rightarrow p_{12} = 1, \ \ \
+j = 2 = \sigma(1) \rightarrow \boxed{p_{12} = 1}, \ \ \
 j = 3 \neq \sigma(1) \rightarrow p_{13} = 0
 \end{aligned}$$
 
@@ -799,7 +799,7 @@ j = 3 \neq \sigma(1) \rightarrow p_{13} = 0
 - For row $i = 2$:
 
 $$\begin{aligned}
-j = 1 = \sigma(2) \rightarrow p_{21} = 1 ,\ \ \
+j = 1 = \sigma(2) \rightarrow \boxed{p_{21} = 1} ,\ \ \
 j = 2 \neq \sigma(2) \rightarrow p_{22} = 0 ,\ \ \
 j = 3 \neq \sigma(2) \rightarrow p_{23} = 0 ,\ \ \
 \end{aligned}$$
@@ -810,7 +810,7 @@ j = 3 \neq \sigma(2) \rightarrow p_{23} = 0 ,\ \ \
 $$\begin{aligned}
 j = 1 \neq \sigma(3) \rightarrow p_{31} = 0,\ \ \
 j = 2 \neq \sigma(3) \rightarrow p_{32} = 0,\ \ \
-j = 3 = \sigma(3) \rightarrow p_{33} = 1
+j = 3 = \sigma(3) \rightarrow \boxed{p_{33} = 1}
 \end{aligned}$$
 
 
