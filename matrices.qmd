@@ -311,7 +311,7 @@ ggplot() +
 ```
 
  
-## Special Types of Matrices
+## Basic Types of Matrices
 
 ### The Null Matrix
 
@@ -938,18 +938,18 @@ A
 ```
 
 
+ 
 
-
-## The Algebra of Matrices
+## Operations on Matrices
 
 ### Equality of Matrices
 
-Any meaningful algebra requires a precise notion of equality. Two matrices $A = [a_{ij}]_{m \times n}$ and $B = [b_{ij}]_{p \times q}$ are equal, written $A = B$, if and only if they have the same size and identical corresponding entries:
+Any meaningful algebra requires a precise notion of equality. Two matrices $A = [a_{ij}]_{m \times n}$ and $B = [b_{ij}]_{p \times q}$ are equal, written $A = B$, if and only if they have the same size and the corresponding entries are equal:
 
 - $m = p$ and $n = q$
 - $a_{ij} = b_{ij}$ for all $i, j$
 
-
+Matrices that are not equal are called **different**. Thus, matrices of different sizes are always different.
 
 
 #### Example: Equal Matrices
@@ -990,6 +990,65 @@ Then, we verify that every corresponding entry satisfies $a_{ij} = b_{ij}$:
 # Check entry-wise equality 
 all(A == B)   # TRUE — all entries match
 ```
+
+
+ 
+
+### Matrix Addition
+
+Given two $m \times n$ matrices $A = [a_{ij}]$ and $B = [b_{ij}]$, their sum $A + B$ is the $m \times n$ matrix defined by:
+
+$$A + B = [a_{ij} + b_{ij}]$$
+
+The sum is obtained by adding corresponding entries; therefore, matrix addition is defined only when the matrices have the same dimensions. In expanded form, the addition is expressed as:
+
+$$\begin{bmatrix} 
+a_{11} & \cdots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{m1} & \cdots & a_{mn} 
+\end{bmatrix} 
++ 
+\begin{bmatrix} 
+b_{11} & \cdots & b_{1n} \\
+\vdots & \ddots & \vdots \\
+b_{m1} & \cdots & b_{mn} 
+\end{bmatrix} 
+= 
+\begin{bmatrix} 
+a_{11} + b_{11} & \cdots & a_{1n} + b_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{m1} + b_{m1} & \cdots & a_{mn} + b_{mn} 
+\end{bmatrix}$$
+
+ 
+
+::: content-box-white
+**Properties of Matrix Addition**
+
+Let $A$, $B$, and $C$ be $m \times n$ matrices, and let $O$ denote the $m \times n$ zero matrix.
+
+**1. Commutative Property:** The order in which we add matrices does not change the result.
+
+$$A + B = B + A$$
+
+
+**2. Associative Property:** When adding three or more matrices, the grouping of the matrices does not change the result.
+
+$$(A + B) + C = A + (B + C)$$
+
+**3. Additive Identity:** Adding the zero matrix $O$ to any matrix $A$ leaves $A$ unchanged.
+
+$$A + O = A$$
+**4. Additive Inverse:** For every matrix $A$, there is a matrix $-A$ (where each entry is the negation of the corresponding entry in $A$) such that their sum is the zero matrix.
+
+$$A + (-A) = \mathbf{O}$$
+
+
+:::
+
+
+
+
 
 
 

@@ -183,7 +183,7 @@ window.Quarto = {
   <ul>
 <li><a href="#matrix-notation" id="toc-matrix-notation" class="nav-link active" data-scroll-target="#matrix-notation"><span class="header-section-number">1.1</span> Matrix Notation</a></li>
   <li>
-<a href="#special-types-of-matrices" id="toc-special-types-of-matrices" class="nav-link" data-scroll-target="#special-types-of-matrices"><span class="header-section-number">1.2</span> Special Types of Matrices</a>
+<a href="#basic-types-of-matrices" id="toc-basic-types-of-matrices" class="nav-link" data-scroll-target="#basic-types-of-matrices"><span class="header-section-number">1.2</span> Basic Types of Matrices</a>
   <ul class="collapse">
 <li><a href="#the-null-matrix" id="toc-the-null-matrix" class="nav-link" data-scroll-target="#the-null-matrix"><span class="header-section-number">1.2.1</span> The Null Matrix</a></li>
   <li><a href="#the-square-matrix" id="toc-the-square-matrix" class="nav-link" data-scroll-target="#the-square-matrix"><span class="header-section-number">1.2.2</span> The Square Matrix</a></li>
@@ -197,9 +197,10 @@ window.Quarto = {
   </ul>
 </li>
   <li>
-<a href="#the-algebra-of-matrices" id="toc-the-algebra-of-matrices" class="nav-link" data-scroll-target="#the-algebra-of-matrices"><span class="header-section-number">1.3</span> The Algebra of Matrices</a>
+<a href="#operations-on-matrices" id="toc-operations-on-matrices" class="nav-link" data-scroll-target="#operations-on-matrices"><span class="header-section-number">1.3</span> Operations on Matrices</a>
   <ul class="collapse">
 <li><a href="#equality-of-matrices" id="toc-equality-of-matrices" class="nav-link" data-scroll-target="#equality-of-matrices"><span class="header-section-number">1.3.1</span> Equality of Matrices</a></li>
+  <li><a href="#matrix-addition" id="toc-matrix-addition" class="nav-link" data-scroll-target="#matrix-addition"><span class="header-section-number">1.3.2</span> Matrix Addition</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -434,8 +435,8 @@ Figure&nbsp;1.1: Planar rotation of the unit square by <span class="math inline"
 </div>
 </div>
 </div>
-</section></section></section><section id="special-types-of-matrices" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="special-types-of-matrices">
-<span class="header-section-number">1.2</span> Special Types of Matrices</h2>
+</section></section></section><section id="basic-types-of-matrices" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="basic-types-of-matrices">
+<span class="header-section-number">1.2</span> Basic Types of Matrices</h2>
 <section id="the-null-matrix" class="level3" data-number="1.2.1"><h3 data-number="1.2.1" class="anchored" data-anchor-id="the-null-matrix">
 <span class="header-section-number">1.2.1</span> The Null Matrix</h3>
 <p>An <span class="math inline">\(m \times n\)</span> matrix is called a <strong>null matrix</strong> (or zero matrix) if all its entries are zero, and is typically denoted by <span class="math inline">\(O_{m \times n}\)</span> or simply <span class="math inline">\(O\)</span>:</p>
@@ -946,11 +947,12 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 [3,]    2   -1    0</code></pre>
 </div>
 </div>
-</section></section></section></section><section id="the-algebra-of-matrices" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="the-algebra-of-matrices">
-<span class="header-section-number">1.3</span> The Algebra of Matrices</h2>
+<p>&nbsp;</p>
+</section></section></section></section><section id="operations-on-matrices" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="operations-on-matrices">
+<span class="header-section-number">1.3</span> Operations on Matrices</h2>
 <section id="equality-of-matrices" class="level3" data-number="1.3.1"><h3 data-number="1.3.1" class="anchored" data-anchor-id="equality-of-matrices">
 <span class="header-section-number">1.3.1</span> Equality of Matrices</h3>
-<p>Any meaningful algebra requires a precise notion of equality. Two matrices <span class="math inline">\(A = [a_{ij}]_{m \times n}\)</span> and <span class="math inline">\(B = [b_{ij}]_{p \times q}\)</span> are equal, written <span class="math inline">\(A = B\)</span>, if and only if they have the same size and identical corresponding entries:</p>
+<p>Any meaningful algebra requires a precise notion of equality. Two matrices <span class="math inline">\(A = [a_{ij}]_{m \times n}\)</span> and <span class="math inline">\(B = [b_{ij}]_{p \times q}\)</span> are equal, written <span class="math inline">\(A = B\)</span>, if and only if they have the same size and the corresponding entries are equal:</p>
 <ul>
 <li>
 <span class="math inline">\(m = p\)</span> and <span class="math inline">\(n = q\)</span>
@@ -959,6 +961,7 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 <span class="math inline">\(a_{ij} = b_{ij}\)</span> for all <span class="math inline">\(i, j\)</span>
 </li>
 </ul>
+<p>Matrices that are not equal are called <strong>different</strong>. Thus, matrices of different sizes are always different.</p>
 <section id="example-equal-matrices" class="level4"><h4 class="anchored" data-anchor-id="example-equal-matrices">Example: Equal Matrices</h4>
 <p>Let</p>
 <p><span class="math display">\[A = \begin{bmatrix} 2 &amp; 5 \\ -1 &amp; 0 \end{bmatrix}, \quad B = \begin{bmatrix} 2 &amp; 5 \\ -1 &amp; 0 \end{bmatrix}\]</span></p>
@@ -991,9 +994,44 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
+<p>&nbsp;</p>
+</section></section></section><section id="matrix-addition" class="level3" data-number="1.3.2"><h3 data-number="1.3.2" class="anchored" data-anchor-id="matrix-addition">
+<span class="header-section-number">1.3.2</span> Matrix Addition</h3>
+<p>Given two <span class="math inline">\(m \times n\)</span> matrices <span class="math inline">\(A = [a_{ij}]\)</span> and <span class="math inline">\(B = [b_{ij}]\)</span>, their sum <span class="math inline">\(A + B\)</span> is the <span class="math inline">\(m \times n\)</span> matrix defined by:</p>
+<p><span class="math display">\[A + B = [a_{ij} + b_{ij}]\]</span></p>
+<p>The sum is obtained by adding corresponding entries; therefore, matrix addition is defined only when the matrices have the same dimensions. In expanded form, the addition is expressed as:</p>
+<p><span class="math display">\[\begin{bmatrix}
+a_{11} &amp; \cdots &amp; a_{1n} \\
+\vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; \cdots &amp; a_{mn}
+\end{bmatrix}
++
+\begin{bmatrix}
+b_{11} &amp; \cdots &amp; b_{1n} \\
+\vdots &amp; \ddots &amp; \vdots \\
+b_{m1} &amp; \cdots &amp; b_{mn}
+\end{bmatrix}
+=
+\begin{bmatrix}
+a_{11} + b_{11} &amp; \cdots &amp; a_{1n} + b_{1n} \\
+\vdots &amp; \ddots &amp; \vdots \\
+a_{m1} + b_{m1} &amp; \cdots &amp; a_{mn} + b_{mn}
+\end{bmatrix}\]</span></p>
+<p>&nbsp;</p>
+<div class="content-box-white">
+<p><strong>Properties of Matrix Addition</strong></p>
+<p>Let <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> be <span class="math inline">\(m \times n\)</span> matrices, and let <span class="math inline">\(O\)</span> denote the <span class="math inline">\(m \times n\)</span> zero matrix.</p>
+<p><strong>1. Commutative Property:</strong> The order in which we add matrices does not change the result.</p>
+<p><span class="math display">\[A + B = B + A\]</span></p>
+<p><strong>2. Associative Property:</strong> When adding three or more matrices, the grouping of the matrices does not change the result.</p>
+<p><span class="math display">\[(A + B) + C = A + (B + C)\]</span></p>
+<p><strong>3. Additive Identity:</strong> Adding the zero matrix <span class="math inline">\(O\)</span> to any matrix <span class="math inline">\(A\)</span> leaves <span class="math inline">\(A\)</span> unchanged.</p>
+<p><span class="math display">\[A + O = A\]</span> <strong>4. Additive Inverse:</strong> For every matrix <span class="math inline">\(A\)</span>, there is a matrix <span class="math inline">\(-A\)</span> (where each entry is the negation of the corresponding entry in <span class="math inline">\(A\)</span>) such that their sum is the zero matrix.</p>
+<p><span class="math display">\[A + (-A) = \mathbf{O}\]</span></p>
+</div>
 
 
-</section></section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
