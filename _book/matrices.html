@@ -201,6 +201,7 @@ window.Quarto = {
   <ul class="collapse">
 <li><a href="#equality-of-matrices" id="toc-equality-of-matrices" class="nav-link" data-scroll-target="#equality-of-matrices"><span class="header-section-number">1.3.1</span> Equality of Matrices</a></li>
   <li><a href="#matrix-addition" id="toc-matrix-addition" class="nav-link" data-scroll-target="#matrix-addition"><span class="header-section-number">1.3.2</span> Matrix Addition</a></li>
+  <li><a href="#scalar-multiplication-of-a-matrix" id="toc-scalar-multiplication-of-a-matrix" class="nav-link" data-scroll-target="#scalar-multiplication-of-a-matrix"><span class="header-section-number">1.3.3</span> Scalar Multiplication of a Matrix</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -223,7 +224,7 @@ window.Quarto = {
 
 </header><section id="matrix-notation" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="matrix-notation">
 <span class="header-section-number">1.1</span> Matrix Notation</h2>
-<p>Let <span class="math inline">\(\mathbb{K}\)</span> be a field and <span class="math inline">\(m, n \in \mathbb{N}\)</span>. An <strong><span class="math inline">\(\mathbf{m} \times \mathbf{n}\)</span> matrix</strong> <span class="math inline">\(A\)</span> over the field <span class="math inline">\(\mathbb{K}\)</span> is a rectangular array of elements <span class="math inline">\(a_{ij} \in \mathbb{K}\)</span> arranged in <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns, usually presented in the following form:</p>
+<p>Let <span class="math inline">\(\mathbb{K}\)</span> be a field and <span class="math inline">\(m, n \in \mathbb{N}\)</span>. An <span class="math inline">\(\mathbf{m} \times \mathbf{n}\)</span> matrix <span class="math inline">\(A\)</span> over the field <span class="math inline">\(\mathbb{K}\)</span> is a rectangular array of elements <span class="math inline">\(a_{ij} \in \mathbb{K}\)</span> arranged in <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns, usually presented in the following form:</p>
 <p><span class="math display">\[A = [a_{ij}] = \begin{bmatrix}
 a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
 a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
@@ -483,7 +484,8 @@ a_{n1}              &amp; a_{n2}              &amp; \cdots &amp; \boldsymbol{a_{
 <div class="content-box-white">
 <p><strong>REMARK:</strong> Although the main diagonal is most naturally associated with square matrices, it is defined for any <span class="math inline">\(m \times n\)</span> rectangular matrix, consisting of the entries <span class="math inline">\(a_{ii}\)</span> for <span class="math inline">\(i = 1, 2, \ldots, \min(m, n)\)</span>.</p>
 <ul>
-<li><strong>Case 1: Horizontal Rectangular Matrix (<span class="math inline">\(m &lt; n\)</span>)</strong></li>
+<li>
+<strong>Case 1: Horizontal Rectangular Matrix (</strong><span class="math inline">\(m &lt; n\)</span>)</li>
 </ul>
 <p>For a <span class="math inline">\(3 \times 4\)</span> matrix, where <span class="math inline">\(\min(3, 4) = 3\)</span>, the main diagonal contains exactly three entries. The diagonal terminates before reaching the final column.</p>
 <p><span class="math display">\[A_{3 \times 4} = \begin{bmatrix}
@@ -495,7 +497,8 @@ a_{31} &amp; a_{32} &amp; \boldsymbol{a_{33}} &amp; a_{34}
 <p><span class="math display">\[A_{3 \times 4} = \begin{bmatrix} \mathbf{4} &amp; 0 &amp; 2 &amp; 1 \\ 3 &amp; \mathbf{1} &amp; 4 &amp; 2 \\ 2 &amp; 0 &amp; \mathbf{1} &amp; 3 \end{bmatrix}\]</span></p>
 <p>In this instance, <span class="math inline">\(\text{diag}(A) = \{4, 1, 1\}\)</span>.</p>
 <ul>
-<li><strong>Case 2: Vertical Rectangular Matrix (<span class="math inline">\(m &gt; n\)</span>)</strong></li>
+<li>
+<strong>Case 2: Vertical Rectangular Matrix (</strong><span class="math inline">\(m &gt; n\)</span>)</li>
 </ul>
 <p>For a <span class="math inline">\(4 \times 3\)</span> matrix, where <span class="math inline">\(\min(4, 3) = 3\)</span>, the diagonal also contains three entries. Here, the diagonal is exhausted before reaching the final row.</p>
 <p><span class="math display">\[A_{4 \times 3} = \begin{bmatrix}
@@ -510,7 +513,7 @@ a_{41} &amp; a_{42} &amp; a_{43}
 </div>
 <p>&nbsp;</p>
 <ul>
-<li>In a square matrix <span class="math inline">\(A\)</span> of order <span class="math inline">\(n\)</span>, the <strong>anti-diagonal</strong> (also known as the secondary diagonal) consists of the entries <span class="math inline">\(a_{i,j}\)</span> for which <span class="math inline">\(i + j = n + 1\)</span>, running from the upper-right corner to the lower-left corner.</li>
+<li>In a square matrix <span class="math inline">\(A\)</span> of order <span class="math inline">\(n\)</span>, the <strong>anti-diagonal</strong> (also known as the secondary diagonal) consists of the entries <span class="math inline">\(a_{ij}\)</span> for which <span class="math inline">\(i + j = n + 1\)</span>, running from the upper-right corner to the lower-left corner.</li>
 </ul>
 <p><span class="math display">\[A_{n \times n} = \begin{bmatrix}
 a_{11}  &amp; a_{12} &amp; \cdots  &amp; a_{1 \ (n-1)} &amp; \boldsymbol{a_{1n}} \\
@@ -1027,11 +1030,103 @@ a_{m1} + b_{m1} &amp; \cdots &amp; a_{mn} + b_{mn}
 <p><span class="math display">\[(A + B) + C = A + (B + C)\]</span></p>
 <p><strong>3. Additive Identity:</strong> Adding the zero matrix <span class="math inline">\(O\)</span> to any matrix <span class="math inline">\(A\)</span> leaves <span class="math inline">\(A\)</span> unchanged.</p>
 <p><span class="math display">\[A + O = A\]</span> <strong>4. Additive Inverse:</strong> For every matrix <span class="math inline">\(A\)</span>, there is a matrix <span class="math inline">\(-A\)</span> (where each entry is the negation of the corresponding entry in <span class="math inline">\(A\)</span>) such that their sum is the zero matrix.</p>
-<p><span class="math display">\[A + (-A) = \mathbf{O}\]</span></p>
+<p><span class="math display">\[A + (-A) = O\]</span></p>
+</div>
+<section id="example-addition-of-matrices" class="level4"><h4 class="anchored" data-anchor-id="example-addition-of-matrices">Example: Addition of Matrices</h4>
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be the following <span class="math inline">\(3 \times 2\)</span> matrices:</p>
+<p><span class="math display">\[A = \begin{bmatrix} 2 &amp; -1 \\ 0 &amp; 4 \\ 5 &amp; 3 \end{bmatrix}, \quad B = \begin{bmatrix} 1 &amp; 7 \\ -2 &amp; 0 \\ 4 &amp; -1 \end{bmatrix}\]</span></p>
+<p>To find <span class="math inline">\(A + B\)</span>, we add the entries in the corresponding row and column positions.</p>
+<p><span class="math display">\[A + B = \begin{bmatrix} 2 &amp; -1 \\ 0 &amp; 4 \\ 5 &amp; 3 \end{bmatrix} + \begin{bmatrix} 1 &amp; 7 \\ -2 &amp; 0 \\ 4 &amp; -1 \end{bmatrix} =\begin{bmatrix} 2+1 &amp; -1+7 \\ 0+(-2) &amp; 4+0 \\ 5+4 &amp; 3+(-1) \end{bmatrix} = \begin{bmatrix} 3 &amp; 6 \\ -2 &amp; 4 \\ 9 &amp; 2 \end{bmatrix}\]</span></p>
+<section id="implementation-in-r-13" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-13"><em>Implementation in R</em></h5>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define Matrix A (3x2)</span></span>
+<span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="op">-</span><span class="fl">1</span>,</span>
+<span>              <span class="fl">0</span>,  <span class="fl">4</span>,</span>
+<span>              <span class="fl">5</span>,  <span class="fl">3</span><span class="op">)</span>, </span>
+<span>            nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb72"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define Matrix B (3x2)</span></span>
+<span><span class="va">B</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,  <span class="fl">7</span>,</span>
+<span>             <span class="op">-</span><span class="fl">2</span>,  <span class="fl">0</span>,</span>
+<span>              <span class="fl">4</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span>, </span>
+<span>            nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Perform the addition</span></span>
+<span><span class="va">A</span> <span class="op">+</span> <span class="va">B</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    3    6
+[2,]   -2    4
+[3,]    9    2</code></pre>
+</div>
+</div>
+<p>&nbsp;</p>
+</section></section></section><section id="scalar-multiplication-of-a-matrix" class="level3" data-number="1.3.3"><h3 data-number="1.3.3" class="anchored" data-anchor-id="scalar-multiplication-of-a-matrix">
+<span class="header-section-number">1.3.3</span> Scalar Multiplication of a Matrix</h3>
+<p>Let <span class="math inline">\(A = [a_{ij}]\)</span> be an <span class="math inline">\(m \times n\)</span> matrix with entries from a field <span class="math inline">\(\mathbb{K}\)</span>, and let <span class="math inline">\(\lambda \in \mathbb{K}\)</span>. The scalar multiple of by <span class="math inline">\(\lambda\)</span>, is the <span class="math inline">\(m \times n\)</span> matrix obtained by multiplying each entry of <span class="math inline">\(A\)</span> by <span class="math inline">\(\lambda\)</span>. Formally:</p>
+<p><span class="math display">\[\lambda A = [\lambda \cdot a_{ij}]\]</span>for all <span class="math inline">\(1 \leq i \leq m\)</span> and <span class="math inline">\(1 \leq j \leq n\)</span>.</p>
+<p>Explicitly, the operation is distributed across all entries:</p>
+<p><span class="math display">\[\lambda A = \lambda \begin{bmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} \end{bmatrix} = \begin{bmatrix} \lambda a_{11} &amp; \lambda a_{12} &amp; \cdots &amp; \lambda a_{1n} \\ \lambda a_{21} &amp; \lambda a_{22} &amp; \cdots &amp; \lambda a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ \lambda a_{m1} &amp; \lambda a_{m2} &amp; \cdots &amp; \lambda a_{mn} \end{bmatrix}\]</span></p>
+<p>&nbsp;</p>
+<section id="example-multiplication-of-a-matrix-by-a-real-number" class="level4"><h4 class="anchored" data-anchor-id="example-multiplication-of-a-matrix-by-a-real-number">Example: Multiplication of a Matrix by a real number</h4>
+<p>Consider the scalar <span class="math inline">\(\lambda = 3\)</span> and the <span class="math inline">\(3 \times 2\)</span> matrix <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[A = \begin{bmatrix} 2 &amp; -1 \\ 0 &amp; 4 \\ 5 &amp; 3 \end{bmatrix}\]</span></p>
+<p>To find the scalar multiple <span class="math inline">\(\lambda A\)</span>, we multiply each entry of <span class="math inline">\(A\)</span> by <span class="math inline">\(3\)</span>:</p>
+<p><span class="math display">\[\lambda A = 3 \begin{bmatrix} 2 &amp; -1 \\ 0 &amp; 4 \\ 5 &amp; 3 \end{bmatrix} = \begin{bmatrix} 3 \cdot 2 &amp; 3\cdot (-1) \\ 3 \cdot 0 &amp; 3 \cdot 4 \\ 3 \cdot 5 &amp; 3 \cdot 3 \end{bmatrix} = \begin{bmatrix} 6 &amp; -3 \\ 0 &amp; 12 \\ 15 &amp; 9 \end{bmatrix}\]</span></p>
+<section id="implementation-in-r-14" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-14"><em>Implementation in R</em></h5>
+<p>In R, the <code>*</code> operator performs entry-wise multiplication when applied to a matrix and a scalar.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define the scalar lambda</span></span>
+<span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
+<span></span>
+<span><span class="co"># Define the matrix A</span></span>
+<span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="op">-</span><span class="fl">1</span>,</span>
+<span>              <span class="fl">0</span>,  <span class="fl">4</span>,</span>
+<span>              <span class="fl">5</span>,  <span class="fl">3</span><span class="op">)</span>, </span>
+<span>            nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Compute scalar multiplication</span></span>
+<span><span class="va">lambda</span> <span class="op">*</span> <span class="va">A</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    6   -3
+[2,]    0   12
+[3,]   15    9</code></pre>
+</div>
+</div>
+<p>&nbsp;</p>
+</section></section><section id="example-multiplication-of-a-matrix-by-a-complex-number" class="level4"><h4 class="anchored" data-anchor-id="example-multiplication-of-a-matrix-by-a-complex-number">Example: Multiplication of a Matrix by a complex number</h4>
+<p>Let the scalar <span class="math inline">\(\lambda = 2 + 3i \in \mathbb{C}\)</span> and the <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(A\)</span> be defined as:</p>
+<p><span class="math display">\[A = \begin{bmatrix} 1 &amp; i \\ 2 &amp; 1 - i \end{bmatrix}\]</span></p>
+<p>The scalar multiple <span class="math inline">\(\lambda A\)</span> is calculated by multiplying each entry of <span class="math inline">\(A\)</span> by <span class="math inline">\((2 + 3i)\)</span>:</p>
+<p><span class="math display">\[\lambda A = (2 + 3i) \begin{bmatrix} 1 &amp; i \\ 2 &amp; 1 - i \end{bmatrix} = \begin{bmatrix} (2 + 3i) \cdot 1 &amp; (2 + 3i) \cdot i \\ (2 + 3i) \cdot 2 &amp; (2 + 3i) \cdot (1 - i) \end{bmatrix} = \begin{bmatrix} 2 + 3i &amp; -3 + 2i \\ 4 + 6i &amp; 5 + i \end{bmatrix}\]</span> &nbsp;</p>
+<div class="content-box-white">
+<p>The imaginary unit <span class="math inline">\(i\)</span> satisfies the relation:</p>
+<p><span class="math display">\[i^2 = -1\]</span></p>
+</div>
+<section id="implementation-in-r-15" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-15"><em>Implementation in R</em></h5>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define the complex scalar lambda</span></span>
+<span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">+</span> <span class="fl">3i</span></span>
+<span></span>
+<span><span class="co"># Define the complex matrix A by row</span></span>
+<span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,      <span class="fl">0</span> <span class="op">+</span> <span class="fl">1i</span>,</span>
+<span>              <span class="fl">2</span>,      <span class="fl">1</span> <span class="op">-</span> <span class="fl">1i</span><span class="op">)</span>, </span>
+<span>            nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Compute scalar multiplication</span></span>
+<span><span class="va">lambda</span> <span class="op">*</span> <span class="va">A</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]  [,2]
+[1,] 2+3i -3+2i
+[2,] 4+6i  5+1i</code></pre>
+</div>
 </div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();

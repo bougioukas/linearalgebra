@@ -2,7 +2,7 @@
 
 ## Matrix Notation
 
-Let $\mathbb{K}$ be a field and $m, n \in \mathbb{N}$. An **$\mathbf{m} \times \mathbf{n}$ matrix** $A$ over the field $\mathbb{K}$ is a rectangular array of elements $a_{ij} \in \mathbb{K}$ arranged in $m$ rows and $n$ columns, usually presented in the following form:
+Let $\mathbb{K}$ be a field and $m, n \in \mathbb{N}$. An $\mathbf{m} \times \mathbf{n}$ matrix $A$ over the field $\mathbb{K}$ is a rectangular array of elements $a_{ij} \in \mathbb{K}$ arranged in $m$ rows and $n$ columns, usually presented in the following form:
 
 $$A = [a_{ij}] = \begin{bmatrix}
 a_{11} & a_{12} & \cdots & a_{1n} \\
@@ -15,11 +15,9 @@ where $a_{ij}$ denotes the $(ij)$-th entry (or element) of the matrix, correspon
 
 **Matrix dimensions (or size)** refer to the number of rows and columns of a matrix, denoted as $m \times n$. The matrix $A$ is often written as $A_{m \times n}$ to make its dimensions explicit.
 
-
 ::: content-box-white
 **NOTE:** While $\mathbb{K}$ usually represents the real numbers ($\mathbb{R}$) or complex numbers ($\mathbb{C}$), it can also represent other fields.
 :::
-
 
 The $m$ rows of matrix $A$ are $1 \times n$ matrices, also called **row vectors** (or row matrix):
 
@@ -41,7 +39,7 @@ $c_1 = \begin{bmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{m1} \end{bmatrix}$, $c_2
 
 #### Example: A $3 \times 4$ Matrix
 
-The matrix 
+The matrix
 
 $$A_{3 \times 4}= \begin{bmatrix}
     4 & 0 & 2 & 1\\
@@ -55,11 +53,9 @@ $$
 r_1 = \begin{bmatrix} 4 & 0 & 2 & 1 \end{bmatrix}, \qquad c_1 = \begin{bmatrix} 4 \\ 3 \\ 2 \end{bmatrix}
 $$
 
-
 ##### *Implementation in R*
 
 We construct $A$ in R using the `matrix()` function. The entries of the matrix are first stored in a numeric vector named `entries` and then reshaped into a $3 \times 4$ matrix. Since the values in the vector are listed in row-wise order, we set the parameter `byrow = TRUE` which fills the matrix one row at a time before moving to the next. This ensures that the computational representation of A in R matches its mathematical form exactly.
-
 
 ```{r}
 # Define entries of sigma_1 in row-wise order
@@ -71,7 +67,6 @@ entries <- c(4, 0, 2, 1,
 A <- matrix(entries, nrow = 3, ncol = 4, byrow = TRUE)
 A
 ```
-
 
 To verify the structure of the resulting object, we inspect its class and dimensions:
 
@@ -92,8 +87,6 @@ r1
 class(r1)
 dim(r1)
 ```
-
-
 
 Similarly, the first column vector $c_1$ is obtained by:
 
@@ -122,7 +115,7 @@ $$\sigma_1 = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}, \quad
 
 To represent these in R, we must account for the imaginary unit $i$, which is denoted as $i$ in R (e.g., $0+1i$). Because these matrices are $2 \times 2$, we set the dimensions accordingly.
 
-- Matrix $\sigma_1$
+-   Matrix $\sigma_1$
 
 ```{r}
 # Define entries of sigma_1 in row-wise order
@@ -134,7 +127,7 @@ sigma_1 <- matrix(entries, nrow = 2, byrow = TRUE)
 sigma_1
 ```
 
-- Matrix $\sigma_2$
+-   Matrix $\sigma_2$
 
 ```{r}
 # Use R's complex notation '1i' for the imaginary unit
@@ -146,7 +139,7 @@ sigma_2 <- matrix(entries, nrow = 2, byrow = TRUE)
 sigma_2
 ```
 
-- Matrix $\sigma_3$
+-   Matrix $\sigma_3$
 
 ```{r}
 # Define entries of sigma_2 in row-wise order
@@ -163,9 +156,7 @@ sigma_3
 
 When matrix entries are functions, the matrix is called a matrix-valued function. A fundamental example in linear algebra and geometry is the planar rotation matrix $R(\theta)$, which represents a counter-clockwise rotation by an angle $\theta$ in $\mathbb{R}^2$. Mathematically, it is defined as:
 
-
-$$R(\theta) = \begin{bmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{bmatrix}$$
-For $\theta = \frac{\pi}{4}$ (a rotation of $45^\circ$):
+$$R(\theta) = \begin{bmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{bmatrix}$$ For $\theta = \frac{\pi}{4}$ (a rotation of $45^\circ$):
 
 $$R\left(\frac{\pi}{4}\right) = 
 \begin{bmatrix} 
@@ -191,7 +182,6 @@ R <- function(theta) {
 }
 
 ```
-
 
 ```{r}
 # Define the angle of 45 degrees (pi/4 in radians)
@@ -310,13 +300,11 @@ ggplot() +
 
 ```
 
- 
 ## Basic Types of Matrices
 
 ### The Null Matrix
 
 An $m \times n$ matrix is called a **null matrix** (or zero matrix) if all its entries are zero, and is typically denoted by $O_{m \times n}$ or simply $O$:
-
 
 $$O_{m \times n} = \begin{bmatrix}
 0 & 0 & \cdots & 0 \\
@@ -325,7 +313,6 @@ $$O_{m \times n} = \begin{bmatrix}
 0 & 0 & \cdots & 0
 \end{bmatrix}$$
 
-
 #### Example: A $3 \times 4$ Null Matrix
 
 $$O_{3 \times 4} = \begin{bmatrix}
@@ -333,7 +320,6 @@ $$O_{3 \times 4} = \begin{bmatrix}
 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0
 \end{bmatrix}$$
-
 
 ##### *Implementation in R*
 
@@ -348,8 +334,7 @@ O
 
 ### The Square Matrix
 
-A matrix $A$ is called a **square matrix** if $m = n$, that is, if it has an equal number of rows and columns. In this case, $A$ is said to be of **order** $n$, denoted $A_{n \times n}$ or simply $A_n$. 
-
+A matrix $A$ is called a **square matrix** if $m = n$, that is, if it has an equal number of rows and columns. In this case, $A$ is said to be of **order** $n$, denoted $A_{n \times n}$ or simply $A_n$.
 
 $$A_{n \times n} = \begin{bmatrix}
 \boldsymbol{a_{11}} & a_{12}              & \cdots & a_{1n} \\
@@ -360,7 +345,7 @@ a_{n1}              & a_{n2}              & \cdots & \boldsymbol{a_{nn}}
 
  
 
-- The **main diagonal** (or principal diagonal) of this matrix consists of the entries $a_{ij}$ for which the row index equals the column index, that is, $i = j$ (shown in bold in the matrix), denoted:
+-   The **main diagonal** (or principal diagonal) of this matrix consists of the entries $a_{ij}$ for which the row index equals the column index, that is, $i = j$ (shown in bold in the matrix), denoted:
 
 $$\text{diag}(A) = \{a_{11}, a_{22}, \dots, a_{nn}\}$$
 
@@ -369,7 +354,7 @@ All remaining entries, where $i \neq j$, are referred to as off-diagonal element
 ::: content-box-white
 **REMARK:** Although the main diagonal is most naturally associated with square matrices, it is defined for any $m \times n$ rectangular matrix, consisting of the entries $a_{ii}$ for $i = 1, 2, \ldots, \min(m, n)$.
 
-- **Case 1: Horizontal Rectangular Matrix ($m < n$)**
+-   **Case 1: Horizontal Rectangular Matrix (**$m < n$)
 
 For a $3 \times 4$ matrix, where $\min(3, 4) = 3$, the main diagonal contains exactly three entries. The diagonal terminates before reaching the final column.
 
@@ -385,8 +370,7 @@ $$A_{3 \times 4} = \begin{bmatrix} \mathbf{4} & 0 & 2 & 1 \\ 3 & \mathbf{1} & 4 
 
 In this instance, $\text{diag}(A) = \{4, 1, 1\}$.
 
-
-- **Case 2: Vertical Rectangular Matrix ($m > n$)**
+-   **Case 2: Vertical Rectangular Matrix (**$m > n$)
 
 For a $4 \times 3$ matrix, where $\min(4, 3) = 3$, the diagonal also contains three entries. Here, the diagonal is exhausted before reaching the final row.
 
@@ -406,8 +390,7 @@ Here, $\text{diag}(B) = \{2, -1, 5\}$. Note that the fourth row contains no diag
 
  
 
-- In a square matrix $A$ of order $n$, the **anti-diagonal** (also known as the secondary diagonal) consists of the entries $a_{i,j}$ for which $i + j = n + 1$, running from the upper-right corner to the lower-left corner.
-
+-   In a square matrix $A$ of order $n$, the **anti-diagonal** (also known as the secondary diagonal) consists of the entries $a_{ij}$ for which $i + j = n + 1$, running from the upper-right corner to the lower-left corner.
 
 $$A_{n \times n} = \begin{bmatrix}
 a_{11}  & a_{12} & \cdots  & a_{1 \ (n-1)} & \boldsymbol{a_{1n}} \\
@@ -417,13 +400,13 @@ a_{(n-1) \ 1}    & \boldsymbol{a_{(n-1) \ 2}} & \cdots & a_{(n-1) \ (n-1)} & a_{
 \boldsymbol{a_{n1}} & a_{n2}  & \cdots & a_{n \ (n-1)} & a_{nn}
 \end{bmatrix}$$
 
-The anti-diagonal entries are shown in bold in the matrix: 
+The anti-diagonal entries are shown in bold in the matrix:
 
 $$\text{anti-diag}(A) = \{a_{1n}, a_{2 \ (n-1)}, \dots, a_{(n-1) \ 2}, a_{n1}\}$$
 
  
 
-- The **trace** of a square matrix $A_{n \times n}$ is the sum of its **main diagonal** entries, denoted by $\text{tr}(A)$:
+-   The **trace** of a square matrix $A_{n \times n}$ is the sum of its **main diagonal** entries, denoted by $\text{tr}(A)$:
 
 $$\text{tr}(A) = a_{11} + a_{22} + \cdots + a_{nn} = \sum_{i=1}^{n} a_{ii}$$
 
@@ -441,14 +424,11 @@ $$A_{3 \times 3} = \begin{bmatrix}
 4 & 0 & \mathbf{-1}
 \end{bmatrix}$$
 
-
-
 The main diagonal entries (shown in bold) are $a_{11} = 5$, $a_{22} = -1$, and $a_{33} = -1$, hence
 
-$$\text{diag}(A) = \{5, -1, -1\}$$  
+$$\text{diag}(A) = \{5, -1, -1\}$$
 
 $$\text{tr}(A) = 5 + (-1) + (-1) = 3$$
-
 
 The anti-diagonal entries, for which $i + j = 4$, are $a_{13} = 0$, $a_{22} = -1$, and $a_{31} = 4$, hence
 
@@ -460,7 +440,7 @@ Note that $a_{22} = -1$ lies on both the main diagonal and the anti-diagonal. Th
 
 ##### *Implementation in R*
 
-We construct $A$ in R and use the built-in `diag()` function to extract its main diagonal entries. 
+We construct $A$ in R and use the built-in `diag()` function to extract its main diagonal entries.
 
 ```{r}
 entries <- c(5, 1, 0,
@@ -471,15 +451,10 @@ A <- matrix(entries, nrow = 3, ncol = 3, byrow = TRUE)
 A
 ```
 
-
-
-
 ```{r}
 # Main diagonal
 diag(A)
 ```
-
-
 
 The trace is not available as a standalone function in base R, but is straightforwardly computed as a sum.
 
@@ -495,7 +470,6 @@ Extracting the anti-diagonal in R requires indexing. This can be achieved using 
 n <- nrow(A)
 A[cbind(1:n, n:1)]
 ```
-
 
  
 
@@ -513,7 +487,6 @@ $$A_{n \times n} = \begin{bmatrix} a_{11} & 0 & \dots & 0 \\
 
 #### Example: A $3 \times 3$ Diagonal Matrix
 
-
 $$A_{3\times 3} =
   \begin{bmatrix}
     4 & 0 & 0\\
@@ -521,8 +494,7 @@ $$A_{3\times 3} =
     0 & 0 & -5
   \end{bmatrix}$$
 
-
-with 
+with
 
 $\text{diag}(A) = \{4, -1, -5\}$
 
@@ -534,8 +506,7 @@ $\text{anti-diag}(A) = \{0, -1, 0\}$
 
 ##### *Implementation in R*
 
-In R, a diagonal matrix can be constructed using the `diag()` function. 
-
+In R, a diagonal matrix can be constructed using the `diag()` function.
 
 ```{r}
 entries <- c(4, -1, -5)
@@ -544,19 +515,16 @@ A <- diag(entries)
 A
 ```
 
-
 ```{r}
 # Main diagonal 
 diag(A)      
 
 ```
 
-
 ```{r}
 # Trace
 sum(diag(A))
 ```
-
 
 ```{r}
 # Anti-diagonal 
@@ -564,12 +532,11 @@ n <- nrow(A)
 A[cbind(1:n, n:1)]
 ```
 
-
  
 
 ### The Anti-Diagonal Matrix
 
-An **anti-diagonal matrix** (or skew-diagonal matrix) is a square matrix where all entries are zero except for those on the diagonal going from the lower-left corner to the upper-right corner. 
+An **anti-diagonal matrix** (or skew-diagonal matrix) is a square matrix where all entries are zero except for those on the diagonal going from the lower-left corner to the upper-right corner.
 
 Formally, a square matrix $A$ is anti-diagonal if $a_{ij} = 0$ whenever $i + j \neq n + 1$:
 
@@ -587,7 +554,6 @@ a_{n1} & 0      & \cdots & 0      & 0
 **NOTE:** An anti-diagonal matrix $A$ of size $n \times n$ has nonzero entries only on the anti-diagonal (from the top-right to the bottom-left). The trace of $A$ is guaranteed to be zero if $n$ is even, but it may be non-zero if $n$ is odd.
 :::
 
-
  
 
 #### Example: A $3 \times 3$ Anti-Diagonal Matrix
@@ -600,8 +566,7 @@ $$A_{3\times 3} =\begin{bmatrix}
 -3 & 0 & 0
 \end{bmatrix}$$
 
-
-with 
+with
 
 $\text{diag}(A) = \{0, 2, 0\}$
 
@@ -623,19 +588,16 @@ A <- matrix(entries, nrow = 3, byrow = TRUE)
 A
 ```
 
-
 ```{r}
 # Main diagonal 
 diag(A)      
 
 ```
 
-
 ```{r}
 # Trace
 sum(diag(A))
 ```
-
 
 ```{r}
 # Anti-diagonal 
@@ -643,9 +605,7 @@ n <- nrow(A)
 A[cbind(1:n, n:1)]
 ```
 
-
  
-
 
 ### The Triangular Matrices
 
@@ -673,17 +633,15 @@ a_{n1} & a_{n2} & \dots & a_{nn}
 **NOTE:** A square matrix that is simultaneously upper and lower triangular has zeros both above and below the main diagonal, and is therefore necessarily a diagonal matrix.
 :::
 
-
  
 
 #### Example: $3 \times 3$ Triangular Matrices
 
-$$A_{upper} = \begin{bmatrix} \mathbf{2} & 3 & -1 \\ 0 & \mathbf{5} & 4 \\ 0 & 0 & \mathbf{7} \end{bmatrix}, \qquad A_{lower} = \begin{bmatrix} \mathbf{2} & 0 & 0 \\ 3 & \mathbf{5} & 0 \\ -1 & 4 & \mathbf{7} \end{bmatrix}$$
- 
+$$A_{upper} = \begin{bmatrix} \mathbf{2} & 3 & -1 \\ 0 & \mathbf{5} & 4 \\ 0 & 0 & \mathbf{7} \end{bmatrix}, \qquad A_{lower} = \begin{bmatrix} \mathbf{2} & 0 & 0 \\ 3 & \mathbf{5} & 0 \\ -1 & 4 & \mathbf{7} \end{bmatrix}$$  
 
 ##### *Implementation in R*
 
-- The upper triangular matrix
+-   The upper triangular matrix
 
 ```{r}
 # Define the entries for the upper matrix
@@ -696,8 +654,7 @@ A_upper <- matrix(entries_upper, nrow = 3, byrow = TRUE)
 A_upper
 ```
 
-
-- The lower triangular matrix
+-   The lower triangular matrix
 
 ```{r}
 # Define the entries for the lower matrix
@@ -717,7 +674,7 @@ A_lower
 
 An **identity matrix**, typically denoted as $I$, is a square matrix whose entries are given by the Kronecker delta $\delta_{ij}$:
 
-$$\delta_{ij} = \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}$$ 
+$$\delta_{ij} = \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}$$
 
 That is, it has ones on the main diagonal and zeros everywhere else. In explicit form, it is written as:
 
@@ -741,8 +698,6 @@ $$I_{3 \times 3} =
     0 & 1 & 0\\
     0 & 0 & 1
   \end{bmatrix}$$
-  
-
 
  
 
@@ -754,7 +709,6 @@ In R, the `diag()` function is used to generate identity matrices. When passed a
 I <- diag(3)
 I
 ```
-
 
  
 
@@ -787,7 +741,7 @@ $$\sigma(1) = 2, \quad \sigma(2) = 1, \quad \sigma(3) = 3$$
 
 We evaluate each row ($i$) against each column ($j$):
 
-- For row $i = 1$:
+-   For row $i = 1$:
 
 $$\begin{aligned}
 j = 1 \neq \sigma(1) \rightarrow p_{11} = 0,\ \ \
@@ -795,8 +749,7 @@ j = 2 = \sigma(1) \rightarrow \boxed{p_{12} = 1}, \ \ \
 j = 3 \neq \sigma(1) \rightarrow p_{13} = 0
 \end{aligned}$$
 
-
-- For row $i = 2$:
+-   For row $i = 2$:
 
 $$\begin{aligned}
 j = 1 = \sigma(2) \rightarrow \boxed{p_{21} = 1} ,\ \ \
@@ -804,15 +757,13 @@ j = 2 \neq \sigma(2) \rightarrow p_{22} = 0 ,\ \ \
 j = 3 \neq \sigma(2) \rightarrow p_{23} = 0 ,\ \ \
 \end{aligned}$$
 
-
-- For row $i = 3$:
+-   For row $i = 3$:
 
 $$\begin{aligned}
 j = 1 \neq \sigma(3) \rightarrow p_{31} = 0,\ \ \
 j = 2 \neq \sigma(3) \rightarrow p_{32} = 0,\ \ \
 j = 3 = \sigma(3) \rightarrow \boxed{p_{33} = 1}
 \end{aligned}$$
-
 
 By arranging these values according to the given permutation, we construct the corresponding permutation matrix $P_{3 \times 3}$:
 
@@ -834,7 +785,6 @@ P <- I[c(2, 1, 3), ]
 P
 ```
 
-
  
 
 ### The Symmetric Matrix
@@ -854,7 +804,6 @@ a_{12} & a_{22} & \dots & a_{2n} \\
 a_{1n} & a_{2n} & \dots & a_{nn}
 \end{bmatrix}$$
 
-
  
 
 #### Example: A $3 \times 3$ Symmetric Matrix
@@ -870,11 +819,9 @@ $$A_{3\times 3} =
 
 In this matrix, the entries at positions (1,2) and (2,1) are both -4, the entries at positions (1,3) and (3,1) are both 2, and the entries at positions (2,3) and (3,2) are both -2. This reflects the symmetry property.
 
-
  
 
 ##### *Implementation in R*
-
 
 ```{r}
 # Define entries row-wise
@@ -887,8 +834,6 @@ A <- matrix(entries, nrow = 3)
 A
 ```
 
-
-
  
 
 ### The Antisymmetric Matrix
@@ -896,7 +841,6 @@ A
 A square matrix $A$ is **antisymmetric** (or skew-symmetric) if its entries satisfy:$$a_{ij} = -a_{ji} \quad \text{for all } i, j$$
 
 A key property of antisymmetric matrices is that all elements on the main diagonal must be zero, because for $i=j$, the condition $a_{ii} = -a_{ii}$ can only be true if $a_{ii} = 0$.
-
 
 In its general form, entries below the main diagonal are the negative reflections of those above it:
 
@@ -906,7 +850,6 @@ $$A = \begin{bmatrix}
 \vdots & \vdots & \ddots & \vdots \\
 -a_{1n} & -a_{2n} & \dots & 0
 \end{bmatrix}$$
-
 
  
 
@@ -920,7 +863,6 @@ $$A_{3\times 3} =\begin{bmatrix}0 & 5 & -2\\
 \end{bmatrix}$$
 
 In this matrix, notice that the diagonal is all zeros. Furthermore, the entries at positions (1,2) and (2,1) are 5 and -5, (1,3) and (3,1) are -2 and 2, and (2,3) and (3,2) are 1 and -1. This reflects the antisymmetry property.
-
 
  
 
@@ -937,7 +879,6 @@ A <- matrix(entries, nrow = 3, byrow = TRUE)
 A
 ```
 
-
  
 
 ## Operations on Matrices
@@ -946,15 +887,14 @@ A
 
 Any meaningful algebra requires a precise notion of equality. Two matrices $A = [a_{ij}]_{m \times n}$ and $B = [b_{ij}]_{p \times q}$ are equal, written $A = B$, if and only if they have the same size and the corresponding entries are equal:
 
-- $m = p$ and $n = q$
-- $a_{ij} = b_{ij}$ for all $i, j$
+-   $m = p$ and $n = q$
+-   $a_{ij} = b_{ij}$ for all $i, j$
 
 Matrices that are not equal are called **different**. Thus, matrices of different sizes are always different.
 
-
 #### Example: Equal Matrices
 
-Let 
+Let
 
 $$A = \begin{bmatrix} 2 & 5 \\ -1 & 0 \end{bmatrix}, \quad B = \begin{bmatrix} 2 & 5 \\ -1 & 0 \end{bmatrix}$$
 
@@ -983,14 +923,12 @@ First, we confirm that $A$ and $B$ have the same dimensions:
 dim(A) == dim(B)   # TRUE TRUE — number of rows match, number of columns match
 ```
 
-
 Then, we verify that every corresponding entry satisfies $a_{ij} = b_{ij}$:
 
 ```{r}
 # Check entry-wise equality 
 all(A == B)   # TRUE — all entries match
 ```
-
 
  
 
@@ -1031,24 +969,126 @@ Let $A$, $B$, and $C$ be $m \times n$ matrices, and let $O$ denote the $m \times
 
 $$A + B = B + A$$
 
-
 **2. Associative Property:** When adding three or more matrices, the grouping of the matrices does not change the result.
 
 $$(A + B) + C = A + (B + C)$$
 
 **3. Additive Identity:** Adding the zero matrix $O$ to any matrix $A$ leaves $A$ unchanged.
 
-$$A + O = A$$
-**4. Additive Inverse:** For every matrix $A$, there is a matrix $-A$ (where each entry is the negation of the corresponding entry in $A$) such that their sum is the zero matrix.
+$$A + O = A$$ **4. Additive Inverse:** For every matrix $A$, there is a matrix $-A$ (where each entry is the negation of the corresponding entry in $A$) such that their sum is the zero matrix.
 
-$$A + (-A) = \mathbf{O}$$
+$$A + (-A) = O$$
+:::
+
+#### Example: Addition of Matrices
+
+Let $A$ and $B$ be the following $3 \times 2$ matrices:
+
+$$A = \begin{bmatrix} 2 & -1 \\ 0 & 4 \\ 5 & 3 \end{bmatrix}, \quad B = \begin{bmatrix} 1 & 7 \\ -2 & 0 \\ 4 & -1 \end{bmatrix}$$
+
+To find $A + B$, we add the entries in the corresponding row and column positions.
+
+$$A + B = \begin{bmatrix} 2 & -1 \\ 0 & 4 \\ 5 & 3 \end{bmatrix} + \begin{bmatrix} 1 & 7 \\ -2 & 0 \\ 4 & -1 \end{bmatrix} =\begin{bmatrix} 2+1 & -1+7 \\ 0+(-2) & 4+0 \\ 5+4 & 3+(-1) \end{bmatrix} = \begin{bmatrix} 3 & 6 \\ -2 & 4 \\ 9 & 2 \end{bmatrix}$$
+
+##### *Implementation in R*
+
+```{r}
+# Define Matrix A (3x2)
+A <- matrix(c(2, -1,
+              0,  4,
+              5,  3), 
+            nrow = 3, ncol = 2, byrow = TRUE)
+```
+
+```{r}
+# Define Matrix B (3x2)
+B <- matrix(c(1,  7,
+             -2,  0,
+              4, -1), 
+            nrow = 3, ncol = 2, byrow = TRUE)
+```
+
+```{r}
+# Perform the addition
+A + B
+```
+
+ 
+
+### Scalar Multiplication of a Matrix
+
+Let $A = [a_{ij}]$ be an $m \times n$ matrix with entries from a field $\mathbb{K}$, and let $\lambda \in \mathbb{K}$. The scalar multiple of by $\lambda$, is the $m \times n$ matrix obtained by multiplying each entry of $A$ by $\lambda$. Formally:
+
+$$\lambda A = [\lambda \cdot a_{ij}]$$for all $1 \leq i \leq m$ and $1 \leq j \leq n$.
+
+Explicitly, the operation is distributed across all entries:
+
+$$\lambda A = \lambda \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{bmatrix} = \begin{bmatrix} \lambda a_{11} & \lambda a_{12} & \cdots & \lambda a_{1n} \\ \lambda a_{21} & \lambda a_{22} & \cdots & \lambda a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ \lambda a_{m1} & \lambda a_{m2} & \cdots & \lambda a_{mn} \end{bmatrix}$$
+
+ 
+
+#### Example: Multiplication of a Matrix by a real number
+
+Consider the scalar $\lambda = 3$ and the $3 \times 2$ matrix $A$:
+
+$$A = \begin{bmatrix} 2 & -1 \\ 0 & 4 \\ 5 & 3 \end{bmatrix}$$
+
+To find the scalar multiple $\lambda A$, we multiply each entry of $A$ by $3$:
+
+$$\lambda A = 3 \begin{bmatrix} 2 & -1 \\ 0 & 4 \\ 5 & 3 \end{bmatrix} = \begin{bmatrix} 3 \cdot 2 & 3\cdot (-1) \\ 3 \cdot 0 & 3 \cdot 4 \\ 3 \cdot 5 & 3 \cdot 3 \end{bmatrix} = \begin{bmatrix} 6 & -3 \\ 0 & 12 \\ 15 & 9 \end{bmatrix}$$
+
+##### *Implementation in R*
+
+In R, the `*` operator performs entry-wise multiplication when applied to a matrix and a scalar.
+
+```{r}
+# Define the scalar lambda
+lambda <- 3
+
+# Define the matrix A
+A <- matrix(c(2, -1,
+              0,  4,
+              5,  3), 
+            nrow = 3, ncol = 2, byrow = TRUE)
+
+# Compute scalar multiplication
+lambda * A
+```
 
 
+ 
+
+#### Example: Multiplication of a Matrix by a complex number
+
+Let the scalar $\lambda = 2 + 3i \in \mathbb{C}$ and the $2 \times 2$ matrix $A$ be defined as:
+
+$$A = \begin{bmatrix} 1 & i \\ 2 & 1 - i \end{bmatrix}$$
+
+The scalar multiple $\lambda A$ is calculated by multiplying each entry of $A$ by $(2 + 3i)$:
+
+$$\lambda A = (2 + 3i) \begin{bmatrix} 1 & i \\ 2 & 1 - i \end{bmatrix} = \begin{bmatrix} (2 + 3i) \cdot 1 & (2 + 3i) \cdot i \\ (2 + 3i) \cdot 2 & (2 + 3i) \cdot (1 - i) \end{bmatrix} = \begin{bmatrix} 2 + 3i & -3 + 2i \\ 4 + 6i & 5 + i \end{bmatrix}$$
+ 
+
+::: content-box-white
+The imaginary unit $i$ satisfies the relation:
+
+ $$i^2 = -1$$
 :::
 
 
+##### *Implementation in R*
 
 
+```{r}
+# Define the complex scalar lambda
+lambda <- 2 + 3i
 
+# Define the complex matrix A by row
+A <- matrix(c(1,      0 + 1i,
+              2,      1 - 1i), 
+            nrow = 2, ncol = 2, byrow = TRUE)
 
+# Compute scalar multiplication
+lambda * A
+```
 
