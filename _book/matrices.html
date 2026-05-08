@@ -185,7 +185,7 @@ window.Quarto = {
   <li>
 <a href="#basic-types-of-matrices" id="toc-basic-types-of-matrices" class="nav-link" data-scroll-target="#basic-types-of-matrices"><span class="header-section-number">1.2</span> Basic Types of Matrices</a>
   <ul class="collapse">
-<li><a href="#the-null-matrix" id="toc-the-null-matrix" class="nav-link" data-scroll-target="#the-null-matrix"><span class="header-section-number">1.2.1</span> The Null Matrix</a></li>
+<li><a href="#the-zero-matrix" id="toc-the-zero-matrix" class="nav-link" data-scroll-target="#the-zero-matrix"><span class="header-section-number">1.2.1</span> The Zero Matrix</a></li>
   <li><a href="#the-square-matrix" id="toc-the-square-matrix" class="nav-link" data-scroll-target="#the-square-matrix"><span class="header-section-number">1.2.2</span> The Square Matrix</a></li>
   <li><a href="#the-diagonal-matrix" id="toc-the-diagonal-matrix" class="nav-link" data-scroll-target="#the-diagonal-matrix"><span class="header-section-number">1.2.3</span> The Diagonal Matrix</a></li>
   <li><a href="#the-anti-diagonal-matrix" id="toc-the-anti-diagonal-matrix" class="nav-link" data-scroll-target="#the-anti-diagonal-matrix"><span class="header-section-number">1.2.4</span> The Anti-Diagonal Matrix</a></li>
@@ -438,9 +438,9 @@ Figure&nbsp;1.1: Planar rotation of the unit square by <span class="math inline"
 </div>
 </section></section></section><section id="basic-types-of-matrices" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="basic-types-of-matrices">
 <span class="header-section-number">1.2</span> Basic Types of Matrices</h2>
-<section id="the-null-matrix" class="level3" data-number="1.2.1"><h3 data-number="1.2.1" class="anchored" data-anchor-id="the-null-matrix">
-<span class="header-section-number">1.2.1</span> The Null Matrix</h3>
-<p>An <span class="math inline">\(m \times n\)</span> matrix is called a <strong>null matrix</strong> (or zero matrix) if all its entries are zero, and is typically denoted by <span class="math inline">\(O_{m \times n}\)</span> or simply <span class="math inline">\(O\)</span>:</p>
+<section id="the-zero-matrix" class="level3" data-number="1.2.1"><h3 data-number="1.2.1" class="anchored" data-anchor-id="the-zero-matrix">
+<span class="header-section-number">1.2.1</span> The Zero Matrix</h3>
+<p>An <span class="math inline">\(m \times n\)</span> matrix is called a <strong>zero matrix</strong> (or null matrix) if all its entries are zero, and is typically denoted by <span class="math inline">\(O_{m \times n}\)</span> or simply <span class="math inline">\(O\)</span>:</p>
 <p><span class="math display">\[O_{m \times n} = \begin{bmatrix}
 0 &amp; 0 &amp; \cdots &amp; 0 \\
 0 &amp; 0 &amp; \cdots &amp; 0 \\
@@ -1073,15 +1073,15 @@ a_{m1} + b_{m1} &amp; \cdots &amp; a_{mn} + b_{mn}
 <div class="content-box-white">
 <p><strong>Properties of Scalar Multiplication</strong></p>
 <p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <span class="math inline">\(m \times n\)</span> matrices and <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span> are scalars, the following algebraic properties hold:</p>
-<p><strong>Distributivity Over Matrix Addition:</strong> A scalar distributes across the sum of matrices.</p>
+<p><strong>Distributivity Over Matrix Addition:</strong> A scalar distributes across the sum of two matrices.</p>
 <p><span class="math display">\[\lambda(A + B) = \lambda A + \lambda B\]</span></p>
 <p><strong>Distributivity Over Scalar Addition:</strong> A scalar distributes over matrix addition.</p>
 <p><span class="math display">\[(\lambda + \mu)A = \lambda A + \mu A\]</span></p>
-<p><strong>Associativity of Scalar Multiplication:</strong> A matrix distributes over scalar addition.</p>
+<p><strong>Associativity of Scalar Multiplication:</strong> Multiplying a matrix by two scalars sequentially is equivalent to multiplying the scalars together first.</p>
 <p><span class="math display">\[\lambda(\mu A) = (\lambda \mu)A\]</span></p>
-<p><strong>Additive Inverse Property:</strong> Multiplying a matrix by −1 gives its additive inverse.</p>
+<p><strong>Additive Inverse Property:</strong> Multiplying a matrix <span class="math inline">\(A\)</span> by −1 gives its additive inverse, <span class="math inline">\(-A\)</span>.</p>
 <p><span class="math display">\[(-1)A = -A\]</span></p>
-<p><strong>Zero Properties:</strong>Multiplication by the zero scalar, or of the zero matrix, always gives the zero matrix.</p>
+<p><strong>Zero Properties:</strong> Multiplication by the zero scalar, or of the zero matrix, always yields the zero matrix.</p>
 <p><span class="math display">\[0A = O_{m \times n}\]</span> and</p>
 <p><span class="math display">\[λ \cdot O_{m \times n}=O_{m \times n}\]</span></p>
 </div>

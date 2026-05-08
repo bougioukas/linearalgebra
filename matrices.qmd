@@ -302,9 +302,9 @@ ggplot() +
 
 ## Basic Types of Matrices
 
-### The Null Matrix
+### The Zero Matrix
 
-An $m \times n$ matrix is called a **null matrix** (or zero matrix) if all its entries are zero, and is typically denoted by $O_{m \times n}$ or simply $O$:
+An $m \times n$ matrix is called a **zero matrix** (or null matrix) if all its entries are zero, and is typically denoted by $O_{m \times n}$ or simply $O$:
 
 $$O_{m \times n} = \begin{bmatrix}
 0 & 0 & \cdots & 0 \\
@@ -1032,7 +1032,7 @@ $$\lambda A = \lambda \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21
 
 If $A$ and $B$ are $m \times n$ matrices and $\lambda$ and $\mu$ are scalars, the following algebraic properties hold:
 
-**Distributivity Over Matrix Addition:** A scalar distributes across the sum of matrices.
+**Distributivity Over Matrix Addition:** A scalar distributes across the sum of two matrices.
 
 $$\lambda(A + B) = \lambda A + \lambda B$$
 
@@ -1040,16 +1040,17 @@ $$\lambda(A + B) = \lambda A + \lambda B$$
 
 $$(\lambda + \mu)A = \lambda A + \mu A$$
 
-**Associativity of Scalar Multiplication:** A matrix distributes over scalar addition.
+**Associativity of Scalar Multiplication:** Multiplying a matrix by two scalars sequentially is equivalent to multiplying the scalars together first.
 
 $$\lambda(\mu A) = (\lambda \mu)A$$
 
-**Additive Inverse Property:** Multiplying a matrix by −1 gives its additive inverse.
+**Additive Inverse Property:** Multiplying a matrix $A$ by −1 gives its additive inverse, $-A$.
+
 
 $$(-1)A = -A$$
 
 
-**Zero Properties:**Multiplication by the zero scalar, or of the zero matrix, always gives the zero matrix.
+**Zero Properties:** Multiplication by the zero scalar, or of the zero matrix, always yields the zero matrix.
 
 $$0A = O_{m \times n}$$
 and 
