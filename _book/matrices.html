@@ -1070,6 +1070,22 @@ a_{m1} + b_{m1} &amp; \cdots &amp; a_{mn} + b_{mn}
 <p>Explicitly, the operation is distributed across all entries:</p>
 <p><span class="math display">\[\lambda A = \lambda \begin{bmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} \end{bmatrix} = \begin{bmatrix} \lambda a_{11} &amp; \lambda a_{12} &amp; \cdots &amp; \lambda a_{1n} \\ \lambda a_{21} &amp; \lambda a_{22} &amp; \cdots &amp; \lambda a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ \lambda a_{m1} &amp; \lambda a_{m2} &amp; \cdots &amp; \lambda a_{mn} \end{bmatrix}\]</span></p>
 <p>&nbsp;</p>
+<div class="content-box-white">
+<p><strong>Properties of Scalar Multiplication</strong></p>
+<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <span class="math inline">\(m \times n\)</span> matrices and <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span> are scalars, the following algebraic properties hold:</p>
+<p><strong>Distributivity Over Matrix Addition:</strong> A scalar distributes across the sum of matrices.</p>
+<p><span class="math display">\[\lambda(A + B) = \lambda A + \lambda B\]</span></p>
+<p><strong>Distributivity Over Scalar Addition:</strong> A scalar distributes over matrix addition.</p>
+<p><span class="math display">\[(\lambda + \mu)A = \lambda A + \mu A\]</span></p>
+<p><strong>Associativity of Scalar Multiplication:</strong> A matrix distributes over scalar addition.</p>
+<p><span class="math display">\[\lambda(\mu A) = (\lambda \mu)A\]</span></p>
+<p><strong>Additive Inverse Property:</strong> Multiplying a matrix by −1 gives its additive inverse.</p>
+<p><span class="math display">\[(-1)A = -A\]</span></p>
+<p><strong>Zero Properties:</strong>Multiplication by the zero scalar, or of the zero matrix, always gives the zero matrix.</p>
+<p><span class="math display">\[0A = O_{m \times n}\]</span> and</p>
+<p><span class="math display">\[λ \cdot O_{m \times n}=O_{m \times n}\]</span></p>
+</div>
+<p>&nbsp;</p>
 <section id="example-multiplication-of-a-matrix-by-a-real-number" class="level4"><h4 class="anchored" data-anchor-id="example-multiplication-of-a-matrix-by-a-real-number">Example: Multiplication of a Matrix by a real number</h4>
 <p>Consider the scalar <span class="math inline">\(\lambda = 3\)</span> and the <span class="math inline">\(3 \times 2\)</span> matrix <span class="math inline">\(A\)</span>:</p>
 <p><span class="math display">\[A = \begin{bmatrix} 2 &amp; -1 \\ 0 &amp; 4 \\ 5 &amp; 3 \end{bmatrix}\]</span></p>
@@ -1103,8 +1119,16 @@ a_{m1} + b_{m1} &amp; \cdots &amp; a_{mn} + b_{mn}
 <p>The scalar multiple <span class="math inline">\(\lambda A\)</span> is calculated by multiplying each entry of <span class="math inline">\(A\)</span> by <span class="math inline">\((2 + 3i)\)</span>:</p>
 <p><span class="math display">\[\lambda A = (2 + 3i) \begin{bmatrix} 1 &amp; i \\ 2 &amp; 1 - i \end{bmatrix} = \begin{bmatrix} (2 + 3i) \cdot 1 &amp; (2 + 3i) \cdot i \\ (2 + 3i) \cdot 2 &amp; (2 + 3i) \cdot (1 - i) \end{bmatrix} = \begin{bmatrix} 2 + 3i &amp; -3 + 2i \\ 4 + 6i &amp; 5 + i \end{bmatrix}\]</span> &nbsp;</p>
 <div class="content-box-white">
-<p>The imaginary unit <span class="math inline">\(i\)</span> satisfies the relation:</p>
+<p>The imaginary unit <span class="math inline">\(i\)</span> satisfies the two following properties:</p>
+<ul>
+<li>The definition of the imaginary unit <span class="math inline">\(i\)</span> is:</li>
+</ul>
 <p><span class="math display">\[i^2 = -1\]</span></p>
+<ul>
+<li>If <span class="math inline">\(c\)</span> is a nonnegative real number (<span class="math inline">\(c≥0\)</span>), then the square root of a negative number can be written using the imaginary unit <span class="math inline">\(i\)</span>:</li>
+</ul>
+<p><span class="math display">\[\sqrt{-c} = i\sqrt{c}\]</span></p>
+<p>For example, <span class="math inline">\(\sqrt{-25} = i\sqrt{25} = 5i\)</span>.</p>
 </div>
 <section id="implementation-in-r-15" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-15"><em>Implementation in R</em></h5>
 <div class="cell">

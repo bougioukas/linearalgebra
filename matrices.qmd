@@ -1027,6 +1027,38 @@ $$\lambda A = \lambda \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21
 
  
 
+::: content-box-white
+**Properties of Scalar Multiplication**
+
+If $A$ and $B$ are $m \times n$ matrices and $\lambda$ and $\mu$ are scalars, the following algebraic properties hold:
+
+**Distributivity Over Matrix Addition:** A scalar distributes across the sum of matrices.
+
+$$\lambda(A + B) = \lambda A + \lambda B$$
+
+**Distributivity Over Scalar Addition:** A scalar distributes over matrix addition.
+
+$$(\lambda + \mu)A = \lambda A + \mu A$$
+
+**Associativity of Scalar Multiplication:** A matrix distributes over scalar addition.
+
+$$\lambda(\mu A) = (\lambda \mu)A$$
+
+**Additive Inverse Property:** Multiplying a matrix by −1 gives its additive inverse.
+
+$$(-1)A = -A$$
+
+
+**Zero Properties:**Multiplication by the zero scalar, or of the zero matrix, always gives the zero matrix.
+
+$$0A = O_{m \times n}$$
+and 
+
+$$λ \cdot O_{m \times n}=O_{m \times n}$$
+:::
+
+ 
+
 #### Example: Multiplication of a Matrix by a real number
 
 Consider the scalar $\lambda = 3$ and the $3 \times 2$ matrix $A$:
@@ -1070,9 +1102,18 @@ $$\lambda A = (2 + 3i) \begin{bmatrix} 1 & i \\ 2 & 1 - i \end{bmatrix} = \begin
  
 
 ::: content-box-white
-The imaginary unit $i$ satisfies the relation:
+The imaginary unit $i$ satisfies the two following properties:
 
- $$i^2 = -1$$
+- The definition of the imaginary unit $i$ is:
+
+$$i^2 = -1$$
+
+- If $c$ is a nonnegative real number ($c≥0$), then the square root of a negative number can be written using the imaginary unit $i$:
+
+$$\sqrt{-c} = i\sqrt{c}$$
+
+For example, $\sqrt{-25} = i\sqrt{25} = 5i$.
+
 :::
 
 
