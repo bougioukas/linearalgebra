@@ -13,6 +13,7 @@ book:
   chapters:
     - index.qmd
     #- intro.qmd
+    - vectors.qmd
     - matrices.qmd
     #- history.qmd
     #- summary.qmd
@@ -32,10 +33,10 @@ format:
     theme:
       light: [cosmo, custom.scss]
     grid:
-      sidebar-width: 270px
+      sidebar-width: 260px
       body-width: 840px
       margin-width: 250px
-    fontsize: 1.2em
+    fontsize: 1.16em
     linestretch: 1.5
     toc-title: "On this page"
     link-external-newwindow: true
@@ -44,5 +45,6 @@ format:
     html-math-method: mathjax
   pdf:
     documentclass: scrreprt
-
+execute:
+  freeze: false
 editor: visual

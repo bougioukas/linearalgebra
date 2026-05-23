@@ -1,0 +1,106 @@
+# Vectors {#sec-vectors}
+
+We can represent vectors as a sequence of entries (or elements) arranged in a column, called a **column vector**. For example, we write a vector $\mathbf{u}$ in $\mathbb{R^n}$ as
+
+$$\mathbf{u} = \begin{bmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{bmatrix}$$
+
+Because writing vertically takes up a lot of space, this exact same vector is often written horizontally using parentheses and commas:
+
+$$\mathbf{u} = (u_1, u_2, \dots, u_n)$$
+
+
+ 
+
+#### Example: Matrix Product
+
+For example, a vector $\mathbf{u}$ in a two-dimensional space ($\mathbb{R}^2$) can be expressed algebraically as an ordered pair of its entries, $u_1 = 1.5$ and $u_2 = 1$, written as $\mathbf{u} = (1.5, 1)$. Geometrically, it is represented as a directed arrow spanning from the origin within a Cartesian coordinate system (@fig-vector).
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-align: center
+#| label: fig-vector
+#| fig-cap: 'In a Cartesian coordinate system, a vector in $\mathbb{R}^2$ is geometrically represented as a directed line segment (an arrow).'
+
+
+library(ggplot2)
+
+# --- 1. Define Vector and Label Data ---
+u1 <- 1.5
+u2 <- 1.0
+
+point_data <- data.frame(
+  x = u1,
+  y = u2,
+  label = "u == (list(1.5, 1))"
+)
+
+# --- 2. Build the Plot ---
+ggplot() +
+  # Clear theme to remove background grid lines completely
+  theme_void() + 
+  theme(
+    plot.margin = margin(20, 20, 20, 20)
+  ) +
+  
+  # 1. Vertical and Horizontal Dashed Projection Lines (Palette from Image 1)
+  geom_segment(aes(x = u1, y = u2, xend = u1, yend = 0), 
+               color = "#555555", lty = "dashed", size = 0.5) +
+  geom_segment(aes(x = u1, y = u2, xend = 0, yend = u2), 
+               color = "#555555", lty = "dashed", size = 0.5) +
+
+  
+  # 2. Axis Lines (x and y) using the gray color (#555555)
+  geom_segment(aes(x = 0, y = 0, xend = 2.0, yend = 0), 
+               arrow = arrow(length = unit(0.25, "cm"), type = "open"), 
+               color = "#555555", size = 0.5) +
+  geom_segment(aes(x = 0, y = 0, xend = 0, yend = 1.8), 
+               arrow = arrow(length = unit(0.25, "cm"), type = "open"), 
+               color = "#555555", size = 0.5) +
+  
+  # Axis Labels (Muted gray text)
+  annotate("text", x = 2.15, y = 0, label = "x", fontface = "italic", color = "#555555", size = 6) +
+  annotate("text", x = 0, y = 1.95, label = "y", fontface = "italic", color = "#555555", size = 6) +
+  annotate("text", x = -0.05, y = -0.08, label = "O (0,0)", fontface = "italic", color = "#555555", size = 5) +
+  
+  # Axis Ticks / Intercept Labels for the components
+  annotate("text", x = u1, y = -0.1, label = "u[1] == 1.5", parse = TRUE, color = "#555555", size = 5) +
+  annotate("text", x = -0.17, y = u2, label = "u[2] == 1", parse = TRUE, color = "#555555", size = 5) +
+  
+  # 3. The Vector Arrow using the Dark Red outline color (#8B0000)
+  geom_segment(aes(x = 0, y = 0, xend = u1, yend = u2), 
+               arrow = arrow(length = unit(0.35, "cm"), type = "closed"), 
+               color = "#8B0000", size = 1.0) +
+  
+  # Vector Name Label
+  annotate("text", x = u1 * 0.45, y = u2 * 0.55 + 0.1, label = "u", fontface = "bold", color = "#8B0000", size = 5) +
+  
+  
+  # 5. Math Coordinate Label matching the dark red style
+  geom_text(data = point_data, aes(x = x, y = y, label = label), 
+            color = "#8B0000", parse = TRUE, size = 5, hjust = -0.15, vjust = -0.15) +
+  
+  # 6. Fix coordinate ratio and set plot boundaries
+  coord_fixed(xlim = c(-0.3, 2.5), ylim = c(-0.3, 2.1))
+```
+
+
+
+##### *Implementation in R*
+
+We can initialize our specific vector $\mathbf{u} = (1.5, 1)$ and print its entries to the console as follows:
+
+
+```{r}
+u <- c(1.5, 1)
+u
+```
+
+
+
+
+
+
+
+
