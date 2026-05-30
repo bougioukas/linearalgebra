@@ -1,6 +1,149 @@
-# Vectors {#sec-vectors}
+# Vector Spaces {#sec-vectors}
 
-We can represent vectors as a sequence of entries (or elements) arranged in a column, called a **column vector**. For example, we write a vector $\mathbf{u}$ in $\mathbb{R^n}$ as
+In physics and engineering, physical quantities are broadly classified into two fundamental types: **scalars**, which possess magnitude only (such as mass or temperature), and **vectors**, which possess both magnitude and direction (such as velocity or force). The mathematical structure that naturally describes and manipulates vectors is the concept of a **vector space**.
+
+## Definition of Vector Space
+
+A non-empty set $V$ is called a vector space over a field $\mathbb{K}$ if its elements are equipped with a well-defined notion of equality and two closed operations: vector addition between elements of $V$, denoted by ($+$), and scalar multiplication of a scalar in $\mathbb{K}$ with an element of $V$, denoted by ($\cdot$), satisfying the following axioms for all $\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$ and all $\lambda, \mu \in \mathbb{K}$:
+
+**Vector Addition Axioms**
+
+1.  **Closure under Addition:** The sum of $\mathbf{u}$ and $\mathbf{v}$, denoted by $\mathbf{u} + \mathbf{v}$, is in $V$.
+
+2.  **Additive Commutativity:** $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$.
+
+3.  **Additive Associativity:** $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$.
+
+4.  **Additive Identity:** There exists a unique vector $\mathbf{0}$ in $V$, called the zero vector, such that $\mathbf{0} + \mathbf{u} =\mathbf{u} + \mathbf{0} = \mathbf{u}$ for all $u$ in $V$.
+
+5.  **Additive Inverse:** For each $\mathbf{u}$ in $V$, there is a vector $-\mathbf{u}$ in $V$ (called the negative of $\mathbf{u}$) such that $\mathbf{u} + (-\mathbf{u}) = \mathbf{0}$.
+
+**Scalar Multiplication Axioms**
+
+1.  **Closure under Scalar Multiplication:** The scalar multiple of $\mathbf{u}$ by $\lambda$, denoted by $\lambda \cdot \mathbf{u}$, is in $V$.
+
+2.  **Distributivity over Vector Addition:** $\lambda \cdot (\mathbf{u} + \mathbf{v}) = \lambda \cdot \mathbf{u} + \lambda \cdot \mathbf{v}$.
+
+3.  **Distributivity over Scalar Addition:** $(\lambda + \mu)\cdot \mathbf{u} = \lambda\cdot \mathbf{u} + \mu\cdot \mathbf{u}$.
+
+4.  **Compatibility of Multiplication:** $\lambda \cdot (\mu \cdot \mathbf{u}) = (\lambda \cdot \mu) \cdot \mathbf{u}$.
+
+5.  **Scalar Identity Element:** $1 \cdot \mathbf{u} = \mathbf{u}$.
+
+Additionally, for each $\mathbf{u}$ in $V$ and scalar $\lambda \in \mathbb{K}$, the following properties holds as an immediate consequence of the vector space axioms:
+
+$$0 \cdot \mathbf{u} = \mathbf{0}$$ $$\lambda \cdot \mathbf{0} = \mathbf{0}$$
+
+<br>
+
+Unless stated otherwise, $\mathbb{K}$ is taken to be $\mathbb{R}$ or $\mathbb{C}$, and $V$ is referred to as a real or complex vector space, respectively.
+
+::: content-box-white
+**NOTE:** Axioms 1 through 5 state that $(V, +)$ forms an abelian (commutative) group. Axioms 6 through 10 define how the field $\mathbb{K}$ acts on that group.
+:::
+
+There exist many completely different types of vector spaces used throughout science and engineering:
+
+-   **Coordinate Spaces (**$\mathbb{R}^n$ and $\mathbb{C}^n$): Ordered n-tuples of real or complex numbers, ranging from the two- and three-dimensional spaces of classical physics to the high-dimensional arrays of modern data analysis.
+
+$$\mathbf{u} + \mathbf{v} = \begin{bmatrix} u_1 + v_1 \\ u_2 + v_2 \\ \vdots \\ u_n + v_n \end{bmatrix} \text{,} \qquad \lambda \mathbf{u} = \begin{bmatrix} \lambda u_1 \\ \lambda u_2 \\ \vdots \\ \lambda u_n \end{bmatrix}$$
+
+-   **Matrix Spaces (**$M_{m \times n}$): The set of all $m \times n$ matrices over a field $\mathbb{K}$, where each matrix is treated as a single vector and addition and scalar multiplication are defined entry-wise,
+
+$$\mathbf{U} + \mathbf{V} = [u_{ij} + v_{ij}] \text{,} \qquad \lambda \cdot \mathbf{U} = [\lambda \cdot u_{ij}]$$
+
+allowing transformations, and systems of equations be represented and manipulated within a unified algebraic framework.
+
+-   **Function Spaces (**$C[a, b]$): Continuous functions on a closed interval $[a,b]$, with addition and scaling defined pointwise,
+
+$$(f + g)(x) = f(x) + g(x) \text{,} \qquad (\lambda \cdot f)(x) = \lambda \cdot f(x)$$
+
+forming infinite-dimensional spaces where whole continuous functions, mathematical curves, and physical waveforms behave exactly like vectors. This forms the foundation of signal processing, acoustics, and quantum mechanics.
+
+## Vector Subspaces
+
+When analyzing a large vector space $V$, we are frequently interested in smaller collections of vectors within $V$ that behave as self-contained vector spaces in their own right. These collections are known as subspaces.
+
+Formally, let $V$ be a vector space over a field $\mathbb{K}$, and let $W$ be a subset of $V$ ($W \subseteq V$). We say that $W$ is a subspace of $V$ if:
+
+1.  It contains the zero vector: $\mathbf{0} \in W$
+
+2.  It is closed under the inherited operation of addition: $\mathbf{u}, \mathbf{v} \in W \implies \mathbf{u} + \mathbf{v} \in W$
+
+3.  It is closed under the inherited operation of scalar multiplication: $\mathbf{u} \in W, \lambda \in \mathbb{K} \implies \lambda\mathbf{u} \in W$
+
+Since the remaining axioms are inherited automatically from $V$, these three conditions are both necessary and sufficient, and can be consolidated into the subspace test:
+
+$$\mathbf{u}, \mathbf{v} \in W, \ \lambda, \mu \in \mathbb{K} \implies \lambda\mathbf{u} + \mu\mathbf{v} \in W$$
+
+<br>
+
+::: content-box-white
+In the Cartesian space $\mathbb{R}^3$, every plane $P$ passing through the origin can be written as
+
+$$P = \{(x,y,z) \in \mathbb{R}^3 \mid \alpha x + \beta y + \gamma z = 0\},$$
+
+where $\alpha, \beta, \gamma \in \mathbb{R}$ are not all zero. To verify that $P$ is a subspace of $\mathbb{R}^3$, we check the three subspace properties.
+
+**1. Contains the zero vector**
+
+Substituting $(0,0,0)$ into the plain equation gives
+
+$$\alpha(0) + \beta(0) + \gamma(0) = 0,$$
+
+So the zero vector is in the plane.
+
+**2. Closed under addition**
+
+Let $\mathbf{u} = (x_1, y_1, z_1) \in P$ and $\mathbf{v} = (x_2, y_2, z_2) \in P$. Their sum is defined component-wise as:
+
+$$\mathbf{u} + \mathbf{v} = (x_1 + x_2, \; y_1 + y_2, \; z_1 + z_2)$$
+
+Since both $\mathbf{u}$ and $\mathbf{v}$ lie in the plane $P$, their coordinates must satisfy the plane's defining equation:
+
+$$\alpha x_1 + \beta y_1 + \gamma z_1 = 0$$
+
+and
+
+$$\alpha x_2 + \beta y_2 + \gamma z_2 = 0$$
+
+Adding these two equations yields:
+
+$$\alpha(x_1 + x_2) + \beta(y_1 + y_2) + \gamma(z_1 + z_2) = 0$$
+
+Hence,
+
+$$(x_1 + x_2, \; y_1 + y_2, \; z_1 + z_2) \in P$$
+
+$$\mathbf{u} + \mathbf{v} \in P$$
+
+**3. Closed under scalar multiplication**
+
+Let $(x_1, y_1, z_1) \in P$ and let $\lambda \in \mathbb{R}$. Since
+
+$$\alpha x_1 + \beta y_1 + \gamma z_1 = 0,$$
+
+multiplying by $\lambda$ gives
+
+$$\alpha(\lambda x_1) + \beta(\lambda y_1) + \gamma(\lambda z_1) = 0$$
+
+Therefore,$$(\lambda x_1, \lambda y_1, \lambda z_1) \in P$$
+
+$$\lambda\mathbf{u} \in P$$
+
+Since all three conditions are satisfied, every plane through the origin is a subspace of $\mathbb{R}^3$.
+
+Moreover, the subspaces of $\mathbb{R}^3$ are precisely:
+
+-   The trivial subspace $\{(0,0,0)\}$
+-   All lines through the origin
+-   All planes through the origin
+-   $\mathbb{R}^3$ itself
+:::
+
+## Vector Space in $\mathbb{R}^n$
+
+We can represent vectors as a sequence of entries (or elements) arranged in a column, called a **column vector**. For example, we write a vector $\mathbf{u}$ in $\mathbb{R}^n$ as
 
 $$\mathbf{u} = \begin{bmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{bmatrix}$$
 
@@ -8,13 +151,11 @@ Because writing vertically takes up a lot of space, this exact same vector is of
 
 $$\mathbf{u} = (u_1, u_2, \dots, u_n)$$
 
-
  
 
-#### Example: Matrix Product
+#### Example: Vector $u = (u_1, u_2)$
 
-For example, a vector $\mathbf{u}$ in a two-dimensional space ($\mathbb{R}^2$) can be expressed algebraically as an ordered pair of its entries, $u_1 = 1.5$ and $u_2 = 1$, written as $\mathbf{u} = (1.5, 1)$. Geometrically, it is represented as a directed arrow spanning from the origin within a Cartesian coordinate system (@fig-vector).
-
+For example, a vector $\mathbf{u}$ in a two-dimensional space ($\mathbb{R}^2$) can be expressed algebraically as an ordered pair of its entries, $u_1 = 1.5$ and $u_2 = 1$, written as $\mathbf{u} = (1.5, 1)$. Geometrically, it is represented as an arrow, or directed line segment, starting at the origin in the coordinate plane and ending at the point with coordinates $u_1$ and $u_2$ (@fig-vector).
 
 ```{r}
 #| echo: false
@@ -85,22 +226,91 @@ ggplot() +
   coord_fixed(xlim = c(-0.3, 2.5), ylim = c(-0.3, 2.1))
 ```
 
-
-
 ##### *Implementation in R*
 
 We can initialize our specific vector $\mathbf{u} = (1.5, 1)$ and print its entries to the console as follows:
-
 
 ```{r}
 u <- c(1.5, 1)
 u
 ```
 
+## Vector Addition in $\mathbb{R}^n$
+
+If $\mathbf{a} = (a_1, a_2, \dots, a_n)$ and $\mathbf{b} = (b_1, b_2, \dots, b_n)$ are two vectors in $\mathbb{R}^n$, then the sum of $\mathbf{a}$ and $\mathbf{b}$ is the vector:$$\mathbf{a} + \mathbf{b} = (a_1 + b_1, a_2 + b_2, \dots, a_n + b_n)$$
+
+We add two vectors, $\mathbf{u} = (u_1, u_2)$ and $\mathbf{v} = (v_1, v_2)$, by adding their components:
+
+$$u + v = (u_1, u_2) + (v_1, v_2) = (u_1 + v_1, u_2 + v_2)$$
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-align: center
+#| label: fig-vector2
+#| fig-cap: 'In a Cartesian coordinate system, a vector in $\mathbb{R}^2$ is geometrically represented as a directed line segment (an arrow).'
 
 
+# 1. Define vector components
+ux <- 3; uy <- 1
+vx <- 1; vy <- 2
+rx <- ux + vx  # 4
+ry <- uy + vy  # 3
 
+# 2. Build the blank theme canvas
+ggplot() +
+  # Custom Axis Lines (Charcoal Gray)
+  geom_segment(aes(x = -0.5, y = 0, xend = 4.8, yend = 0), 
+               arrow = arrow(length = unit(0.2, "cm"), type = "open"), color = "#555555", linewidth = 0.6) +
+  geom_segment(aes(x = 0, y = -0.5, xend = 0, yend = 3.8), 
+               arrow = arrow(length = unit(0.2, "cm"), type = "open"), color = "#555555", linewidth = 0.6) +
+  
+  # Axis Labels
+  annotate("text", x = 4.7, y = -0.2, label = "x", fontface = "italic", size = 4.5, color = "#555555") +
+  annotate("text", x = -0.2, y = 3.7, label = "y", fontface = "italic", size = 4.5, color = "#555555") +
+  annotate("text", x = -0.15, y = -0.15, label = "O", fontface = "italic", size = 4, color = "#555555") +
+  
+  # Parallelogram / Projection Guidelines (Dashed Lines)
+  geom_segment(aes(x = ux, y = uy, xend = rx, yend = ry), lty = "dashed", color = "#777777", linewidth = 0.5) +
+  geom_segment(aes(x = vx, y = vy, xend = rx, yend = ry), lty = "dashed", color = "#777777", linewidth = 0.5) +
+  
+  # Vector 'u' (Blue)
+  geom_segment(aes(x = 0, y = 0, xend = ux, yend = uy), 
+               arrow = arrow(length = unit(0.25, "cm"), type = "closed"), color = "#1f77b4", linewidth = 1.0) +
+  # Vector 'v' (Green)
+  geom_segment(aes(x = 0, y = 0, xend = vx, yend = vy), 
+               arrow = arrow(length = unit(0.25, "cm"), type = "closed"), color = "#2ca02c", linewidth = 1.0) +
+  # Resultant Vector 'u + v' (Maroon/Red)
+  geom_segment(aes(x = 0, y = 0, xend = rx, yend = ry), 
+               arrow = arrow(length = unit(0.3, "cm"), type = "closed"), color = "#8B0000", linewidth = 1.2) +
+  
+  # Mathematical Labels (Parsed textmath expressions)
+  annotate("text", x = 1.7, y = 0.3, label = "u", fontface = "bold.italic", size = 5, color = "#1f77b4") +
+  annotate("text", x = 0.3, y = 1.2, label = "v", fontface = "bold.italic", size = 5, color = "#2ca02c") +
+  annotate("text", x = 1.8, y = 1.8, label = "u + v", fontface = "bold.italic", size = 5, color = "#8B0000") +
+  
+  # Terminal Coordinate Labels
+  annotate("text", x = ux + 0.4, y = uy, label = "u == (list(3, 1))", parse = TRUE, size = 4, color = "#1f77b4") +
+  annotate("text", x = vx - 0.4, y = vy + 0.1, label = "v == (list(1, 2))", parse = TRUE, size = 4, color = "#2ca02c") +
+  annotate("text", x = rx + 0.7, y = ry, label = "w == (list(4, 3))", parse = TRUE, size = 4.2, color = "#8B0000") +
+  
+  # Force layout constraints matching original graphic style
+  coord_fixed() +
+  theme_void()
+```
 
+ 
 
+#### Example: Vector addition u + v
 
+$$w = u + v = (3, 1) + (1, 2) = (3 + 1, 1 + 2) = (4, 3)$$
 
+##### *Implementation in R*
+
+```{r}
+u <- c(3, 1)
+v <- c(1, 2)
+
+w <- u + v
+w
+```

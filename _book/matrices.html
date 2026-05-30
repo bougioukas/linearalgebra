@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>2&nbsp; The Basics of Matrices – LINEAR ALGEBRA WITH R</title>
+<title>1&nbsp; The Basics of Matrices – LINEAR ALGEBRA WITH R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,8 +61,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./vectors.html" rel="prev">
+<link href="./vectors.html" rel="next">
+<link href="./index.html" rel="prev">
 <link href="./images/cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -134,7 +134,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./matrices.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Basics of Matrices</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./matrices.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Basics of Matrices</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -163,14 +163,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vectors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Vectors</span></span></a>
+  <a href="./matrices.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Basics of Matrices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./matrices.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Basics of Matrices</span></span></a>
+  <a href="./vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vector Spaces</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -187,40 +187,40 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#matrix-notation" id="toc-matrix-notation" class="nav-link active" data-scroll-target="#matrix-notation"><span class="header-section-number">2.1</span> Matrix Notation</a></li>
+<li><a href="#matrix-notation" id="toc-matrix-notation" class="nav-link active" data-scroll-target="#matrix-notation"><span class="header-section-number">1.1</span> Matrix Notation</a></li>
   <li>
-<a href="#basic-types-of-matrices" id="toc-basic-types-of-matrices" class="nav-link" data-scroll-target="#basic-types-of-matrices"><span class="header-section-number">2.2</span> Basic Types of Matrices</a>
+<a href="#basic-types-of-matrices" id="toc-basic-types-of-matrices" class="nav-link" data-scroll-target="#basic-types-of-matrices"><span class="header-section-number">1.2</span> Basic Types of Matrices</a>
   <ul class="collapse">
-<li><a href="#the-zero-matrix" id="toc-the-zero-matrix" class="nav-link" data-scroll-target="#the-zero-matrix"><span class="header-section-number">2.2.1</span> The Zero Matrix</a></li>
-  <li><a href="#the-ones-matrix" id="toc-the-ones-matrix" class="nav-link" data-scroll-target="#the-ones-matrix"><span class="header-section-number">2.2.2</span> The Ones Matrix</a></li>
-  <li><a href="#the-square-matrix" id="toc-the-square-matrix" class="nav-link" data-scroll-target="#the-square-matrix"><span class="header-section-number">2.2.3</span> The Square Matrix</a></li>
-  <li><a href="#the-diagonal-matrix" id="toc-the-diagonal-matrix" class="nav-link" data-scroll-target="#the-diagonal-matrix"><span class="header-section-number">2.2.4</span> The Diagonal Matrix</a></li>
-  <li><a href="#the-anti-diagonal-matrix" id="toc-the-anti-diagonal-matrix" class="nav-link" data-scroll-target="#the-anti-diagonal-matrix"><span class="header-section-number">2.2.5</span> The Anti-Diagonal Matrix</a></li>
-  <li><a href="#the-triangular-matrices" id="toc-the-triangular-matrices" class="nav-link" data-scroll-target="#the-triangular-matrices"><span class="header-section-number">2.2.6</span> The Triangular Matrices</a></li>
-  <li><a href="#the-identity-matrix" id="toc-the-identity-matrix" class="nav-link" data-scroll-target="#the-identity-matrix"><span class="header-section-number">2.2.7</span> The Identity Matrix</a></li>
-  <li><a href="#the-permutation-matrix" id="toc-the-permutation-matrix" class="nav-link" data-scroll-target="#the-permutation-matrix"><span class="header-section-number">2.2.8</span> The Permutation Matrix</a></li>
-  <li><a href="#the-symmetric-matrix" id="toc-the-symmetric-matrix" class="nav-link" data-scroll-target="#the-symmetric-matrix"><span class="header-section-number">2.2.9</span> The Symmetric Matrix</a></li>
-  <li><a href="#the-antisymmetric-matrix" id="toc-the-antisymmetric-matrix" class="nav-link" data-scroll-target="#the-antisymmetric-matrix"><span class="header-section-number">2.2.10</span> The Antisymmetric Matrix</a></li>
+<li><a href="#the-zero-matrix" id="toc-the-zero-matrix" class="nav-link" data-scroll-target="#the-zero-matrix"><span class="header-section-number">1.2.1</span> The Zero Matrix</a></li>
+  <li><a href="#the-ones-matrix" id="toc-the-ones-matrix" class="nav-link" data-scroll-target="#the-ones-matrix"><span class="header-section-number">1.2.2</span> The Ones Matrix</a></li>
+  <li><a href="#the-square-matrix" id="toc-the-square-matrix" class="nav-link" data-scroll-target="#the-square-matrix"><span class="header-section-number">1.2.3</span> The Square Matrix</a></li>
+  <li><a href="#the-diagonal-matrix" id="toc-the-diagonal-matrix" class="nav-link" data-scroll-target="#the-diagonal-matrix"><span class="header-section-number">1.2.4</span> The Diagonal Matrix</a></li>
+  <li><a href="#the-anti-diagonal-matrix" id="toc-the-anti-diagonal-matrix" class="nav-link" data-scroll-target="#the-anti-diagonal-matrix"><span class="header-section-number">1.2.5</span> The Anti-Diagonal Matrix</a></li>
+  <li><a href="#the-triangular-matrices" id="toc-the-triangular-matrices" class="nav-link" data-scroll-target="#the-triangular-matrices"><span class="header-section-number">1.2.6</span> The Triangular Matrices</a></li>
+  <li><a href="#the-identity-matrix" id="toc-the-identity-matrix" class="nav-link" data-scroll-target="#the-identity-matrix"><span class="header-section-number">1.2.7</span> The Identity Matrix</a></li>
+  <li><a href="#the-permutation-matrix" id="toc-the-permutation-matrix" class="nav-link" data-scroll-target="#the-permutation-matrix"><span class="header-section-number">1.2.8</span> The Permutation Matrix</a></li>
+  <li><a href="#the-symmetric-matrix" id="toc-the-symmetric-matrix" class="nav-link" data-scroll-target="#the-symmetric-matrix"><span class="header-section-number">1.2.9</span> The Symmetric Matrix</a></li>
+  <li><a href="#the-antisymmetric-matrix" id="toc-the-antisymmetric-matrix" class="nav-link" data-scroll-target="#the-antisymmetric-matrix"><span class="header-section-number">1.2.10</span> The Antisymmetric Matrix</a></li>
   </ul>
 </li>
   <li>
-<a href="#operations-on-matrices" id="toc-operations-on-matrices" class="nav-link" data-scroll-target="#operations-on-matrices"><span class="header-section-number">2.3</span> Operations on Matrices</a>
+<a href="#operations-on-matrices" id="toc-operations-on-matrices" class="nav-link" data-scroll-target="#operations-on-matrices"><span class="header-section-number">1.3</span> Operations on Matrices</a>
   <ul class="collapse">
-<li><a href="#equality-of-matrices" id="toc-equality-of-matrices" class="nav-link" data-scroll-target="#equality-of-matrices"><span class="header-section-number">2.3.1</span> Equality of Matrices</a></li>
-  <li><a href="#matrix-addition" id="toc-matrix-addition" class="nav-link" data-scroll-target="#matrix-addition"><span class="header-section-number">2.3.2</span> Matrix Addition</a></li>
-  <li><a href="#scalar-multiplication-of-a-matrix" id="toc-scalar-multiplication-of-a-matrix" class="nav-link" data-scroll-target="#scalar-multiplication-of-a-matrix"><span class="header-section-number">2.3.3</span> Scalar Multiplication of a Matrix</a></li>
-  <li><a href="#linear-combination-of-matrices" id="toc-linear-combination-of-matrices" class="nav-link" data-scroll-target="#linear-combination-of-matrices"><span class="header-section-number">2.3.4</span> Linear Combination of Matrices</a></li>
-  <li><a href="#hadamard-product" id="toc-hadamard-product" class="nav-link" data-scroll-target="#hadamard-product"><span class="header-section-number">2.3.5</span> Hadamard Product</a></li>
-  <li><a href="#matrix-product-matrix-multiplication" id="toc-matrix-product-matrix-multiplication" class="nav-link" data-scroll-target="#matrix-product-matrix-multiplication"><span class="header-section-number">2.3.6</span> Matrix Product (Matrix Multiplication)</a></li>
-  <li><a href="#inverse-of-a-matrix" id="toc-inverse-of-a-matrix" class="nav-link" data-scroll-target="#inverse-of-a-matrix"><span class="header-section-number">2.3.7</span> Inverse of a Matrix</a></li>
-  <li><a href="#transpose-of-a-matrix" id="toc-transpose-of-a-matrix" class="nav-link" data-scroll-target="#transpose-of-a-matrix"><span class="header-section-number">2.3.8</span> Transpose of a Matrix</a></li>
+<li><a href="#equality-of-matrices" id="toc-equality-of-matrices" class="nav-link" data-scroll-target="#equality-of-matrices"><span class="header-section-number">1.3.1</span> Equality of Matrices</a></li>
+  <li><a href="#matrix-addition" id="toc-matrix-addition" class="nav-link" data-scroll-target="#matrix-addition"><span class="header-section-number">1.3.2</span> Matrix Addition</a></li>
+  <li><a href="#scalar-multiplication-of-a-matrix" id="toc-scalar-multiplication-of-a-matrix" class="nav-link" data-scroll-target="#scalar-multiplication-of-a-matrix"><span class="header-section-number">1.3.3</span> Scalar Multiplication of a Matrix</a></li>
+  <li><a href="#linear-combination-of-matrices" id="toc-linear-combination-of-matrices" class="nav-link" data-scroll-target="#linear-combination-of-matrices"><span class="header-section-number">1.3.4</span> Linear Combination of Matrices</a></li>
+  <li><a href="#hadamard-product" id="toc-hadamard-product" class="nav-link" data-scroll-target="#hadamard-product"><span class="header-section-number">1.3.5</span> Hadamard Product</a></li>
+  <li><a href="#matrix-product-matrix-multiplication" id="toc-matrix-product-matrix-multiplication" class="nav-link" data-scroll-target="#matrix-product-matrix-multiplication"><span class="header-section-number">1.3.6</span> Matrix Product (Matrix Multiplication)</a></li>
+  <li><a href="#inverse-of-a-matrix" id="toc-inverse-of-a-matrix" class="nav-link" data-scroll-target="#inverse-of-a-matrix"><span class="header-section-number">1.3.7</span> Inverse of a Matrix</a></li>
+  <li><a href="#transpose-of-a-matrix" id="toc-transpose-of-a-matrix" class="nav-link" data-scroll-target="#transpose-of-a-matrix"><span class="header-section-number">1.3.8</span> Transpose of a Matrix</a></li>
   </ul>
 </li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sec-matrices" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Basics of Matrices</span></span></h1>
+<h1 class="title"><span id="sec-matrices" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Basics of Matrices</span></span></h1>
 </div>
 
 
@@ -234,8 +234,8 @@ window.Quarto = {
   
 
 
-</header><section id="matrix-notation" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="matrix-notation">
-<span class="header-section-number">2.1</span> Matrix Notation</h2>
+</header><section id="matrix-notation" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="matrix-notation">
+<span class="header-section-number">1.1</span> Matrix Notation</h2>
 <p>Let <span class="math inline">\(\mathbb{K}\)</span> be a field and <span class="math inline">\(m, n \in \mathbb{N}\)</span>. An <span class="math inline">\(\mathbf{m} \times \mathbf{n}\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> over the field <span class="math inline">\(\mathbb{K}\)</span> is a rectangular array of elements <span class="math inline">\(a_{ij} \in \mathbb{K}\)</span> arranged in <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns, usually presented in the following form:</p>
 <p><span class="math display">\[\mathbf{A} = [a_{ij}] = \begin{bmatrix}
 a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
@@ -435,7 +435,7 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 </div>
 </div>
 <p>&nbsp;</p>
-<p>The geometric effect of the planar rotation matrix <span class="math inline">\(\mathbf{R(\theta)}\)</span> on a unit square for <span class="math inline">\(\theta = \pi/4\)</span> is shown in <a href="#fig-rotation" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.</p>
+<p>The geometric effect of the planar rotation matrix <span class="math inline">\(\mathbf{R(\theta)}\)</span> on a unit square for <span class="math inline">\(\theta = \pi/4\)</span> is shown in <a href="#fig-rotation" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-rotation" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -443,15 +443,15 @@ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
 <img src="matrices_files/figure-html/fig-rotation-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Planar rotation of the unit square by <span class="math inline">\(R(\theta)\)</span> around the origin <span class="math inline">\((0,0)\)</span>. At <span class="math inline">\(\theta = \pi/4\)</span>, the square transforms into a diamond configuration: the pivot <span class="math inline">\(\Sigma_1(0,0)\)</span> remains invariant (<span class="math inline">\(\Sigma_1 = \Sigma_1^\prime\)</span>), while the remaining vertices map to <span class="math inline">\(\Sigma_2^\prime(\sqrt{2}/2, \sqrt{2}/2)\)</span>, the apex <span class="math inline">\(\Sigma_3^\prime(0, \sqrt{2})\)</span>, and <span class="math inline">\(\Sigma_4^\prime(-\sqrt{2}/2, \sqrt{2}/2)\)</span>.
+Figure&nbsp;1.1: Planar rotation of the unit square by <span class="math inline">\(R(\theta)\)</span> around the origin <span class="math inline">\((0,0)\)</span>. At <span class="math inline">\(\theta = \pi/4\)</span>, the square transforms into a diamond configuration: the pivot <span class="math inline">\(\Sigma_1(0,0)\)</span> remains invariant (<span class="math inline">\(\Sigma_1 = \Sigma_1^\prime\)</span>), while the remaining vertices map to <span class="math inline">\(\Sigma_2^\prime(\sqrt{2}/2, \sqrt{2}/2)\)</span>, the apex <span class="math inline">\(\Sigma_3^\prime(0, \sqrt{2})\)</span>, and <span class="math inline">\(\Sigma_4^\prime(-\sqrt{2}/2, \sqrt{2}/2)\)</span>.
 </figcaption></figure>
 </div>
 </div>
 </div>
-</section></section></section><section id="basic-types-of-matrices" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="basic-types-of-matrices">
-<span class="header-section-number">2.2</span> Basic Types of Matrices</h2>
-<section id="the-zero-matrix" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="the-zero-matrix">
-<span class="header-section-number">2.2.1</span> The Zero Matrix</h3>
+</section></section></section><section id="basic-types-of-matrices" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="basic-types-of-matrices">
+<span class="header-section-number">1.2</span> Basic Types of Matrices</h2>
+<section id="the-zero-matrix" class="level3" data-number="1.2.1"><h3 data-number="1.2.1" class="anchored" data-anchor-id="the-zero-matrix">
+<span class="header-section-number">1.2.1</span> The Zero Matrix</h3>
 <p>An <span class="math inline">\(m \times n\)</span> matrix is called a <strong>zero matrix</strong> (or null matrix) if all its entries are zero, and is typically denoted by <span class="math inline">\(\mathbf{O_{m \times n}}\)</span> or simply <span class="math inline">\(\mathbf{O}\)</span>:</p>
 <p><span class="math display">\[\mathbf{O_{m \times n}} = \begin{bmatrix}
 0 &amp; 0 &amp; \cdots &amp; 0 \\
@@ -478,8 +478,8 @@ Figure&nbsp;2.1: Planar rotation of the unit square by <span class="math inline"
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-ones-matrix" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="the-ones-matrix">
-<span class="header-section-number">2.2.2</span> The Ones Matrix</h3>
+</section></section></section><section id="the-ones-matrix" class="level3" data-number="1.2.2"><h3 data-number="1.2.2" class="anchored" data-anchor-id="the-ones-matrix">
+<span class="header-section-number">1.2.2</span> The Ones Matrix</h3>
 <p>A ones matrix (also known as an all-ones matrix) is a matrix in which every entry is equal to one. It is typically denoted by <span class="math inline">\(\mathbf{J_{m \times n}}\)</span> or simply <span class="math inline">\(\mathbf{J}\)</span>.</p>
 <p><span class="math display">\[\mathbf{J_{m \times n}} = \begin{bmatrix}
 1 &amp; 1 &amp; \cdots &amp; 1 \\
@@ -506,8 +506,8 @@ Figure&nbsp;2.1: Planar rotation of the unit square by <span class="math inline"
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-square-matrix" class="level3" data-number="2.2.3"><h3 data-number="2.2.3" class="anchored" data-anchor-id="the-square-matrix">
-<span class="header-section-number">2.2.3</span> The Square Matrix</h3>
+</section></section></section><section id="the-square-matrix" class="level3" data-number="1.2.3"><h3 data-number="1.2.3" class="anchored" data-anchor-id="the-square-matrix">
+<span class="header-section-number">1.2.3</span> The Square Matrix</h3>
 <p>A matrix <span class="math inline">\(\mathbf{A}\)</span> is called a <strong>square matrix</strong> if <span class="math inline">\(m = n\)</span>, that is, if it has an equal number of rows and columns. In this case, <span class="math inline">\(\mathbf{A}\)</span> is said to be of <strong>order</strong> <span class="math inline">\(n\)</span>, denoted <span class="math inline">\(\mathbf{A_{n \times n}}\)</span> or simply <span class="math inline">\(\mathbf{A_n}\)</span>.</p>
 <p><span class="math display">\[\mathbf{A_{n \times n}} = \begin{bmatrix}
 \boldsymbol{a_{11}} &amp; a_{12}              &amp; \cdots &amp; a_{1n} \\
@@ -626,8 +626,8 @@ a_{(n-1) \ 1}    &amp; \boldsymbol{a_{(n-1) \ 2}} &amp; \cdots &amp; a_{(n-1) \ 
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-diagonal-matrix" class="level3" data-number="2.2.4"><h3 data-number="2.2.4" class="anchored" data-anchor-id="the-diagonal-matrix">
-<span class="header-section-number">2.2.4</span> The Diagonal Matrix</h3>
+</section></section></section><section id="the-diagonal-matrix" class="level3" data-number="1.2.4"><h3 data-number="1.2.4" class="anchored" data-anchor-id="the-diagonal-matrix">
+<span class="header-section-number">1.2.4</span> The Diagonal Matrix</h3>
 <p>A <strong>diagonal matrix</strong> <span class="math inline">\(\mathbf{A}\)</span> is a square matrix in which all off-diagonal entries are zero, that is, <span class="math inline">\(a_{ij} = 0\)</span> for all <span class="math inline">\(i \neq j\)</span>:</p>
 <p><span class="math display">\[\mathbf{A_{n \times n}} = \begin{bmatrix} a_{11} &amp; 0 &amp; \dots &amp; 0 \\
 0 &amp; a_{22} &amp; \dots &amp; 0 \\
@@ -684,8 +684,8 @@ a_{(n-1) \ 1}    &amp; \boldsymbol{a_{(n-1) \ 2}} &amp; \cdots &amp; a_{(n-1) \ 
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-anti-diagonal-matrix" class="level3" data-number="2.2.5"><h3 data-number="2.2.5" class="anchored" data-anchor-id="the-anti-diagonal-matrix">
-<span class="header-section-number">2.2.5</span> The Anti-Diagonal Matrix</h3>
+</section></section></section><section id="the-anti-diagonal-matrix" class="level3" data-number="1.2.5"><h3 data-number="1.2.5" class="anchored" data-anchor-id="the-anti-diagonal-matrix">
+<span class="header-section-number">1.2.5</span> The Anti-Diagonal Matrix</h3>
 <p>An <strong>anti-diagonal matrix</strong> (or skew-diagonal matrix) is a square matrix where all entries are zero except for those on the diagonal going from the lower-left corner to the upper-right corner.</p>
 <p>Formally, a square matrix <span class="math inline">\(\mathbf{A}\)</span> is anti-diagonal if <span class="math inline">\(a_{ij} = 0\)</span> whenever <span class="math inline">\(i + j \neq n + 1\)</span>:</p>
 <p><span class="math display">\[\mathbf{A_{n \times n}} = \begin{bmatrix}
@@ -751,8 +751,8 @@ a_{n1} &amp; 0      &amp; \cdots &amp; 0      &amp; 0
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-triangular-matrices" class="level3" data-number="2.2.6"><h3 data-number="2.2.6" class="anchored" data-anchor-id="the-triangular-matrices">
-<span class="header-section-number">2.2.6</span> The Triangular Matrices</h3>
+</section></section></section><section id="the-triangular-matrices" class="level3" data-number="1.2.6"><h3 data-number="1.2.6" class="anchored" data-anchor-id="the-triangular-matrices">
+<span class="header-section-number">1.2.6</span> The Triangular Matrices</h3>
 <p>A square matrix <span class="math inline">\(\mathbf{A}\)</span> is called <strong>upper triangular</strong> if all entries below the main diagonal are zero, that is, <span class="math inline">\(a_{ij} = 0\)</span> for all <span class="math inline">\(i &gt; j\)</span>.</p>
 <p><span class="math display">\[\mathbf{A_{upper}} = \begin{bmatrix}
 a_{11} &amp; a_{12} &amp; \dots &amp; a_{1n} \\
@@ -815,8 +815,8 @@ a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-identity-matrix" class="level3" data-number="2.2.7"><h3 data-number="2.2.7" class="anchored" data-anchor-id="the-identity-matrix">
-<span class="header-section-number">2.2.7</span> The Identity Matrix</h3>
+</section></section></section><section id="the-identity-matrix" class="level3" data-number="1.2.7"><h3 data-number="1.2.7" class="anchored" data-anchor-id="the-identity-matrix">
+<span class="header-section-number">1.2.7</span> The Identity Matrix</h3>
 <p>An <strong>identity matrix</strong>, typically denoted as <span class="math inline">\(\mathbf{I}\)</span>, is a square matrix whose entries are given by the Kronecker delta <span class="math inline">\(\delta_{ij}\)</span>:</p>
 <p><span class="math display">\[\delta_{ij} = \begin{cases} 1 &amp; \text{if } i = j \\ 0 &amp; \text{if } i \neq j \end{cases}\]</span></p>
 <p>That is, it has ones on the main diagonal and zeros everywhere else. In explicit form, it is written as:</p>
@@ -849,8 +849,8 @@ a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-permutation-matrix" class="level3" data-number="2.2.8"><h3 data-number="2.2.8" class="anchored" data-anchor-id="the-permutation-matrix">
-<span class="header-section-number">2.2.8</span> The Permutation Matrix</h3>
+</section></section></section><section id="the-permutation-matrix" class="level3" data-number="1.2.8"><h3 data-number="1.2.8" class="anchored" data-anchor-id="the-permutation-matrix">
+<span class="header-section-number">1.2.8</span> The Permutation Matrix</h3>
 <p>A permutation matrix is a square matrix with exactly one entry equal to <span class="math inline">\(1\)</span> in each row and each column, and <span class="math inline">\(0\)</span> elsewhere. Equivalently, it is obtained by permuting the rows (or columns) of an identity matrix.</p>
 <p>Formally, let <span class="math inline">\(\sigma\)</span> be a permutation of the set <span class="math inline">\(\{1, 2, \dots, n\}\)</span>. The associated permutation matrix</p>
 <p><span class="math display">\[\mathbf{P_{n \times n}}= [p_{ij}] = \begin{bmatrix}
@@ -912,8 +912,8 @@ j = 3 = \sigma(3) \rightarrow \boxed{p_{33} = 1}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-symmetric-matrix" class="level3" data-number="2.2.9"><h3 data-number="2.2.9" class="anchored" data-anchor-id="the-symmetric-matrix">
-<span class="header-section-number">2.2.9</span> The Symmetric Matrix</h3>
+</section></section></section><section id="the-symmetric-matrix" class="level3" data-number="1.2.9"><h3 data-number="1.2.9" class="anchored" data-anchor-id="the-symmetric-matrix">
+<span class="header-section-number">1.2.9</span> The Symmetric Matrix</h3>
 <p>A square matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>symmetric</strong> if its entries satisfy:</p>
 <p><span class="math display">\[a_{ij} = a_{ji} \quad \text{for all } i, j\]</span></p>
 <p>This condition implies that the matrix is symmetric with respect to its main diagonal. Equivalently, interchanging its rows and columns leaves the matrix unchanged.</p>
@@ -953,8 +953,8 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="the-antisymmetric-matrix" class="level3" data-number="2.2.10"><h3 data-number="2.2.10" class="anchored" data-anchor-id="the-antisymmetric-matrix">
-<span class="header-section-number">2.2.10</span> The Antisymmetric Matrix</h3>
+</section></section></section><section id="the-antisymmetric-matrix" class="level3" data-number="1.2.10"><h3 data-number="1.2.10" class="anchored" data-anchor-id="the-antisymmetric-matrix">
+<span class="header-section-number">1.2.10</span> The Antisymmetric Matrix</h3>
 <p>A square matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>antisymmetric</strong> (or skew-symmetric) if its entries satisfy:<span class="math display">\[a_{ij} = -a_{ji} \quad \text{for all } i, j\]</span></p>
 <p>A key property of antisymmetric matrices is that all elements on the main diagonal must be zero, because for <span class="math inline">\(i=j\)</span>, the condition <span class="math inline">\(a_{ii} = -a_{ii}\)</span> can only be true if <span class="math inline">\(a_{ii} = 0\)</span>.</p>
 <p>In its general form, entries below the main diagonal are the negative reflections of those above it:</p>
@@ -991,10 +991,10 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section></section><section id="operations-on-matrices" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="operations-on-matrices">
-<span class="header-section-number">2.3</span> Operations on Matrices</h2>
-<section id="equality-of-matrices" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="equality-of-matrices">
-<span class="header-section-number">2.3.1</span> Equality of Matrices</h3>
+</section></section></section></section><section id="operations-on-matrices" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="operations-on-matrices">
+<span class="header-section-number">1.3</span> Operations on Matrices</h2>
+<section id="equality-of-matrices" class="level3" data-number="1.3.1"><h3 data-number="1.3.1" class="anchored" data-anchor-id="equality-of-matrices">
+<span class="header-section-number">1.3.1</span> Equality of Matrices</h3>
 <p>Any meaningful algebra requires a precise notion of equality. Two matrices <span class="math inline">\(\mathbf{A} = [a_{ij}]_{m \times n}\)</span> and <span class="math inline">\(\mathbf{B} = [b_{ij}]_{p \times q}\)</span> are equal, written <span class="math inline">\(\mathbf{A} = \mathbf{B}\)</span>, if and only if they have the same size and the corresponding entries are equal:</p>
 <ul>
 <li>
@@ -1038,8 +1038,8 @@ a_{1n} &amp; a_{2n} &amp; \dots &amp; a_{nn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="matrix-addition" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="matrix-addition">
-<span class="header-section-number">2.3.2</span> Matrix Addition</h3>
+</section></section></section><section id="matrix-addition" class="level3" data-number="1.3.2"><h3 data-number="1.3.2" class="anchored" data-anchor-id="matrix-addition">
+<span class="header-section-number">1.3.2</span> Matrix Addition</h3>
 <p>Given two <span class="math inline">\(m \times n\)</span> matrices <span class="math inline">\(\mathbf{A} = [a_{ij}]\)</span> and <span class="math inline">\(\mathbf{B} = [b_{ij}]\)</span>, their sum <span class="math inline">\(\mathbf{A} + \mathbf{B}\)</span> is the <span class="math inline">\(m \times n\)</span> matrix defined by:</p>
 <p><span class="math display">\[\mathbf{A} + \mathbf{B} = [a_{ij} + b_{ij}]\]</span></p>
 <p>The sum is obtained by adding corresponding entries; therefore, matrix addition is defined only when the matrices have the same dimensions. In expanded form, the addition is expressed as:</p>
@@ -1103,8 +1103,8 @@ a_{m1} + b_{m1} &amp; \cdots &amp; a_{mn} + b_{mn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="scalar-multiplication-of-a-matrix" class="level3" data-number="2.3.3"><h3 data-number="2.3.3" class="anchored" data-anchor-id="scalar-multiplication-of-a-matrix">
-<span class="header-section-number">2.3.3</span> Scalar Multiplication of a Matrix</h3>
+</section></section></section><section id="scalar-multiplication-of-a-matrix" class="level3" data-number="1.3.3"><h3 data-number="1.3.3" class="anchored" data-anchor-id="scalar-multiplication-of-a-matrix">
+<span class="header-section-number">1.3.3</span> Scalar Multiplication of a Matrix</h3>
 <p>Let <span class="math inline">\(\mathbf{A} = [a_{ij}]\)</span> be an <span class="math inline">\(m \times n\)</span> matrix with entries from a field <span class="math inline">\(\mathbb{K}\)</span>, and let <span class="math inline">\(\lambda \in \mathbb{K}\)</span>. The scalar multiple of by <span class="math inline">\(\lambda\)</span>, is the <span class="math inline">\(m \times n\)</span> matrix obtained by multiplying each entry of <span class="math inline">\(\mathbf{A}\)</span> by <span class="math inline">\(\lambda\)</span>. Formally:</p>
 <p><span class="math display">\[\lambda \mathbf{A} = [\lambda \cdot a_{ij}]\]</span>for all <span class="math inline">\(1 \leq i \leq m\)</span> and <span class="math inline">\(1 \leq j \leq n\)</span>.</p>
 <p>Explicitly, the operation is distributed across all entries:</p>
@@ -1189,8 +1189,8 @@ a_{m1} + b_{m1} &amp; \cdots &amp; a_{mn} + b_{mn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="linear-combination-of-matrices" class="level3" data-number="2.3.4"><h3 data-number="2.3.4" class="anchored" data-anchor-id="linear-combination-of-matrices">
-<span class="header-section-number">2.3.4</span> Linear Combination of Matrices</h3>
+</section></section></section><section id="linear-combination-of-matrices" class="level3" data-number="1.3.4"><h3 data-number="1.3.4" class="anchored" data-anchor-id="linear-combination-of-matrices">
+<span class="header-section-number">1.3.4</span> Linear Combination of Matrices</h3>
 <p>Given <span class="math inline">\(k\)</span> matrices <span class="math inline">\(\mathbf{A_1}, \mathbf{A_2}, \dots, \mathbf{A_k}\)</span> of size <span class="math inline">\(m \times n\)</span>, a linear combination of these matrices is any expression of the form:</p>
 <p><span class="math display">\[\lambda_1 \mathbf{A_1} + \lambda_2 \mathbf{A_2} + \cdots + \lambda_k \mathbf{A_k} = \sum_{i=1}^{k} \lambda_i \mathbf{A_i}\]</span></p>
 <p>where <span class="math inline">\(\lambda_1, \lambda_2, \ldots, \lambda_k\)</span> are scalars.</p>
@@ -1260,8 +1260,8 @@ a_{m1} + b_{m1} &amp; \cdots &amp; a_{mn} + b_{mn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="hadamard-product" class="level3" data-number="2.3.5"><h3 data-number="2.3.5" class="anchored" data-anchor-id="hadamard-product">
-<span class="header-section-number">2.3.5</span> Hadamard Product</h3>
+</section></section></section><section id="hadamard-product" class="level3" data-number="1.3.5"><h3 data-number="1.3.5" class="anchored" data-anchor-id="hadamard-product">
+<span class="header-section-number">1.3.5</span> Hadamard Product</h3>
 <p>The <strong>Hadamard product</strong> is the entry-wise multiplication of two matrices <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> of the same dimensions.</p>
 <p>Formally, if <span class="math inline">\(\mathbf{A} = [a_{ij}]\)</span> and <span class="math inline">\(\mathbf{B} = [b_{ij}]\)</span> are <span class="math inline">\(m \times n\)</span> matrices over a field <span class="math inline">\(\mathbb{K}\)</span>, then:</p>
 <p><span class="math display">\[\mathbf{A} \odot \mathbf{B} = [a_{ij} \cdot b_{ij}]\]</span></p>
@@ -1310,8 +1310,8 @@ a_{m1} + b_{m1} &amp; \cdots &amp; a_{mn} + b_{mn}
 </div>
 </div>
 <p>&nbsp;</p>
-</section></section></section><section id="matrix-product-matrix-multiplication" class="level3" data-number="2.3.6"><h3 data-number="2.3.6" class="anchored" data-anchor-id="matrix-product-matrix-multiplication">
-<span class="header-section-number">2.3.6</span> Matrix Product (Matrix Multiplication)</h3>
+</section></section></section><section id="matrix-product-matrix-multiplication" class="level3" data-number="1.3.6"><h3 data-number="1.3.6" class="anchored" data-anchor-id="matrix-product-matrix-multiplication">
+<span class="header-section-number">1.3.6</span> Matrix Product (Matrix Multiplication)</h3>
 <p>Let <span class="math inline">\(\mathbf{A} = [a_{ij}]\)</span> be an <span class="math inline">\(m \times n\)</span> matrix and <span class="math inline">\(\mathbf{B} = [b_{ij}]\)</span> be an <span class="math inline">\(n \times p\)</span> matrix over the field <span class="math inline">\(\mathbb{K}\)</span>. The matrix product of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, denoted by <span class="math inline">\(\mathbf{AB}\)</span>, is defined as the <span class="math inline">\(m \times p\)</span> matrix</p>
 <p><span class="math display">\[\mathbf{AB} = [c_{ij}]\]</span></p>
 <p>where each entry <span class="math inline">\(c_{ij}\)</span> is defined by</p>
@@ -1367,14 +1367,14 @@ a_{m1}b_{11} + a_{m2}b_{21} + \dots + a_{mn}b_{n1} &amp; a_{m1}b_{12} + a_{m2}b_
 \end{aligned}\]</span></p>
 <section id="implementation-in-r-20" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-20"><em>Implementation in R</em></h5>
 <p>&nbsp;</p>
-</section></section></section><section id="inverse-of-a-matrix" class="level3" data-number="2.3.7"><h3 data-number="2.3.7" class="anchored" data-anchor-id="inverse-of-a-matrix">
-<span class="header-section-number">2.3.7</span> Inverse of a Matrix</h3>
+</section></section></section><section id="inverse-of-a-matrix" class="level3" data-number="1.3.7"><h3 data-number="1.3.7" class="anchored" data-anchor-id="inverse-of-a-matrix">
+<span class="header-section-number">1.3.7</span> Inverse of a Matrix</h3>
 <p>&nbsp;</p>
 <section id="example-inverse-of-a-matrix" class="level4"><h4 class="anchored" data-anchor-id="example-inverse-of-a-matrix">Example: Inverse of a Matrix</h4>
 <section id="implementation-in-r-21" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-21"><em>Implementation in R</em></h5>
 <p>&nbsp;</p>
-</section></section></section><section id="transpose-of-a-matrix" class="level3" data-number="2.3.8"><h3 data-number="2.3.8" class="anchored" data-anchor-id="transpose-of-a-matrix">
-<span class="header-section-number">2.3.8</span> Transpose of a Matrix</h3>
+</section></section></section><section id="transpose-of-a-matrix" class="level3" data-number="1.3.8"><h3 data-number="1.3.8" class="anchored" data-anchor-id="transpose-of-a-matrix">
+<span class="header-section-number">1.3.8</span> Transpose of a Matrix</h3>
 <p>Let <span class="math inline">\(\mathbf{A} = [a_{ij}]\)</span> be a matrix of size <span class="math inline">\(m \times n\)</span>. The <strong>transpose</strong> of <span class="math inline">\(\mathbf{A}\)</span> is the matrix <span class="math inline">\(\mathbf{A^T}\)</span> of size <span class="math inline">\(n \times m\)</span> defined by</p>
 <p><span class="math display">\[(\mathbf{A^T})_{ij} = a_{ji}, \quad 1 \leq i \leq n,\ 1 \leq j \leq m.\]</span></p>
 <p>That is, the <span class="math inline">\((i, j)\)</span>-entry of <span class="math inline">\(\mathbf{A^T}\)</span> is the <span class="math inline">\((j, i)\)</span>-entry of <span class="math inline">\(\mathbf{A}\)</span>. This operation effectively interchanges the rows and columns of the matrix.</p>
@@ -1841,13 +1841,13 @@ a_{m1}b_{11} + a_{m2}b_{21} + \dots + a_{mn}b_{n1} &amp; a_{m1}b_{12} + a_{m2}b_
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./vectors.html" class="pagination-link" aria-label="Vectors">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Vectors</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="Welcome!">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome!</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./vectors.html" class="pagination-link" aria-label="Vector Spaces">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vector Spaces</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

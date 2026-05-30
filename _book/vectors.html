@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>1&nbsp; Vectors – LINEAR ALGEBRA WITH R</title>
+<title>2&nbsp; Vector Spaces – LINEAR ALGEBRA WITH R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,8 +61,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./matrices.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./matrices.html" rel="prev">
 <link href="./images/cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -134,7 +134,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vectors.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Vectors</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vectors.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vector Spaces</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -163,14 +163,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vectors.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Vectors</span></span></a>
+  <a href="./matrices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Basics of Matrices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./matrices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Basics of Matrices</span></span></a>
+  <a href="./vectors.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vector Spaces</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -183,12 +183,19 @@ window.Quarto = {
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#definition-of-vector-space" id="toc-definition-of-vector-space" class="nav-link active" data-scroll-target="#definition-of-vector-space"><span class="header-section-number">2.1</span> Definition of Vector Space</a></li>
+  <li><a href="#vector-subspaces" id="toc-vector-subspaces" class="nav-link" data-scroll-target="#vector-subspaces"><span class="header-section-number">2.2</span> Vector Subspaces</a></li>
+  <li><a href="#vector-space-in-mathbbrn" id="toc-vector-space-in-mathbbrn" class="nav-link" data-scroll-target="#vector-space-in-mathbbrn"><span class="header-section-number">2.3</span> Vector Space in <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
+  <li><a href="#vector-addition-in-mathbbrn" id="toc-vector-addition-in-mathbbrn" class="nav-link" data-scroll-target="#vector-addition-in-mathbbrn"><span class="header-section-number">2.4</span> Vector Addition in <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
+  </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sec-vectors" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Vectors</span></span></h1>
+<h1 class="title"><span id="sec-vectors" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Vector Spaces</span></span></h1>
 </div>
 
 
@@ -202,13 +209,112 @@ window.Quarto = {
   
 
 
-</header><p>We can represent vectors as a sequence of entries (or elements) arranged in a column, called a <strong>column vector</strong>. For example, we write a vector <span class="math inline">\(\mathbf{u}\)</span> in <span class="math inline">\(\mathbb{R^n}\)</span> as</p>
+</header><p>In physics and engineering, physical quantities are broadly classified into two fundamental types: <strong>scalars</strong>, which possess magnitude only (such as mass or temperature), and <strong>vectors</strong>, which possess both magnitude and direction (such as velocity or force). The mathematical structure that naturally describes and manipulates vectors is the concept of a <strong>vector space</strong>.</p>
+<section id="definition-of-vector-space" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="definition-of-vector-space">
+<span class="header-section-number">2.1</span> Definition of Vector Space</h2>
+<p>A non-empty set <span class="math inline">\(V\)</span> is called a vector space over a field <span class="math inline">\(\mathbb{K}\)</span> if its elements are equipped with a well-defined notion of equality and two closed operations: vector addition between elements of <span class="math inline">\(V\)</span>, denoted by (<span class="math inline">\(+\)</span>), and scalar multiplication of a scalar in <span class="math inline">\(\mathbb{K}\)</span> with an element of <span class="math inline">\(V\)</span>, denoted by (<span class="math inline">\(\cdot\)</span>), satisfying the following axioms for all <span class="math inline">\(\mathbf{u}, \mathbf{v}, \mathbf{w} \in V\)</span> and all <span class="math inline">\(\lambda, \mu \in \mathbb{K}\)</span>:</p>
+<p><strong>Vector Addition Axioms</strong></p>
+<ol type="1">
+<li><p><strong>Closure under Addition:</strong> The sum of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span>, denoted by <span class="math inline">\(\mathbf{u} + \mathbf{v}\)</span>, is in <span class="math inline">\(V\)</span>.</p></li>
+<li><p><strong>Additive Commutativity:</strong> <span class="math inline">\(\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}\)</span>.</p></li>
+<li><p><strong>Additive Associativity:</strong> <span class="math inline">\((\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})\)</span>.</p></li>
+<li><p><strong>Additive Identity:</strong> There exists a unique vector <span class="math inline">\(\mathbf{0}\)</span> in <span class="math inline">\(V\)</span>, called the zero vector, such that <span class="math inline">\(\mathbf{0} + \mathbf{u} =\mathbf{u} + \mathbf{0} = \mathbf{u}\)</span> for all <span class="math inline">\(u\)</span> in <span class="math inline">\(V\)</span>.</p></li>
+<li><p><strong>Additive Inverse:</strong> For each <span class="math inline">\(\mathbf{u}\)</span> in <span class="math inline">\(V\)</span>, there is a vector <span class="math inline">\(-\mathbf{u}\)</span> in <span class="math inline">\(V\)</span> (called the negative of <span class="math inline">\(\mathbf{u}\)</span>) such that <span class="math inline">\(\mathbf{u} + (-\mathbf{u}) = \mathbf{0}\)</span>.</p></li>
+</ol>
+<p><strong>Scalar Multiplication Axioms</strong></p>
+<ol type="1">
+<li><p><strong>Closure under Scalar Multiplication:</strong> The scalar multiple of <span class="math inline">\(\mathbf{u}\)</span> by <span class="math inline">\(\lambda\)</span>, denoted by <span class="math inline">\(\lambda \cdot \mathbf{u}\)</span>, is in <span class="math inline">\(V\)</span>.</p></li>
+<li><p><strong>Distributivity over Vector Addition:</strong> <span class="math inline">\(\lambda \cdot (\mathbf{u} + \mathbf{v}) = \lambda \cdot \mathbf{u} + \lambda \cdot \mathbf{v}\)</span>.</p></li>
+<li><p><strong>Distributivity over Scalar Addition:</strong> <span class="math inline">\((\lambda + \mu)\cdot \mathbf{u} = \lambda\cdot \mathbf{u} + \mu\cdot \mathbf{u}\)</span>.</p></li>
+<li><p><strong>Compatibility of Multiplication:</strong> <span class="math inline">\(\lambda \cdot (\mu \cdot \mathbf{u}) = (\lambda \cdot \mu) \cdot \mathbf{u}\)</span>.</p></li>
+<li><p><strong>Scalar Identity Element:</strong> <span class="math inline">\(1 \cdot \mathbf{u} = \mathbf{u}\)</span>.</p></li>
+</ol>
+<p>Additionally, for each <span class="math inline">\(\mathbf{u}\)</span> in <span class="math inline">\(V\)</span> and scalar <span class="math inline">\(\lambda \in \mathbb{K}\)</span>, the following properties holds as an immediate consequence of the vector space axioms:</p>
+<p><span class="math display">\[0 \cdot \mathbf{u} = \mathbf{0}\]</span> <span class="math display">\[\lambda \cdot \mathbf{0} = \mathbf{0}\]</span></p>
+<p><br></p>
+<p>Unless stated otherwise, <span class="math inline">\(\mathbb{K}\)</span> is taken to be <span class="math inline">\(\mathbb{R}\)</span> or <span class="math inline">\(\mathbb{C}\)</span>, and <span class="math inline">\(V\)</span> is referred to as a real or complex vector space, respectively.</p>
+<div class="content-box-white">
+<p><strong>NOTE:</strong> Axioms 1 through 5 state that <span class="math inline">\((V, +)\)</span> forms an abelian (commutative) group. Axioms 6 through 10 define how the field <span class="math inline">\(\mathbb{K}\)</span> acts on that group.</p>
+</div>
+<p>There exist many completely different types of vector spaces used throughout science and engineering:</p>
+<ul>
+<li>
+<strong>Coordinate Spaces (</strong><span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span>): Ordered n-tuples of real or complex numbers, ranging from the two- and three-dimensional spaces of classical physics to the high-dimensional arrays of modern data analysis.</li>
+</ul>
+<p><span class="math display">\[\mathbf{u} + \mathbf{v} = \begin{bmatrix} u_1 + v_1 \\ u_2 + v_2 \\ \vdots \\ u_n + v_n \end{bmatrix} \text{,} \qquad \lambda \mathbf{u} = \begin{bmatrix} \lambda u_1 \\ \lambda u_2 \\ \vdots \\ \lambda u_n \end{bmatrix}\]</span></p>
+<ul>
+<li>
+<strong>Matrix Spaces (</strong><span class="math inline">\(M_{m \times n}\)</span>): The set of all <span class="math inline">\(m \times n\)</span> matrices over a field <span class="math inline">\(\mathbb{K}\)</span>, where each matrix is treated as a single vector and addition and scalar multiplication are defined entry-wise,</li>
+</ul>
+<p><span class="math display">\[\mathbf{U} + \mathbf{V} = [u_{ij} + v_{ij}] \text{,} \qquad \lambda \cdot \mathbf{U} = [\lambda \cdot u_{ij}]\]</span></p>
+<p>allowing transformations, and systems of equations be represented and manipulated within a unified algebraic framework.</p>
+<ul>
+<li>
+<strong>Function Spaces (</strong><span class="math inline">\(C[a, b]\)</span>): Continuous functions on a closed interval <span class="math inline">\([a,b]\)</span>, with addition and scaling defined pointwise,</li>
+</ul>
+<p><span class="math display">\[(f + g)(x) = f(x) + g(x) \text{,} \qquad (\lambda \cdot f)(x) = \lambda \cdot f(x)\]</span></p>
+<p>forming infinite-dimensional spaces where whole continuous functions, mathematical curves, and physical waveforms behave exactly like vectors. This forms the foundation of signal processing, acoustics, and quantum mechanics.</p>
+</section><section id="vector-subspaces" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="vector-subspaces">
+<span class="header-section-number">2.2</span> Vector Subspaces</h2>
+<p>When analyzing a large vector space <span class="math inline">\(V\)</span>, we are frequently interested in smaller collections of vectors within <span class="math inline">\(V\)</span> that behave as self-contained vector spaces in their own right. These collections are known as subspaces.</p>
+<p>Formally, let <span class="math inline">\(V\)</span> be a vector space over a field <span class="math inline">\(\mathbb{K}\)</span>, and let <span class="math inline">\(W\)</span> be a subset of <span class="math inline">\(V\)</span> (<span class="math inline">\(W \subseteq V\)</span>). We say that <span class="math inline">\(W\)</span> is a subspace of <span class="math inline">\(V\)</span> if:</p>
+<ol type="1">
+<li><p>It contains the zero vector: <span class="math inline">\(\mathbf{0} \in W\)</span></p></li>
+<li><p>It is closed under the inherited operation of addition: <span class="math inline">\(\mathbf{u}, \mathbf{v} \in W \implies \mathbf{u} + \mathbf{v} \in W\)</span></p></li>
+<li><p>It is closed under the inherited operation of scalar multiplication: <span class="math inline">\(\mathbf{u} \in W, \lambda \in \mathbb{K} \implies \lambda\mathbf{u} \in W\)</span></p></li>
+</ol>
+<p>Since the remaining axioms are inherited automatically from <span class="math inline">\(V\)</span>, these three conditions are both necessary and sufficient, and can be consolidated into the subspace test:</p>
+<p><span class="math display">\[\mathbf{u}, \mathbf{v} \in W, \ \lambda, \mu \in \mathbb{K} \implies \lambda\mathbf{u} + \mu\mathbf{v} \in W\]</span></p>
+<p><br></p>
+<div class="content-box-white">
+<p>In the Cartesian space <span class="math inline">\(\mathbb{R}^3\)</span>, every plane <span class="math inline">\(P\)</span> passing through the origin can be written as</p>
+<p><span class="math display">\[P = \{(x,y,z) \in \mathbb{R}^3 \mid \alpha x + \beta y + \gamma z = 0\},\]</span></p>
+<p>where <span class="math inline">\(\alpha, \beta, \gamma \in \mathbb{R}\)</span> are not all zero. To verify that <span class="math inline">\(P\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^3\)</span>, we check the three subspace properties.</p>
+<p><strong>1. Contains the zero vector</strong></p>
+<p>Substituting <span class="math inline">\((0,0,0)\)</span> into the plain equation gives</p>
+<p><span class="math display">\[\alpha(0) + \beta(0) + \gamma(0) = 0,\]</span></p>
+<p>So the zero vector is in the plane.</p>
+<p><strong>2. Closed under addition</strong></p>
+<p>Let <span class="math inline">\(\mathbf{u} = (x_1, y_1, z_1) \in P\)</span> and <span class="math inline">\(\mathbf{v} = (x_2, y_2, z_2) \in P\)</span>. Their sum is defined component-wise as:</p>
+<p><span class="math display">\[\mathbf{u} + \mathbf{v} = (x_1 + x_2, \; y_1 + y_2, \; z_1 + z_2)\]</span></p>
+<p>Since both <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> lie in the plane <span class="math inline">\(P\)</span>, their coordinates must satisfy the plane’s defining equation:</p>
+<p><span class="math display">\[\alpha x_1 + \beta y_1 + \gamma z_1 = 0\]</span></p>
+<p>and</p>
+<p><span class="math display">\[\alpha x_2 + \beta y_2 + \gamma z_2 = 0\]</span></p>
+<p>Adding these two equations yields:</p>
+<p><span class="math display">\[\alpha(x_1 + x_2) + \beta(y_1 + y_2) + \gamma(z_1 + z_2) = 0\]</span></p>
+<p>Hence,</p>
+<p><span class="math display">\[(x_1 + x_2, \; y_1 + y_2, \; z_1 + z_2) \in P\]</span></p>
+<p><span class="math display">\[\mathbf{u} + \mathbf{v} \in P\]</span></p>
+<p><strong>3. Closed under scalar multiplication</strong></p>
+<p>Let <span class="math inline">\((x_1, y_1, z_1) \in P\)</span> and let <span class="math inline">\(\lambda \in \mathbb{R}\)</span>. Since</p>
+<p><span class="math display">\[\alpha x_1 + \beta y_1 + \gamma z_1 = 0,\]</span></p>
+<p>multiplying by <span class="math inline">\(\lambda\)</span> gives</p>
+<p><span class="math display">\[\alpha(\lambda x_1) + \beta(\lambda y_1) + \gamma(\lambda z_1) = 0\]</span></p>
+<p>Therefore,<span class="math display">\[(\lambda x_1, \lambda y_1, \lambda z_1) \in P\]</span></p>
+<p><span class="math display">\[\lambda\mathbf{u} \in P\]</span></p>
+<p>Since all three conditions are satisfied, every plane through the origin is a subspace of <span class="math inline">\(\mathbb{R}^3\)</span>.</p>
+<p>Moreover, the subspaces of <span class="math inline">\(\mathbb{R}^3\)</span> are precisely:</p>
+<ul>
+<li>The trivial subspace <span class="math inline">\(\{(0,0,0)\}\)</span>
+</li>
+<li>All lines through the origin</li>
+<li>All planes through the origin</li>
+<li>
+<span class="math inline">\(\mathbb{R}^3\)</span> itself</li>
+</ul>
+</div>
+</section><section id="vector-space-in-mathbbrn" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="vector-space-in-mathbbrn">
+<span class="header-section-number">2.3</span> Vector Space in <span class="math inline">\(\mathbb{R}^n\)</span>
+</h2>
+<p>We can represent vectors as a sequence of entries (or elements) arranged in a column, called a <strong>column vector</strong>. For example, we write a vector <span class="math inline">\(\mathbf{u}\)</span> in <span class="math inline">\(\mathbb{R}^n\)</span> as</p>
 <p><span class="math display">\[\mathbf{u} = \begin{bmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{bmatrix}\]</span></p>
 <p>Because writing vertically takes up a lot of space, this exact same vector is often written horizontally using parentheses and commas:</p>
 <p><span class="math display">\[\mathbf{u} = (u_1, u_2, \dots, u_n)\]</span></p>
 <p>&nbsp;</p>
-<section id="example-matrix-product" class="level4"><h4 class="anchored" data-anchor-id="example-matrix-product">Example: Matrix Product</h4>
-<p>For example, a vector <span class="math inline">\(\mathbf{u}\)</span> in a two-dimensional space (<span class="math inline">\(\mathbb{R}^2\)</span>) can be expressed algebraically as an ordered pair of its entries, <span class="math inline">\(u_1 = 1.5\)</span> and <span class="math inline">\(u_2 = 1\)</span>, written as <span class="math inline">\(\mathbf{u} = (1.5, 1)\)</span>. Geometrically, it is represented as a directed arrow spanning from the origin within a Cartesian coordinate system (<a href="#fig-vector" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>).</p>
+<section id="example-vector-u-u_1-u_2" class="level4"><h4 class="anchored" data-anchor-id="example-vector-u-u_1-u_2">Example: Vector <span class="math inline">\(u = (u_1, u_2)\)</span>
+</h4>
+<p>For example, a vector <span class="math inline">\(\mathbf{u}\)</span> in a two-dimensional space (<span class="math inline">\(\mathbb{R}^2\)</span>) can be expressed algebraically as an ordered pair of its entries, <span class="math inline">\(u_1 = 1.5\)</span> and <span class="math inline">\(u_2 = 1\)</span>, written as <span class="math inline">\(\mathbf{u} = (1.5, 1)\)</span>. Geometrically, it is represented as an arrow, or directed line segment, starting at the origin in the coordinate plane and ending at the point with coordinates <span class="math inline">\(u_1\)</span> and <span class="math inline">\(u_2\)</span> (<a href="#fig-vector" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-vector" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -216,7 +322,7 @@ window.Quarto = {
 <img src="vectors_files/figure-html/fig-vector-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vector-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.1: In a Cartesian coordinate system, a vector in <span class="math inline">\(\mathbb{R}^2\)</span> is geometrically represented as a directed line segment (an arrow).
+Figure&nbsp;2.1: In a Cartesian coordinate system, a vector in <span class="math inline">\(\mathbb{R}^2\)</span> is geometrically represented as a directed line segment (an arrow).
 </figcaption></figure>
 </div>
 </div>
@@ -230,9 +336,41 @@ Figure&nbsp;1.1: In a Cartesian coordinate system, a vector in <span class="math
 <pre><code>[1] 1.5 1.0</code></pre>
 </div>
 </div>
+</section></section></section><section id="vector-addition-in-mathbbrn" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="vector-addition-in-mathbbrn">
+<span class="header-section-number">2.4</span> Vector Addition in <span class="math inline">\(\mathbb{R}^n\)</span>
+</h2>
+<p>If <span class="math inline">\(\mathbf{a} = (a_1, a_2, \dots, a_n)\)</span> and <span class="math inline">\(\mathbf{b} = (b_1, b_2, \dots, b_n)\)</span> are two vectors in <span class="math inline">\(\mathbb{R}^n\)</span>, then the sum of <span class="math inline">\(\mathbf{a}\)</span> and <span class="math inline">\(\mathbf{b}\)</span> is the vector:<span class="math display">\[\mathbf{a} + \mathbf{b} = (a_1 + b_1, a_2 + b_2, \dots, a_n + b_n)\]</span></p>
+<p>We add two vectors, <span class="math inline">\(\mathbf{u} = (u_1, u_2)\)</span> and <span class="math inline">\(\mathbf{v} = (v_1, v_2)\)</span>, by adding their components:</p>
+<p><span class="math display">\[u + v = (u_1, u_2) + (v_1, v_2) = (u_1 + v_1, u_2 + v_2)\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-vector2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-vector2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="vectors_files/figure-html/fig-vector2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vector2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: In a Cartesian coordinate system, a vector in <span class="math inline">\(\mathbb{R}^2\)</span> is geometrically represented as a directed line segment (an arrow).
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<section id="example-vector-addition-u-v" class="level4"><h4 class="anchored" data-anchor-id="example-vector-addition-u-v">Example: Vector addition u + v</h4>
+<p><span class="math display">\[w = u + v = (3, 1) + (1, 2) = (3 + 1, 1 + 2) = (4, 3)\]</span></p>
+<section id="implementation-in-r-1" class="level5"><h5 class="anchored" data-anchor-id="implementation-in-r-1"><em>Implementation in R</em></h5>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">w</span> <span class="op">&lt;-</span> <span class="va">u</span> <span class="op">+</span> <span class="va">v</span></span>
+<span><span class="va">w</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4 3</code></pre>
+</div>
+</div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -637,13 +775,13 @@ Figure&nbsp;1.1: In a Cartesian coordinate system, a vector in <span class="math
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Welcome!">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome!</span>
+      <a href="./matrices.html" class="pagination-link" aria-label="The Basics of Matrices">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Basics of Matrices</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./matrices.html" class="pagination-link" aria-label="The Basics of Matrices">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Basics of Matrices</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
