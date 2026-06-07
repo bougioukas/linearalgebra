@@ -1,12 +1,253 @@
 # Vector Spaces {#sec-vectors}
 
-In physics and engineering, physical quantities are broadly classified into two fundamental types: **scalars**, which possess magnitude only (such as mass or temperature), and **vectors**, which possess both magnitude and direction (such as velocity or force). The mathematical structure that naturally describes and manipulates vectors is the concept of a **vector space**.
+In physical sciences, measurable quantities are generally classified into two fundamental types: scalars and vectors. A **scalar** is completely specified by its magnitude alone, that is, by a single numerical value, as in the case of mass or temperature. In contrast, a **vector** is characterized by both magnitude and direction, as in velocity and force. The mathematical framework that provides a rigorous description of vectors and the operations defined on them is the concept of a **vector space**, a fundamental structure in linear algebra.
+
+
+
+## Vectors in the Plane
+
+A vector in the plane is represented geometrically by an arrow, i.e., a directed line segment whose initial point is the origin and whose terminal point is a point in the plane. The direction of the arrow indicates the direction of the vector and the length of the arrow represents its magnitude. 
+
+In this book, vectors are represented by lowercase letters set in boldface type, such as $\mathbf{u}$. However, when we wish to specify that a vector $\mathbf{u}$ has initial point A and terminal point B, we denote it by $\mathbf{u} = \overrightarrow{AB}$.
+
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-asp: 0.6
+#| fig-width: 6
+#| fig-height: 4
+#| fig-align: center
+#| label: fig-vector0
+#| fig-cap: 'In a Cartesian coordinate system, a vector in $\mathbb{R}^2$ is geometrically represented as a directed line segment (an arrow).'
+
+
+library(ggplot2)
+
+# --- 1. Define Vector Component and Label Data ---
+u1 <- 1.5
+u2 <- 1.0
+
+# Data frame for the terminal point math label
+point_data <- data.frame(
+  x = u1,
+  y = u2,
+  label = "(list(u[1], u[2]))"
+)
+
+# --- 2. Build the Plot ---
+ggplot() +
+  # Clear theme to remove background grid lines completely
+  theme_void() + 
+  theme(
+    plot.margin = margin(20, 20, 20, 20)
+  ) +
+  
+  # 1. Vertical and Horizontal Dashed Projection Lines
+  #geom_segment(aes(x = u1, y = u2, xend = u1, yend = 0), 
+              # color = "#777777", lty = "dashed", linewidth = 0.5) +
+  #geom_segment(aes(x = u1, y = u2, xend = 0, yend = u2), 
+               #color = "#777777", lty = "dashed", linewidth = 0.5) +
+  
+  # 2. Axis Lines (x and y) with open arrow heads
+  #geom_segment(aes(x = -0.2, y = 0, xend = 2.2, yend = 0), 
+              # arrow = arrow(length = unit(0.25, "cm"), type = "open"), 
+               #color = "#555555", linewidth = 0.6) +
+  #geom_segment(aes(x = 0, y = -0.2, xend = 0, yend = 1.8), 
+               #arrow = arrow(length = unit(0.25, "cm"), type = "open"), 
+               #color = "#555555", linewidth = 0.6) +
+  
+  # Axis Labels (Muted dark gray text in italics)
+  #annotate("text", x = 2.3, y = 0, label = "x", fontface = "italic", color = "#333333", size = 6) +
+  #annotate("text", x = 0, y = 1.95, label = "y", fontface = "italic", color = "#333333", size = 6) +
+  
+  # Axis Ticks / Intercept Labels for components
+  #annotate("text", x = u1, y = -0.12, label = "u[1]", parse = TRUE, color = "#555555", size = 5) +
+  #annotate("text", x = -0.12, y = u2, label = "u[2]", parse = TRUE, color = "#555555", size = 5) +
+  
+  # 3. The Vector Arrow (Premium Dark Red, thick line, closed arrow head)
+  geom_segment(aes(x = 0, y = 0, xend = u1 - 0.05, yend = u2 - 0.01), 
+               arrow = arrow(length = unit(0.35, "cm"), type = "closed"), 
+               color = "#1f77b4", linewidth = 1.2) +
+  
+  # Vector Name Label (Boldface type)
+  annotate("text", x = u1 * 0.4, y = u2 * 0.5 + 0.08, label = "bold(u)", parse = TRUE, color = "#1f77b4", size = 6) +
+  
+  # 4. Initial & Terminal Geometric Points
+  geom_point(aes(x = 0, y = 0), color = "#1f77b4", size = 2.5) +    # Initial Point Dot
+  geom_point(aes(x = u1, y = u2), color = "#1f77b4", size = 2.5) + # Terminal Point Dot
+  
+  # Point Structural Text Labels
+  annotate("text", x = -0.08, y = -0.08, label = "A", color = "#1f77b4", size = 5) +
+  annotate("text", x = -0.25, y = -0.22, label = "Initial Point (Origin)", color = "#1f77b4", size = 3.5, hjust = 0) +
+  annotate("text", x = u1 + 0.05, y = u2 - 0.1, label = "Terminal Point", color = "#1f77b4", size = 3.5, hjust = 0) +
+  annotate("text", x = u1 + 0.08, y = u2 + 0.08, label = "B", color = "#1f77b4", size = 5) +
+
+  
+  # Math Coordinate Coordinate Label matching the dark red vector style
+  #geom_text(data = point_data, aes(x = x, y = y, label = label), 
+            #color = "#8B0000", parse = TRUE, size = 5, hjust = -0.05, vjust = -0.6) +
+  
+  # 5. Fix coordinate ratio and set clean boundaries
+  coord_fixed(xlim = c(-0.4, 2.0), ylim = c(-0.4, 1.5)) +
+  theme(
+  plot.margin = margin(t = 0, r = 0, b = 0, l = 0)
+)
+```
+
+<br>
+
+From elementary physics, we know that two forces, $\mathbf{F}_1$ and $\mathbf{F}_2$, acting on the same object and separated by an angle $\phi$, can be combined into a single resultant force given by the vector sum $\mathbf{F}_1 + \mathbf{F}_2$. According to the parallelogram law of forces, this resultant is represented geometrically by the directed diagonal of the parallelogram constructed with $\mathbf{F}_1$ and $\mathbf{F}_2$ as adjacent sides.
+
+
+We also know that if we multiply force $\mathbf{F}_1$ by a scalar $\lambda$, we obtain a force $\lambda\mathbf{F}_1$ whose magnitude is scaled by $|\lambda|$. If $\lambda > 0$, the direction is preserved; if $\lambda < 0$, the direction is reversed; and if $\lambda = 0$, the result is the zero vector $\mathbf{0}$.
+
+
+<br>
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-asp: 0.6
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+#| label: fig-vector01
+#| fig-cap: '$\textbf{(a) Vector addition:}$ the blue vector, $\mathbf{F_{1}} + \mathbf{F_{2}}$, is the diagonal of the parallelogram spanned by $\mathbf{F_{1}}$ and $\mathbf{F_{2}}$, where $\varphi$ denotes the angle between them. $\textbf{(b) Scalar multiplication:}$ $\lambda\mathbf{F_{1}}$ is parallel to $\mathbf{F_{1}}$ and scaled by a factor of $|\lambda|$. The vector maintains its original direction if $\lambda > 0$ and is completely reversed if $\lambda < 0$.'
+
+library(ggplot2)
+library(patchwork)
+
+# ── Aesthetic Configurations ──────────────────────────────────────────────────
+col_F1  <- "#534AB7"   # Purple
+col_F2  <- "#0F6E56"   # Teal
+col_R   <- "#993C1D"   # Coral
+col_arc <- "grey50"
+font_layout <- "serif" # Uniform mathematical typography
+
+# ── Shared Vector Data ────────────────────────────────────────────────────────
+F1  <- c(3, 4)
+F2  <- c(4, -1)
+R   <- F1 + F2
+
+# Scalar factors for Panel 2
+λ_pos <- 1.4
+λ_neg <- -0.8
+
+F1_pos <- λ_pos * F1
+F1_neg <- λ_neg * F1
+
+# Coordinate Envelopes
+xlim_p1 <- c(-0.5, 8.0);  ylim_p1 <- c(-1.5, 5.5)
+xlim_p2 <- c(-0.5, 10.0); ylim_p2 <- c(-0.6, 7.2) # Balanced vertical envelope
+
+# ── PANEL 1: VECTOR ADDITION ─────────────────────────────────────────────────
+add_df <- data.frame(
+  x = c(0, 0, 0), y = c(0, 0, 0),
+  xend = c(F1[1], F2[1], R[1]), yend = c(F1[2], F2[2], R[2]),
+  col  = c(col_F1, col_F2, col_R)
+)
+
+ghost_df <- data.frame(
+  x = c(F1[1], F2[1]), y = c(F1[2], F2[2]),
+  xend = c(R[1], R[1]), yend = c(R[2], R[2])
+)
+
+angle_F1  <- atan2(F1[2], F1[1])
+angle_F2  <- atan2(F2[2], F2[1])
+arc_r     <- 0.85
+arc_df    <- data.frame(
+  x = arc_r * cos(seq(angle_F2, angle_F1, length.out = 180)),
+  y = arc_r * sin(seq(angle_F2, angle_F1, length.out = 180))
+)
+mid_angle <- (angle_F1 + angle_F2) / 2
+
+p1 <- ggplot() +
+  geom_segment(
+    data = ghost_df, aes(x = x, y = y, xend = xend, yend = yend),
+    linetype = "22", colour = "grey75", linewidth = 0.55
+  ) +
+  geom_path(data = arc_df, aes(x = x, y = y), colour = col_arc, linewidth = 0.45) +
+  annotate(
+    "text", x = 1.20 * cos(mid_angle), y = 0.95 * sin(mid_angle),
+    label = "phi", parse = TRUE, size = 4.5, colour = col_arc, family = font_layout
+  ) +
+  geom_segment(
+    data = add_df, aes(x = x, y = y, xend = xend, yend = yend),
+    colour = add_df$col, arrow = arrow(length = unit(0.22, "cm"), type = "closed"),
+    linewidth = 1.3, linejoin = "mitre"
+  ) +
+  annotate("text", x = F1[1]/2 - 0.45, y = F1[2]/2 + 0.35, label = "bold(F)[1]", parse = TRUE, size = 4.8, colour = col_F1, family = font_layout) +
+  annotate("text", x = F2[1]/2 + 0.45, y = F2[2]/2 + 0.25, label = "bold(F)[2]", parse = TRUE, size = 4.8, colour = col_F2, family = font_layout) +
+  annotate("text", x = R[1]/2 + 0.85,  y = R[2]/2 - 0.35, label = "bold(F)[1] + bold(F)[2]", parse = TRUE, size = 4.8, colour = col_R, family = font_layout) +
+  coord_equal(xlim = xlim_p1, ylim = ylim_p1, expand = FALSE) +
+  theme_void(base_size = 12) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 12, margin = margin(b = 10, t = 10))
+  ) +
+  labs(title = "(a) Vector Addition")
+
+
+# ── PANEL 2: SCALAR MULTIPLICATION (MIXED APEX/BOTTOM LABELS) ─────────────────
+ox1 <- 0     # Origin X for F1
+ox2 <- 2.2   # Origin X for λ > 0
+ox3 <- 4.7   # Origin X for λ < 0 (Reversed origin)
+
+scl_df <- data.frame(
+  x    = c(ox1, ox2, ox3 + F1_pos[1]), 
+  y    = c(0,   0,   F1_pos[2]),       
+  xend = c(ox1 + F1[1], ox2 + F1_pos[1], ox3), 
+  yend = c(F1[2],       F1_pos[2],       0)    
+)
+
+p2 <- ggplot() +
+  # Zone bounding visual reference margins
+  annotate("segment", x = ox1 - 0.5, y = 0, xend = ox3 + 4.0, yend = 0, 
+           colour = "grey85", linetype = "dotted", linewidth = 0.5) +
+  annotate("segment", x = ox2 - 0.5, y = F1_pos[2], xend = ox3 + 4.0, yend = F1_pos[2], 
+           colour = "grey85", linetype = "dotted", linewidth = 0.5) +
+  # Vector Parallel Series
+  geom_segment(
+    data = scl_df, aes(x = x, y = y, xend = xend, yend = yend),
+    colour = col_F1, arrow = arrow(length = unit(0.22, "cm"), type = "closed"),
+    linewidth = 1.3, linejoin = "mitre"
+  ) +
+  # High-efficiency labels located cleanly at respective tops/bottoms
+  # F1 label (Top)
+  annotate("text", x = ox1 + F1[1] - 0.10, y = F1[2] + 0.40, 
+           label = "bold(F)[1]", parse = TRUE, size = 4.6, colour = col_F1, family = font_layout) +
+  # λ > 0 label (Top peak)
+  annotate("text", x = ox2 + F1_pos[1], y = F1_pos[2] + 0.40, 
+           label = "lambda * bold(F)[1] ~~~ (lambda > 0)", parse = TRUE, size = 4.6, colour = col_F1, family = font_layout) +
+  # λ < 0 label (Placed at the bottom baseline where the arrow head points)
+  annotate("text", x = ox3 + 1.20, y = -0.40, 
+           label = "lambda * bold(F)[1] ~~~ (lambda < 0)", parse = TRUE, size = 4.6, colour = col_F1, family = font_layout) +
+  # Constraints & Minimal Theme Execution
+  coord_equal(xlim = xlim_p2, ylim = ylim_p2, expand = FALSE) +
+  theme_void(base_size = 12) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 12, margin = margin(b = 10, t = 10))
+  ) +
+  labs(title = "(b) Scalar Multiplication")
+
+
+# ── Combined Composition Layout ───────────────────────────────────────────────
+p1 + plot_spacer() + p2 + 
+  plot_layout(widths = c(1, 0.05, 1.2)) & 
+  theme(plot.background = element_rect(fill = "white", colour = NA))
+```
+
+
+Vector addition and scalar multiplication, together with a specific set of properties, define the foundational framework of a vector space.
+
 
 ## Definition of Vector Space
 
 A non-empty set $V$ is called a vector space over a field $\mathbb{K}$ if its elements are equipped with a well-defined notion of equality and two closed operations: vector addition between elements of $V$, denoted by ($+$), and scalar multiplication of a scalar in $\mathbb{K}$ with an element of $V$, denoted by ($\cdot$), satisfying the following axioms for all $\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$ and all $\lambda, \mu \in \mathbb{K}$:
 
 **Vector Addition Axioms**
+
 
 1.  **Closure under Addition:** The sum of $\mathbf{u}$ and $\mathbf{v}$, denoted by $\mathbf{u} + \mathbf{v}$, is in $V$.
 
@@ -79,6 +320,8 @@ $$\mathbf{u}, \mathbf{v} \in W, \ \lambda, \mu \in \mathbb{K} \implies \lambda\m
 <br>
 
 ::: content-box-white
+**Example**
+
 In the Cartesian space $\mathbb{R}^3$, every plane $P$ passing through the origin can be written as
 
 $$P = \{(x,y,z) \in \mathbb{R}^3 \mid \alpha x + \beta y + \gamma z = 0\},$$
@@ -87,7 +330,7 @@ where $\alpha, \beta, \gamma \in \mathbb{R}$ are not all zero. To verify that $P
 
 **1. Contains the zero vector**
 
-Substituting $(0,0,0)$ into the plain equation gives
+Substituting $(0,0,0)$ into the plane equation gives
 
 $$\alpha(0) + \beta(0) + \gamma(0) = 0,$$
 
@@ -119,7 +362,7 @@ $$\mathbf{u} + \mathbf{v} \in P$$
 
 **3. Closed under scalar multiplication**
 
-Let $(x_1, y_1, z_1) \in P$ and let $\lambda \in \mathbb{R}$. Since
+Let $\mathbf{u}(x_1, y_1, z_1) \in P$ and let $\lambda \in \mathbb{R}$. Since
 
 $$\alpha x_1 + \beta y_1 + \gamma z_1 = 0,$$
 
@@ -187,18 +430,18 @@ ggplot() +
   
   # 1. Vertical and Horizontal Dashed Projection Lines (Palette from Image 1)
   geom_segment(aes(x = u1, y = u2, xend = u1, yend = 0), 
-               color = "#555555", lty = "dashed", size = 0.5) +
+               color = "#555555", lty = "dashed", linewidth = 0.5) +
   geom_segment(aes(x = u1, y = u2, xend = 0, yend = u2), 
-               color = "#555555", lty = "dashed", size = 0.5) +
+               color = "#555555", lty = "dashed", linewidth = 0.5) +
 
   
   # 2. Axis Lines (x and y) using the gray color (#555555)
   geom_segment(aes(x = 0, y = 0, xend = 2.0, yend = 0), 
                arrow = arrow(length = unit(0.25, "cm"), type = "open"), 
-               color = "#555555", size = 0.5) +
+               color = "#555555", linewidth = 0.5) +
   geom_segment(aes(x = 0, y = 0, xend = 0, yend = 1.8), 
                arrow = arrow(length = unit(0.25, "cm"), type = "open"), 
-               color = "#555555", size = 0.5) +
+               color = "#555555", linewidth = 0.5) +
   
   # Axis Labels (Muted gray text)
   annotate("text", x = 2.15, y = 0, label = "x", fontface = "italic", color = "#555555", size = 6) +
@@ -212,7 +455,7 @@ ggplot() +
   # 3. The Vector Arrow using the Dark Red outline color (#8B0000)
   geom_segment(aes(x = 0, y = 0, xend = u1, yend = u2), 
                arrow = arrow(length = unit(0.35, "cm"), type = "closed"), 
-               color = "#8B0000", size = 1.0) +
+               color = "#8B0000", linewidth = 1.0) +
   
   # Vector Name Label
   annotate("text", x = u1 * 0.45, y = u2 * 0.55 + 0.1, label = "u", fontface = "bold", color = "#8B0000", size = 5) +
