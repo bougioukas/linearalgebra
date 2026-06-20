@@ -2,15 +2,11 @@
 
 In physical sciences, measurable quantities are generally classified into two fundamental types: scalars and vectors. A **scalar** is completely specified by its magnitude alone, that is, by a single numerical value, as in the case of mass or temperature. In contrast, a **vector** is characterized by both magnitude and direction, as in velocity and force. The mathematical framework that provides a rigorous description of vectors and the operations defined on them is the concept of a **vector space**, a fundamental structure in linear algebra.
 
-
-
 ## Vectors in the Plane
 
-A vector in the plane is represented geometrically by an arrow, i.e., a directed line segment whose initial point is the origin and whose terminal point is a point in the plane. The direction of the arrow indicates the direction of the vector and the length of the arrow represents its magnitude. 
+A vector in the plane is represented geometrically by an arrow, i.e., a directed line segment whose initial point is the origin and whose terminal point is a point in the plane. The direction of the arrow indicates the direction of the vector and the length of the arrow represents its magnitude (@fig-vector00).
 
 In this book, vectors are represented by lowercase letters set in boldface type, such as $\mathbf{u}$. However, when we wish to specify that a vector $\mathbf{u}$ has initial point A and terminal point B, we denote it by $\mathbf{u} = \overrightarrow{AB}$.
-
-
 
 ```{r}
 #| echo: false
@@ -19,7 +15,7 @@ In this book, vectors are represented by lowercase letters set in boldface type,
 #| fig-width: 6
 #| fig-height: 4
 #| fig-align: center
-#| label: fig-vector0
+#| label: fig-vector00
 #| fig-cap: 'In a Cartesian coordinate system, a vector in $\mathbb{R}^2$ is geometrically represented as a directed line segment (an arrow).'
 
 
@@ -67,7 +63,7 @@ ggplot() +
   #annotate("text", x = -0.12, y = u2, label = "u[2]", parse = TRUE, color = "#555555", size = 5) +
   
   # 3. The Vector Arrow (Premium Dark Red, thick line, closed arrow head)
-  geom_segment(aes(x = 0, y = 0, xend = u1 - 0.05, yend = u2 - 0.01), 
+  geom_segment(aes(x = 0, y = 0, xend = u1 - 0.001, yend = u2 - 0.001), 
                arrow = arrow(length = unit(0.35, "cm"), type = "closed"), 
                color = "#1f77b4", linewidth = 1.2) +
   
@@ -75,14 +71,14 @@ ggplot() +
   annotate("text", x = u1 * 0.4, y = u2 * 0.5 + 0.08, label = "bold(u)", parse = TRUE, color = "#1f77b4", size = 6) +
   
   # 4. Initial & Terminal Geometric Points
-  geom_point(aes(x = 0, y = 0), color = "#1f77b4", size = 2.5) +    # Initial Point Dot
-  geom_point(aes(x = u1, y = u2), color = "#1f77b4", size = 2.5) + # Terminal Point Dot
+  geom_point(aes(x = 0, y = 0), color = "black", size = 2.5) +    # Initial Point Dot
+  geom_point(aes(x = u1, y = u2), color = "black", size = 2.5) + # Terminal Point Dot
   
   # Point Structural Text Labels
-  annotate("text", x = -0.08, y = -0.08, label = "A", color = "#1f77b4", size = 5) +
-  annotate("text", x = -0.25, y = -0.22, label = "Initial Point (Origin)", color = "#1f77b4", size = 3.5, hjust = 0) +
-  annotate("text", x = u1 + 0.05, y = u2 - 0.1, label = "Terminal Point", color = "#1f77b4", size = 3.5, hjust = 0) +
-  annotate("text", x = u1 + 0.08, y = u2 + 0.08, label = "B", color = "#1f77b4", size = 5) +
+  annotate("text", x = -0.08, y = -0.08, label = "A", color = "black", size = 5) +
+  annotate("text", x = -0.25, y = -0.22, label = "Initial Point (Origin)", color = "black", size = 3.5, hjust = 0) +
+  annotate("text", x = u1 + 0.05, y = u2 - 0.1, label = "Terminal Point", color = "black", size = 3.5, hjust = 0) +
+  annotate("text", x = u1 + 0.08, y = u2 + 0.08, label = "B", color = "black", size = 5) +
 
   
   # Math Coordinate Coordinate Label matching the dark red vector style
@@ -98,11 +94,9 @@ ggplot() +
 
 <br>
 
-From elementary physics, we know that two forces, $\mathbf{F}_1$ and $\mathbf{F}_2$, acting on the same object and separated by an angle $\phi$, can be combined into a single resultant force given by the vector sum $\mathbf{F}_1 + \mathbf{F}_2$. According to the parallelogram law of forces, this resultant is represented geometrically by the directed diagonal of the parallelogram constructed with $\mathbf{F}_1$ and $\mathbf{F}_2$ as adjacent sides.
+From elementary physics, we know that two forces, $\mathbf{F}_1$ and $\mathbf{F}_2$, acting on the same object and separated by an angle $\phi$, can be combined into a single resultant force given by the vector sum $\mathbf{F}_1 + \mathbf{F}_2$. According to the parallelogram law of forces, this resultant is represented geometrically by the directed diagonal of the parallelogram constructed with $\mathbf{F}_1$ and $\mathbf{F}_2$ as adjacent sides (@fig-vector01 **a**).
 
-
-We also know that if we multiply force $\mathbf{F}_1$ by a scalar $\lambda$, we obtain a force $\lambda\mathbf{F}_1$ whose magnitude is scaled by $|\lambda|$. If $\lambda > 0$, the direction is preserved; if $\lambda < 0$, the direction is reversed; and if $\lambda = 0$, the result is the zero vector $\mathbf{0}$.
-
+We also know that if we multiply force $\mathbf{F}_1$ by a scalar $\lambda$, we obtain a force $\lambda \cdot \mathbf{F}_1$ whose magnitude is scaled by $|\lambda|$. If $\lambda > 0$, the direction is preserved; if $\lambda < 0$, the direction is reversed; and if $\lambda = 0$, the result is the zero vector $\mathbf{0}$ (@fig-vector01 **b**).
 
 <br>
 
@@ -114,7 +108,7 @@ We also know that if we multiply force $\mathbf{F}_1$ by a scalar $\lambda$, we 
 #| fig-height: 6
 #| fig-align: center
 #| label: fig-vector01
-#| fig-cap: '$\textbf{(a) Vector addition:}$ the blue vector, $\mathbf{F_{1}} + \mathbf{F_{2}}$, is the diagonal of the parallelogram spanned by $\mathbf{F_{1}}$ and $\mathbf{F_{2}}$, where $\varphi$ denotes the angle between them. $\textbf{(b) Scalar multiplication:}$ $\lambda\mathbf{F_{1}}$ is parallel to $\mathbf{F_{1}}$ and scaled by a factor of $|\lambda|$. The vector maintains its original direction if $\lambda > 0$ and is completely reversed if $\lambda < 0$.'
+#| fig-cap: '$\textbf{(a) Vector addition:}$ the blue vector, $\mathbf{F_{1}} + \mathbf{F_{2}}$, is the diagonal of the parallelogram spanned by $\mathbf{F_{1}}$ and $\mathbf{F_{2}}$, where $\varphi$ denotes the angle between them. $\textbf{(b) Scalar multiplication:}$ $\lambda \cdot \mathbf{F_{1}}$ is parallel to $\mathbf{F_{1}}$ and scaled by a factor of $|\lambda|$. The vector maintains its original direction if $\lambda > 0$ and is completely reversed if $\lambda < 0$.'
 
 library(ggplot2)
 library(patchwork)
@@ -238,16 +232,13 @@ p1 + plot_spacer() + p2 +
   theme(plot.background = element_rect(fill = "white", colour = NA))
 ```
 
-
 Vector addition and scalar multiplication, together with a specific set of properties, define the foundational framework of a vector space.
-
 
 ## Definition of Vector Space
 
-A non-empty set $V$ is called a vector space over a field $\mathbb{K}$ if its elements are equipped with a well-defined notion of equality and two closed operations: vector addition between elements of $V$, denoted by ($+$), and scalar multiplication of a scalar in $\mathbb{K}$ with an element of $V$, denoted by ($\cdot$), satisfying the following axioms for all $\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$ and all $\lambda, \mu \in \mathbb{K}$:
+A non-empty set $V$ is called a vector space over a field $\mathbb{K}$ if its elements are equipped with a well-defined notion of equality, denoted by ($=$), and two closed operations: vector addition between elements of $V$, denoted by ($+$), and scalar multiplication of a scalar in $\mathbb{K}$ with an element of $V$, denoted by ($\cdot$), satisfying the following axioms for all $\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$ and all $\lambda, \mu \in \mathbb{K}$:
 
 **Vector Addition Axioms**
-
 
 1.  **Closure under Addition:** The sum of $\mathbf{u}$ and $\mathbf{v}$, denoted by $\mathbf{u} + \mathbf{v}$, is in $V$.
 
@@ -257,19 +248,19 @@ A non-empty set $V$ is called a vector space over a field $\mathbb{K}$ if its el
 
 4.  **Additive Identity:** There exists a unique vector $\mathbf{0}$ in $V$, called the zero vector, such that $\mathbf{0} + \mathbf{u} =\mathbf{u} + \mathbf{0} = \mathbf{u}$ for all $u$ in $V$.
 
-5.  **Additive Inverse:** For each $\mathbf{u}$ in $V$, there is a vector $-\mathbf{u}$ in $V$ (called the negative of $\mathbf{u}$) such that $\mathbf{u} + (-\mathbf{u}) = \mathbf{0}$.
+5.  **Additive Inverse:** For each $\mathbf{u}$ in $V$, there is a vector $-\mathbf{u}$ in $V$ (called the opposite of $\mathbf{u}$) such that $\mathbf{u} + (-\mathbf{u}) = \mathbf{0}$.
 
 **Scalar Multiplication Axioms**
 
-1.  **Closure under Scalar Multiplication:** The scalar multiple of $\mathbf{u}$ by $\lambda$, denoted by $\lambda \cdot \mathbf{u}$, is in $V$.
+6.  **Closure under Scalar Multiplication:** The scalar multiple of $\mathbf{u}$ by $\lambda$, denoted by $\lambda \cdot \mathbf{u}$, is in $V$.
 
-2.  **Distributivity over Vector Addition:** $\lambda \cdot (\mathbf{u} + \mathbf{v}) = \lambda \cdot \mathbf{u} + \lambda \cdot \mathbf{v}$.
+7.  **Distributivity over Vector Addition:** $\lambda \cdot (\mathbf{u} + \mathbf{v}) = \lambda \cdot \mathbf{u} + \lambda \cdot \mathbf{v}$.
 
-3.  **Distributivity over Scalar Addition:** $(\lambda + \mu)\cdot \mathbf{u} = \lambda\cdot \mathbf{u} + \mu\cdot \mathbf{u}$.
+8.  **Distributivity over Scalar Addition:** $(\lambda + \mu)\cdot \mathbf{u} = \lambda\cdot \mathbf{u} + \mu\cdot \mathbf{u}$.
 
-4.  **Compatibility of Multiplication:** $\lambda \cdot (\mu \cdot \mathbf{u}) = (\lambda \cdot \mu) \cdot \mathbf{u}$.
+9.  **Compatibility of Multiplication:** $\lambda \cdot (\mu \cdot \mathbf{u}) = (\lambda \cdot \mu) \cdot \mathbf{u}$.
 
-5.  **Scalar Identity Element:** $1 \cdot \mathbf{u} = \mathbf{u}$.
+10. **Scalar Identity Element:** $1 \cdot \mathbf{u} = \mathbf{u}$.
 
 Additionally, for each $\mathbf{u}$ in $V$ and scalar $\lambda \in \mathbb{K}$, the following properties holds as an immediate consequence of the vector space axioms:
 
@@ -283,21 +274,25 @@ Unless stated otherwise, $\mathbb{K}$ is taken to be $\mathbb{R}$ or $\mathbb{C}
 **NOTE:** Axioms 1 through 5 state that $(V, +)$ forms an abelian (commutative) group. Axioms 6 through 10 define how the field $\mathbb{K}$ acts on that group.
 :::
 
-There exist many completely different types of vector spaces used throughout science and engineering:
+There exist many completely different types of vector spaces used throughout science and engineering, including:
 
--   **Coordinate Spaces (**$\mathbb{R}^n$ and $\mathbb{C}^n$): Ordered n-tuples of real or complex numbers, ranging from the two- and three-dimensional spaces of classical physics to the high-dimensional arrays of modern data analysis.
+-   **Coordinate Spaces** ($\mathbb{R}^n$ and $\mathbb{C}^n$): Ordered n-tuples of real or complex numbers, ranging from the two- and three-dimensional spaces of classical physics to the high-dimensional arrays of modern data analysis.
 
-$$\mathbf{u} + \mathbf{v} = \begin{bmatrix} u_1 + v_1 \\ u_2 + v_2 \\ \vdots \\ u_n + v_n \end{bmatrix} \text{,} \qquad \lambda \mathbf{u} = \begin{bmatrix} \lambda u_1 \\ \lambda u_2 \\ \vdots \\ \lambda u_n \end{bmatrix}$$
+$$\mathbf{u} + \mathbf{v} = \begin{bmatrix} u_1 + v_1 \\ u_2 + v_2 \\ \vdots \\ u_n + v_n \end{bmatrix} \text{,} \qquad \lambda \cdot \mathbf{u} = \begin{bmatrix} \lambda \cdot u_1 \\ \lambda \cdot u_2 \\ \vdots \\ \lambda \cdot u_n \end{bmatrix}$$
 
--   **Matrix Spaces (**$M_{m \times n}$): The set of all $m \times n$ matrices over a field $\mathbb{K}$, where each matrix is treated as a single vector and addition and scalar multiplication are defined entry-wise,
+-   **Matrix Spaces** ($M_{m \times n}$): The set of all $m \times n$ matrices over a field $\mathbb{K}$, where each matrix is treated as a single vector and addition and scalar multiplication are defined entry-wise,
 
 $$\mathbf{U} + \mathbf{V} = [u_{ij} + v_{ij}] \text{,} \qquad \lambda \cdot \mathbf{U} = [\lambda \cdot u_{ij}]$$
 
 allowing transformations, and systems of equations be represented and manipulated within a unified algebraic framework.
 
--   **Function Spaces (**$C[a, b]$): Continuous functions on a closed interval $[a,b]$, with addition and scaling defined pointwise,
+-   **The Vector Space of Polynomials** ($\mathbb{P}_n$): the set of all polynomials of degree at most $n$ with coefficients from a field $\mathbb{K}$ (typically $\mathbb{R}$ or $\mathbb{C}$), along with the zero polynomial. Vectors in this space are algebraic expressions, where addition and scalar multiplication are performed by combining coefficients of like powers of $x$,
 
-$$(f + g)(x) = f(x) + g(x) \text{,} \qquad (\lambda \cdot f)(x) = \lambda \cdot f(x)$$
+$$(p + q)(x) = \sum_{i=0}^{n} (p_i + q_i)x^i \text{,} \qquad (\lambda \cdot p)(x) = \sum_{i=0}^{n} (\lambda \cdot p_i)x^i$$
+
+-   **Function Spaces** ($C[a, b]$): Continuous functions on a closed interval $[a,b]$, with addition and scaling defined pointwise,
+
+$$(f + g)(x) = f(x) + g(x) \text{,} \qquad (\lambda \cdot f)(x) = \lambda \cdot (f(x))$$
 
 forming infinite-dimensional spaces where whole continuous functions, mathematical curves, and physical waveforms behave exactly like vectors. This forms the foundation of signal processing, acoustics, and quantum mechanics.
 
@@ -327,6 +322,317 @@ In the Cartesian space $\mathbb{R}^3$, every plane $P$ passing through the origi
 $$P = \{(x,y,z) \in \mathbb{R}^3 \mid \alpha x + \beta y + \gamma z = 0\},$$
 
 where $\alpha, \beta, \gamma \in \mathbb{R}$ are not all zero. To verify that $P$ is a subspace of $\mathbb{R}^3$, we check the three subspace properties.
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-align: center
+#| out-width: "100%"
+
+library(plotly)
+library(dplyr) 
+
+# ============================================================
+#  PARAMETERS & CONFIGURATION (Subspace Plane passing through 0)
+# ============================================================
+alpha <- 1
+beta  <- 1
+gamma <- 1
+r     <- 30  
+
+# ============================================================
+#  PLANE BASIS VECTORS (spanning the null space of n)
+# ============================================================
+find_basis <- function(a, b, g) {
+  n <- c(a, b, g)
+  if (abs(a) > 1e-10 || abs(b) > 1e-10) {
+    e1 <- c(-b, a, 0)
+  } else {
+    e1 <- c(1, 0, 0)
+  }
+  e1 <- e1 / sqrt(sum(e1^2))
+  
+  # Cross product: n x e1
+  e2 <- c(n[2]*e1[3]-n[3]*e1[2],
+          n[3]*e1[1]-n[1]*e1[3],
+          n[1]*e1[2]-n[2]*e1[1])
+  e2 <- e2 / sqrt(sum(e2^2))
+  list(e1 = e1, e2 = e2)
+}
+
+basis <- find_basis(alpha, beta, gamma)
+e1    <- basis$e1
+e2    <- basis$e2
+
+# ============================================================
+#  PLANE MESH (Continuous Surface Parametric Generation)
+# ============================================================
+s_vals <- seq(-r, r, length.out = 45)
+t_vals <- seq(-r, r, length.out = 45)
+
+Xm <- outer(s_vals, t_vals, function(s, t) s*e1[1] + t*e2[1])
+Ym <- outer(s_vals, t_vals, function(s, t) s*e1[2] + t*e2[2])
+Zm <- outer(s_vals, t_vals, function(s, t) s*e1[3] + t*e2[3])
+
+# ============================================================
+#  BACKGROUND COORD AXES & TICK MARKS
+# ============================================================
+axes_lines <- list(
+  x = c(-25, 25, NA, 0, 0, NA, 0, 0),
+  y = c(0, 0, NA, -15, 15, NA, 0, 0),
+  z = c(0, 0, NA, 0, 0, NA, -12, 12)
+)
+
+off  <- 0.4
+tk_x <- c(); tk_y <- c(); tk_z <- c()
+
+for (v in c(-20, -10, 10, 20)) {
+  tk_x <- c(tk_x, v, v, NA); tk_y <- c(tk_y, -off, off, NA); tk_z <- c(tk_z, 0, 0, NA)
+}
+for (v in c(-10, -5, 5, 10)) {
+  tk_x <- c(tk_x, -off, off, NA); tk_y <- c(tk_y, v, v, NA); tk_z <- c(tk_z, 0, 0, NA)
+}
+for (v in c(-10, -8, -6, -4, -2, 2, 4, 6, 8, 10)) {
+  tk_x <- c(tk_x, -off, off, NA); tk_y <- c(tk_y, 0, 0, NA); tk_z <- c(tk_z, v, v, NA)
+}
+
+# ============================================================
+#  PLANE STRUCTURAL MESH WIREFRAME GENERATION 
+# ============================================================
+grid_x <- c(); grid_y <- c(); grid_z <- c()
+g_lines <- seq(-r, r, by = 3)
+
+for (t in g_lines) {
+  grid_x <- c(grid_x, s_vals * e1[1] + t * e2[1], NA)
+  grid_y <- c(grid_y, s_vals * e1[2] + t * e2[2], NA)
+  grid_z <- c(grid_z, s_vals * e1[3] + t * e2[3], NA)
+}
+for (s in g_lines) {
+  grid_x <- c(grid_x, s * e1[1] + t_vals * e2[1], NA)
+  grid_y <- c(grid_y, s * e1[2] + t_vals * e2[2], NA)
+  grid_z <- c(grid_z, s * e1[3] + t_vals * e2[3], NA)
+}
+
+# ============================================================
+#  VECTOR GEOMETRY SCALING
+# ============================================================
+sc      <- 7  
+u_vec   <- e1 * sc
+v_vec   <- e2 * sc
+sum_vec <- u_vec + v_vec
+
+sum_len <- sqrt(sum(sum_vec^2))
+sum_dir <- if(sum_len > 1e-10) sum_vec / sum_len else c(0,0,0)
+
+eq_str <- "x + y + z = 0"
+
+# ============================================================
+#  PIPELINE LAYER COMPOSITION
+# ============================================================
+fig <- plot_ly(height = 800) %>%
+  config(
+    responsive = TRUE,
+    displayModeBar = FALSE
+  )
+
+# 1. Background Coordinate Framework
+fig <- fig %>% add_trace(
+  type = "scatter3d", mode = "lines",
+  x = axes_lines$x, y = axes_lines$y, z = axes_lines$z,
+  line = list(color = "#dfe6e9", width = 2.5),
+  showlegend = FALSE, hoverinfo = "none"
+)
+
+# 2. Background Structural Ticks
+fig <- fig %>% add_trace(
+  type = "scatter3d", mode = "lines",
+  x = tk_x, y = tk_y, z = tk_z,
+  line = list(color = "#dfe6e9", width = 1.5),
+  showlegend = FALSE, hoverinfo = "none"
+)
+
+# 3. Dynamic Text Annotations for Standard Axis Terminals
+fig <- fig %>% add_trace(
+  type = "scatter3d", mode = "text",
+  x = c(22, 0, 0), y = c(0, 11, 0), z = c(0, 0, 11),
+  text = c("<b>X</b>", "<b>Y</b>", "<b>Z</b>"),
+  textfont = list(size = 12, color = "#b2bec3", family = "sans-serif"),
+  showlegend = FALSE, hoverinfo = "none"
+)
+
+# 4. Continuous Subspace Plane Sheet Surface
+fig <- fig %>% add_surface(
+  x = Xm, y = Ym, z = Zm,
+  colorscale  = list(c(0, "#74b9ff"), c(1, "#0984e3")),
+  opacity     = 0.45,
+  showscale   = FALSE,
+  contours    = list(x=list(show=FALSE), y=list(show=FALSE), z=list(show=FALSE)),
+  name        = "Subspace Plane (P)",
+  hovertemplate = paste0("Plane: ", eq_str, "<extra></extra>")
+)
+
+# 5. Overlay Grid Lines on Surface
+fig <- fig %>% add_trace(
+  type = "scatter3d", mode = "lines",
+  x = grid_x, y = grid_y, z = grid_z,
+  line        = list(color = "#232F34", width = 2),
+  opacity     = 0.15,
+  showlegend  = FALSE, hoverinfo = "none"
+)
+
+# 6. Parallelogram Extension Line 1
+fig <- fig %>% add_trace(
+  type = "scatter3d", mode = "lines",
+  x = c(u_vec[1], sum_vec[1]), y = c(u_vec[2], sum_vec[2]), z = c(u_vec[3], sum_vec[3]),
+  line = list(color = "#00b894", width = 2.5, dash = "dash"),
+  showlegend = FALSE, hoverinfo = "none"
+)
+
+# 7. Parallelogram Extension Line 2
+fig <- fig %>% add_trace(
+  type = "scatter3d", mode = "lines",
+  x = c(v_vec[1], sum_vec[1]), y = c(v_vec[2], sum_vec[2]), z = c(v_vec[3], sum_vec[3]),
+  line = list(color = "#232F34", width = 2.5, dash = "dash"),
+  showlegend = FALSE, hoverinfo = "none"
+)
+
+# 8. Plane Vector u
+fig <- fig %>% add_trace(
+  type = "scatter3d", mode = "lines",
+  x = c(0, u_vec[1]), y = c(0, u_vec[2]), z = c(0, u_vec[3]),
+  line = list(color = "#232F34", width = 5.5),
+  showlegend = FALSE, hovertemplate = "u<extra></extra>"
+)
+
+# 9. Plane Vector u Arrowhead Cone
+fig <- fig %>% add_trace(
+  type = "cone", 
+  x = u_vec[1], y = u_vec[2], z = u_vec[3], 
+  u = e1[1], v = e1[2], w = e1[3],
+  sizemode = "absolute", sizeref = 1.2, showscale = FALSE,
+  anchor = "tail",
+  colorscale = list(c(0, "#232F34"), c(1, "#232F34")),
+  hoverinfo = "none", showlegend = FALSE
+)
+
+# 10. Plane Vector v
+fig <- fig %>% add_trace(
+  type = "scatter3d", mode = "lines",
+  x = c(0, v_vec[1]), y = c(0, v_vec[2]), z = c(0, v_vec[3]),
+  line = list(color = "#00b894", width = 5.5),
+  showlegend = FALSE, hovertemplate = "v<extra></extra>"
+)
+
+# 11. Plane Vector v Arrowhead Cone
+fig <- fig %>% add_trace(
+  type = "cone", 
+  x = v_vec[1], y = v_vec[2], z = v_vec[3], 
+  u = e2[1], v = e2[2], w = e2[3],
+  sizemode = "absolute", sizeref = 1.2, showscale = FALSE,
+  anchor = "tail",
+  colorscale = list(c(0, "#00b894"), c(1, "#00b894")),
+  hoverinfo = "none", showlegend = FALSE
+)
+
+# 12. Resultant Vector Line: u + v
+fig <- fig %>% add_trace(
+  type = "scatter3d", mode = "lines",
+  x = c(0, sum_vec[1]), y = c(0, sum_vec[2]), z = c(0, sum_vec[3]),
+  line = list(color = "#e17055", width = 6.5),
+  showlegend = FALSE, hovertemplate = "u + v<extra></extra>"
+)
+
+# 13. Resultant Vector u + v Arrowhead Cone
+fig <- fig %>% add_trace(
+  type = "cone", 
+  x = sum_vec[1], y = sum_vec[2], z = sum_vec[3], 
+  u = sum_dir[1], v = sum_dir[2], w = sum_dir[3],
+  sizemode = "absolute", sizeref = 1.4, showscale = FALSE,
+  anchor = "tail",
+  colorscale = list(c(0, "#e17055"), c(1, "#e17055")),
+  hoverinfo = "none", showlegend = FALSE
+)
+
+# 14. Vector Typography Identifiers
+fig <- fig %>% add_trace(
+  type = "scatter3d", mode = "text",
+  x = c(u_vec[1]*1.25, v_vec[1]*1.25, sum_vec[1]*1.2), 
+  y = c(u_vec[2]*1.25, v_vec[2]*1.25, sum_vec[2]*1.2), 
+  z = c(u_vec[3]*1.25, v_vec[3]*1.25, sum_vec[3]*1.2),
+  text = c("<b>u</b>", "<b>v</b>", "<b>u + v</b>"),
+  textfont = list(size = 14, color = c("#232F34", "#00b894", "#e17055"), family = "serif"),
+  showlegend = FALSE, hoverinfo = "none"
+)
+
+# 15. Origin Anchor Node
+fig <- fig %>% add_trace(
+  type = "scatter3d", mode = "markers",
+  x = 0, y = 0, z = 0,
+  marker = list(color = "#2d3436", size = 6, symbol = "circle",
+                line = list(color = "white", width = 1.5)),
+  showlegend = FALSE,
+  hovertemplate = "<b>Subspace Origin</b><br>Coordinates: (0,0,0)<extra></extra>"
+)
+
+# ============================================================
+#  TEXTBOOK DESIGN SCHEME LAYOUT (With Pronounced Walls)
+# ============================================================
+fig <- fig %>% layout(
+  paper_bgcolor = "white",
+  margin = list(l = 20, r = 20, t = 20, b = 20),
+  scene = list(
+    xaxis = list(
+      visible = TRUE,
+      title = list(text = "x"),
+      range = c(-20, 20),
+      showgrid = TRUE,
+      gridcolor = "#e8e8e8",
+      zeroline = TRUE,
+      zerolinecolor = "#b0b0b0",
+      zerolinewidth = 2,
+      # Pronounce the wall background
+      showbackground = TRUE,
+      backgroundcolor = "#fcfcfc"
+    ),
+    yaxis = list(
+      visible = TRUE,
+      title = list(text = "y"),
+      range = c(-10, 10),
+      showgrid = TRUE,
+      gridcolor = "#e8e8e8",
+      zeroline = TRUE,
+      zerolinecolor = "#b0b0b0",
+      zerolinewidth = 2,
+      # Pronounce the wall background
+      showbackground = TRUE,
+      backgroundcolor = "#fafafa"
+    ),
+    zaxis = list(
+      visible = TRUE,
+      title = list(text = "z"),
+      range = c(-10, 10), 
+      showgrid = TRUE,
+      gridcolor = "#e8e8e8",
+      zeroline = TRUE,
+      zerolinecolor = "#b0b0b0",
+      zerolinewidth = 2,
+      # Pronounce the wall background
+      showbackground = TRUE,
+      backgroundcolor = "#f5f5f5"
+    ),
+    aspectmode = "manual",
+    aspectratio = list(x = 2, y = 1, z = 1), 
+    camera = list(
+      eye = list(x = 1.85, y = -1.85, z = 1.35),
+      up = list(x = 0, y = 0, z = 1),
+      projection = list(type = "orthographic")
+    ),
+    bgcolor = "white"
+  )
+)
+
+fig
+```
 
 **1. Contains the zero vector**
 
