@@ -632,6 +632,7 @@ fig <- fig %>% layout(
 )
 
 fig
+
 ```
 
 **1. Contains the zero vector**
